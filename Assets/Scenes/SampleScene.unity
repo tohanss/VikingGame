@@ -254,20 +254,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 590332762}
-  smoothValue: 0
-  minX: 0
-  maxX: 0
-  minY: 0
-  maxY: 0
+  smoothValue: 2
+  minX: -10
+  maxX: 10
+  minY: -10
+  maxY: 10
 --- !u!4 &590332762 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8754151747819239470, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 8754151748660269613}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &747858486 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2801466725858030590, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
     type: 3}
   m_PrefabInstance: {fileID: 8754151748660269613}
   m_PrefabAsset: {fileID: 0}
@@ -339,27 +333,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &853745818 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8754151747819240402, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 8754151748660269613}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &853745823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853745818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96d850f752b7ffa4e9948669b75afd12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 747858486}
-  projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
-    type: 3}
 --- !u!1001 &8754151748660269613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,21 +340,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2801466725858030590, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.366
-      objectReference: {fileID: 0}
-    - target: {fileID: 8754151747819239465, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
-        type: 3}
-      propertyPath: movespeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8754151747819239468, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8754151747819239470, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
         type: 3}
       propertyPath: m_RootOrder
