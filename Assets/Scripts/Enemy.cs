@@ -40,6 +40,11 @@ public class Enemy : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
+
+    }
+
+    private void FixedUpdate()
+    {
         move();
 
     }

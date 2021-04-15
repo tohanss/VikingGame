@@ -29,12 +29,16 @@ public class SpearProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy")) 
+        if (other.gameObject.CompareTag("Enemy"))
         {
             other.GetComponent<Enemy>().takeDamage(damage);
             knockback(other);
             Destroy(gameObject);
 
+        }
+        else 
+        {
+            Destroy(gameObject);
         }
 
     }
