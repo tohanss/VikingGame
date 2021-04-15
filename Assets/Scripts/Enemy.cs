@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     private SpriteRenderer spriteRenderer;
 
+    public GameObject damageNumbers;
+
     private void Start()
     {
         health = maxHealth;
@@ -64,6 +66,9 @@ public class Enemy : MonoBehaviour
 
     public void takeDamage(float damage) 
     {
+        GameObject damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity);
+        damageNumber.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+
         health -= damage;
                 
         if (health <= 0)
