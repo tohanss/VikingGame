@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Boar
-  moveSpeed: 2
+  moveSpeed: 1.5
   maxHealth: 50
   target: {fileID: 0}
+  aggroRange: 5
+  attackRange: 1
