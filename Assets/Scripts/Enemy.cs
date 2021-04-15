@@ -31,11 +31,11 @@ public class Enemy : MonoBehaviour
         }
 
         //Enemy faces player by fliping the sprite
-        if (transform.position.x < target.position.x)
+        if (Vector2.Distance(transform.position, target.position) <= aggroRange && transform.position.x < target.position.x)
         {
             spriteRenderer.flipX = true;
         }
-        else
+        else if(Vector2.Distance(transform.position, target.position) <= aggroRange)
         {
             spriteRenderer.flipX = false;
         }
