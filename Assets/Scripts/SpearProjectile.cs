@@ -32,9 +32,16 @@ public class SpearProjectile : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy")) 
         {
             other.GetComponent<Enemy>().takeDamage(damage);
+            knockback(other);
             Destroy(gameObject);
 
         }
 
+    }
+    //Knockback the the hit object
+    private void knockback(Collider2D other) 
+    {
+        Vector2 difference = other.transform.position - transform.position;
+        other.transform.position = new Vector2((other.transform.position.x + difference.x), (other.transform.position.y + difference.y));
     }
 }
