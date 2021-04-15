@@ -140,7 +140,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 66
         width: 32
         height: 32
       alignment: 0
@@ -160,8 +160,8 @@ TextureImporter:
       name: earth04_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 33
+        y: 66
         width: 32
         height: 32
       alignment: 0
@@ -181,8 +181,8 @@ TextureImporter:
       name: earth04_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 66
+        y: 66
         width: 32
         height: 32
       alignment: 0
@@ -202,8 +202,8 @@ TextureImporter:
       name: earth04_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
+        x: 99
+        y: 66
         width: 32
         height: 32
       alignment: 0
@@ -223,8 +223,8 @@ TextureImporter:
       name: earth04_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
+        x: 132
+        y: 66
         width: 32
         height: 32
       alignment: 0
@@ -245,7 +245,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 33
         width: 32
         height: 32
       alignment: 0
@@ -265,8 +265,8 @@ TextureImporter:
       name: earth04_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 33
+        y: 33
         width: 32
         height: 32
       alignment: 0
@@ -286,8 +286,8 @@ TextureImporter:
       name: earth04_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 66
+        y: 33
         width: 32
         height: 32
       alignment: 0
@@ -307,8 +307,8 @@ TextureImporter:
       name: earth04_8
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 99
+        y: 33
         width: 32
         height: 32
       alignment: 0
@@ -328,8 +328,8 @@ TextureImporter:
       name: earth04_9
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
+        x: 132
+        y: 33
         width: 32
         height: 32
       alignment: 0
@@ -370,7 +370,7 @@ TextureImporter:
       name: earth04_11
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
         y: 0
         width: 32
         height: 32
@@ -391,7 +391,7 @@ TextureImporter:
       name: earth04_12
       rect:
         serializedVersion: 2
-        x: 64
+        x: 66
         y: 0
         width: 32
         height: 32
@@ -412,7 +412,7 @@ TextureImporter:
       name: earth04_13
       rect:
         serializedVersion: 2
-        x: 96
+        x: 99
         y: 0
         width: 32
         height: 32
@@ -433,7 +433,7 @@ TextureImporter:
       name: earth04_14
       rect:
         serializedVersion: 2
-        x: 128
+        x: 132
         y: 0
         width: 32
         height: 32
