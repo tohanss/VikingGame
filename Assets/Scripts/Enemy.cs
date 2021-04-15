@@ -24,12 +24,6 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        
-        if (health <= 0)
-        {
-            die();
-        }
-
         //Enemy faces player by fliping the sprite
         if (Vector2.Distance(transform.position, target.position) <= aggroRange && transform.position.x < target.position.x)
         {
@@ -40,6 +34,11 @@ public class Enemy : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
+
+    }
+
+    private void FixedUpdate()
+    {
         move();
 
     }
@@ -66,6 +65,11 @@ public class Enemy : MonoBehaviour
     public void takeDamage(float damage) 
     {
         health -= damage;
+                
+        if (health <= 0)
+        {
+            die();
+        }
     }
 
 }

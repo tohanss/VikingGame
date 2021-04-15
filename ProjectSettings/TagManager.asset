@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Collidables
   layers:
   - Default
   - TransparentFX
@@ -47,4 +48,7 @@ TagManager:
     locked: 0
   - name: plants
     uniqueID: 4242480779
+    locked: 0
+  - name: characters
+    uniqueID: 1287051063
     locked: 0
