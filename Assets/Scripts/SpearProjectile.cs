@@ -36,7 +36,7 @@ public class SpearProjectile : MonoBehaviour
             Destroy(gameObject);
 
         }
-        else 
+        else if(other.gameObject.CompareTag("Collidables"))
         {
             Destroy(gameObject);
         }
