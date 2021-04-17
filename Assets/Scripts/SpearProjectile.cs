@@ -11,6 +11,8 @@ public class SpearProjectile : MonoBehaviour
     private float maxLife = 4.0f; //temporary solution, max life duration for projectile 
     private float lifeTimer;
 
+    private bool hitEnemy = false;
+
     void Start()
     {
         Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -29,8 +31,9 @@ public class SpearProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && !hitEnemy)
         {
+            hitEnemy = true;
             other.GetComponent<Enemy>().takeDamage(damage);
             knockback(other);
             Destroy(gameObject);
