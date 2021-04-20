@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    // Enemy stats
     public string enemyName;
     public float moveSpeed;
     public float maxHealth;
+    public float expValue;
     private float health;
 
+    // reference to the player
+    public GameObject playerCharacter;
+
+    // Aggro related
     public Transform target;
     public float aggroRange;
     public float attackRange;
@@ -20,8 +26,9 @@ public class Enemy : MonoBehaviour
     {
         health = maxHealth;
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
+        playerCharacter = GameObject.FindGameObjectWithTag("Player");
+        target = playerCharacter.GetComponent<Transform>();
     }
 
     private void Update()
@@ -35,14 +42,11 @@ public class Enemy : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-
-
     }
 
     private void FixedUpdate()
     {
         move();
-
     }
 
     private void move()
@@ -51,17 +55,11 @@ public class Enemy : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         }
-
     }
 
     private void attack() 
     { 
 
-    }
-
-    void die() 
-    {
-        Destroy(gameObject);
     }
 
     public void takeDamage(float damage) 
@@ -75,6 +73,12 @@ public class Enemy : MonoBehaviour
         {
             die();
         }
+    }
+
+    void die() 
+    {
+        playerCharacter.GetComponent<PlayerActions>().GainExp(5);
+        Destroy(gameObject);
     }
 
 }

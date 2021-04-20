@@ -205,6 +205,8 @@ MonoBehaviour:
   enemyName: Boar
   moveSpeed: 1.5
   maxHealth: 20
+  expValue: 5
+  playerCharacter: {fileID: 0}
   target: {fileID: 0}
   aggroRange: 6
   attackRange: 1
