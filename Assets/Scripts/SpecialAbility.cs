@@ -103,6 +103,15 @@ public class SpecialAbility : MonoBehaviour
                 playerMovement.moveable = true;
             }
         }
+        else
+        {
+            // attack failed
+            if (firstAttack == 1) firstAttack = -1;
+            hitsMade = 1000;
+            timeCount = 0;
+            playerCollider.enabled = true;
+            playerMovement.moveable = true;
+        }
     }
 
     GameObject findClosest(GameObject[] enemies)
