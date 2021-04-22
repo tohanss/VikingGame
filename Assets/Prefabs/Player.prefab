@@ -193,3 +193,6 @@ MonoBehaviour:
   firePoint: {fileID: 2801466725858030590}
   projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
     type: 3}
+  favorText: {fileID: 0}
+  levelText: {fileID: 0}
+  basicPierce: 0

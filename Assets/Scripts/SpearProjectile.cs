@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class SpearProjectile : MonoBehaviour
 {
-    public float speed = 20f;
-    public Rigidbody2D rb;
-    public float damage = 5f;
+    // stats
+    public float damage;
 
+    // Logic
+    public Rigidbody2D rb;
+    private Collider2D hitEnemy;
+
+    // Life related
     private float maxLife = 4.0f; //temporary solution, max life duration for projectile 
     private float lifeTimer;
-
-    private bool hitEnemy = false;
-
-    void Start()
-    {
-        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        
-        rb.velocity = direction.normalized * speed;
-    }
+    public bool pierce = false;
 
     private void Update()
     {
@@ -31,20 +27,21 @@ public class SpearProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && !hitEnemy)
+        if (other.gameObject.CompareTag("Enemy") && !(hitEnemy == other))
         {
-            hitEnemy = true;
+            hitEnemy = other;
             other.GetComponent<Enemy>().takeDamage(damage);
             knockback(other);
-            Destroy(gameObject);
-
+            if (!pierce){
+                Destroy(gameObject);
+            }
         }
         else if(other.gameObject.CompareTag("Collidables"))
         {
             Destroy(gameObject);
         }
-
     }
+
     //Knockback the the hit object
     private void knockback(Collider2D other) 
     {
