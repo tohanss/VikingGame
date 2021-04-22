@@ -39,6 +39,7 @@ public class SpecialAbility : MonoBehaviour
         if (hitsMade > numberOfHits - 1 && timeCount % delay == 0 && firstAttack != -1)
         {
             GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<PlayerMovement>().moveable = true;
             hitsMade = 0;
             transform.position = oldPos;
             lastTarget = null;
@@ -47,6 +48,7 @@ public class SpecialAbility : MonoBehaviour
         else if (firstAttack == 1)
         {
             GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<PlayerMovement>().moveable = false;
             Attack();
         }
         // keep attacking if in the middle of an attack

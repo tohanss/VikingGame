@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     Vector2 movement;
+    public bool moveable = true;
 
     private void Start() 
     {
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement.normalized * movespeed * Time.fixedDeltaTime);
+        if (moveable)
+            rb.MovePosition(rb.position + movement.normalized * movespeed * Time.fixedDeltaTime);
     }
 }
