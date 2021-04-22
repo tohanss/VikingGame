@@ -19636,7 +19636,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Favor: 0 / 10'
+  m_Text: 'Favour: 0 / 10'
 --- !u!222 &1665913002
 CanvasRenderer:
   m_ObjectHideFlags: 0

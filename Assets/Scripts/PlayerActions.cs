@@ -30,7 +30,7 @@ public class PlayerActions : MonoBehaviour
     // Unity functions
     private void Start() 
     {
-        favorText.text = "Favor: " + currentExp.ToString() + " / " + requiredExp.ToString();
+        favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
         levelText.text = "Level: " + level.ToString();
 
         projectileScript = projectilePrefab.GetComponent<SpearProjectile>();
@@ -79,7 +79,7 @@ public class PlayerActions : MonoBehaviour
             LevelUp();
         }
 
-        favorText.text = "Favor: " + currentExp.ToString() + " / " + requiredExp.ToString();
+        favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
     }
 
     private void LevelUp()
