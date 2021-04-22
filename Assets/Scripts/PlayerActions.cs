@@ -13,7 +13,7 @@ public class PlayerActions : MonoBehaviour
     public float scatterMaxAngle = 30;
 
     // Player stats
-    private int playerDamage = 10;
+    public int playerDamage = 10;
     private int level = 1;
     private float projectileSpeed = 10f;
 

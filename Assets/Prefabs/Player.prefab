@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8754151747819239469}
   - component: {fileID: 8754151747819239465}
   - component: {fileID: 853745823}
+  - component: {fileID: -1694655607435050259}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -193,6 +194,25 @@ MonoBehaviour:
   firePoint: {fileID: 2801466725858030590}
   projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
     type: 3}
+  scatterMaxAngle: 30
   favorText: {fileID: 0}
   levelText: {fileID: 0}
   basicPierce: 0
+  numberProjectiles: 1
+--- !u!114 &-1694655607435050259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754151747819240402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356373987f4f735468515ac5ff2479bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  range: 7
+  chainRange: 4
+  numberOfHits: 3
+  delay: 12
