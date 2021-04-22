@@ -6,11 +6,16 @@ public class SpecialAbility : MonoBehaviour
 {
 
     private float cooldown = 0;
-    public float damage = 4;
+    private float damage = 4;
+    public float dmgMultiplier = 0.5f;
     public float range = 7;
     public float chainRange = 4;
     public int numberOfHits = 3;
     public int delay = 12;
+
+    private PlayerActions playerAction;
+    private BoxCollider2D playerCollider;
+    private PlayerMovement playerMovement;
 
     private GameObject[] enemies;
     private int hitsMade = 0;
@@ -23,6 +28,10 @@ public class SpecialAbility : MonoBehaviour
     void Start()
     {
         oldPos = transform.position;
+        playerAction = GetComponent<PlayerActions>();
+        playerCollider = GetComponent<BoxCollider2D>();
+        playerMovement = GetComponent<PlayerMovement>();
+
     }
 
     // Update is called once per frame
@@ -30,6 +39,8 @@ public class SpecialAbility : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
             firstAttack = 1;
+        // update damage
+        damage = playerAction.playerDamage * dmgMultiplier;
     }
 
     private void FixedUpdate()
@@ -38,8 +49,8 @@ public class SpecialAbility : MonoBehaviour
         // quit if max nr of hits reached
         if (hitsMade > numberOfHits - 1 && timeCount % delay == 0 && firstAttack != -1)
         {
-            GetComponent<BoxCollider2D>().enabled = true;
-            GetComponent<PlayerMovement>().moveable = true;
+            playerCollider.enabled = true;
+            playerMovement.moveable = true;
             hitsMade = 0;
             transform.position = oldPos;
             lastTarget = null;
@@ -47,8 +58,8 @@ public class SpecialAbility : MonoBehaviour
         // attack if mouseclick
         else if (firstAttack == 1)
         {
-            GetComponent<BoxCollider2D>().enabled = false;
-            GetComponent<PlayerMovement>().moveable = false;
+            playerCollider.enabled = false;
+            playerMovement.moveable = false;
             Attack();
         }
         // keep attacking if in the middle of an attack
