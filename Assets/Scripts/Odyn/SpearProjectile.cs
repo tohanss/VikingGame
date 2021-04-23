@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpearProjectile : MonoBehaviour
 {
-    // stats
+    // Stats, initilized by prefab
     public float damage;
 
     // Logic
@@ -12,17 +12,13 @@ public class SpearProjectile : MonoBehaviour
     private Collider2D hitEnemy;
 
     // Life related
-    private float maxLife = 4.0f; //temporary solution, max life duration for projectile 
+    private float maxLife = 2.0f; //temporary solution, max life duration for projectile 
     private float lifeTimer;
     public bool pierce = false;
 
-    private void Update()
+    private void Start()
     {
-        lifeTimer += Time.deltaTime;
-        if (lifeTimer >= maxLife) 
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject, maxLife);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

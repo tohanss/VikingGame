@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8754151747819239469}
   - component: {fileID: 8754151747819239465}
   - component: {fileID: 853745823}
-  - component: {fileID: -1694655607435050259}
+  - component: {fileID: 2991887067098795626}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -155,7 +155,7 @@ BoxCollider2D:
   m_Offset: {x: -0.17390135, y: -0.48331553}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.3630076, y: 0}
     oldSize: {x: 1.28125, y: 1.09375}
     newSize: {x: 1.28125, y: 1.09375}
     adaptiveTilingThreshold: 0.5
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 3
   rb: {fileID: 8754151747819239468}
+  moveable: 1
 --- !u!114 &853745823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,15 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d850f752b7ffa4e9948669b75afd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 2801466725858030590}
-  projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
-    type: 3}
-  scatterMaxAngle: 30
   favorText: {fileID: 0}
   levelText: {fileID: 0}
-  basicPierce: 0
-  numberProjectiles: 1
---- !u!114 &-1694655607435050259
+--- !u!114 &2991887067098795626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,11 +203,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8754151747819240402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 356373987f4f735468515ac5ff2479bc, type: 3}
+  m_Script: {fileID: 11500000, guid: a2bddb2ce76c75f46853d3f2dbb6ba85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
-  range: 7
-  chainRange: 4
-  numberOfHits: 3
-  delay: 12
+  basicAbility: {fileID: 0}
+  specialAbility: {fileID: 0}
