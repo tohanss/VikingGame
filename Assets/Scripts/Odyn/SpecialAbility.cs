@@ -17,8 +17,6 @@ public class SpecialAbility : MonoBehaviour
     // Range/Targeting related
     public float range = 4;
     public float chainRange = 3;
-    public GameObject rangePrefab;
-    GameObject rangeIndicator;
     Vector2 mousePoint;
     LayerMask enemyLayer;
 
