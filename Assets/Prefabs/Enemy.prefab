@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1657597238814098427}
   - component: {fileID: 3648164335463066042}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: feetCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
