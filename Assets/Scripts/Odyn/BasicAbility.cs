@@ -8,6 +8,10 @@ public class BasicAbility : MonoBehaviour
     public Transform firePoint;
     public GameObject projectilePrefab;
     private SpearProjectile projectileScript;
+    public Animator animator;
+    public float delay = 0.1f;
+    private float timeSinceJump = 0f;
+    private bool attacking = false;
 
     // Upgrade related
     public bool basicPierce;
@@ -28,7 +32,23 @@ public class BasicAbility : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1")){
-            Attack();
+            animator.SetTrigger("Basic");
+            attacking = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (attacking)
+        {
+            timeSinceJump += Time.fixedDeltaTime;
+
+            if (timeSinceJump > delay)
+            {
+                Attack();
+                attacking = false;
+                timeSinceJump = 0f;
+            }
         }
     }
 

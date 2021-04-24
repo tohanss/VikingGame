@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     public bool moveable = true;
 
+    public Animator animator;
+
     private void Start() 
     {
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
@@ -34,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (moveable)
+        {
             rb.MovePosition(rb.position + movement.normalized * movespeed * Time.fixedDeltaTime);
+            animator.SetFloat("Speed", (movement.normalized * movespeed * Time.fixedDeltaTime).magnitude);
+        }
     }
 }
