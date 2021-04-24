@@ -243,7 +243,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
     type: 3}
   animator: {fileID: -8603538043082790881}
-  delay: 0.1
+  delay: 0.4
   basicPierce: 1
   numberProjectiles: 3
 --- !u!95 &-8603538043082790881
