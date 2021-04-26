@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 2991887067098795626}
   - component: {fileID: 1856058370}
   - component: {fileID: 1856058376}
+  - component: {fileID: -8603538043082790881}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -179,9 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 815a3b497c8f50047b0efbec7ecec563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 3
+  movespeed: 3.5
   rb: {fileID: 8754151747819239468}
   moveable: 1
+  animator: {fileID: -8603538043082790881}
 --- !u!114 &853745823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,5 +242,26 @@ MonoBehaviour:
   firePoint: {fileID: 2801466725858030590}
   projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
     type: 3}
+  animator: {fileID: -8603538043082790881}
+  delay: 0.4
   basicPierce: 1
-  numberProjectiles: 4
+  numberProjectiles: 3
+--- !u!95 &-8603538043082790881
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754151747819240402}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0297e760518185469c2f95f55c4ae83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

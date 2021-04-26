@@ -19417,6 +19417,11 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 460918986}
+    - target: {fileID: 8754151747819239465, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
+        type: 3}
+      propertyPath: movespeed
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8754151747819239470, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
         type: 3}
       propertyPath: m_RootOrder

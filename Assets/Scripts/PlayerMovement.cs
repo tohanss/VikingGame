@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     Vector2 movement;
     public bool moveable = true;
+
+    public Animator animator;
 
     private void Start() 
     {
@@ -33,7 +36,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (moveable)
+        if (moveable && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        {
             rb.MovePosition(rb.position + movement.normalized * movespeed * Time.fixedDeltaTime);
+        }
+        animator.SetFloat("Speed", (movement.normalized * movespeed * Time.fixedDeltaTime).magnitude * Convert.ToInt32(moveable));
     }
 }
