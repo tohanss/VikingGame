@@ -59,6 +59,7 @@ public class BasicAbility : MonoBehaviour
         {
             timeSinceJump += Time.fixedDeltaTime;
             playerMovement.moveable = false;
+            turnWhenAttack();
             if (timeSinceJump > delay)
             {
                 Attack();
@@ -88,6 +89,18 @@ public class BasicAbility : MonoBehaviour
             rb.velocity = direction.normalized * projectileSpeed;
             rb.transform.right = rb.velocity;
             rb.transform.rotation = rb.transform.rotation * Quaternion.Euler( new Vector3(0, 0, -45));
+        }
+    }
+    //Makes player face the direction where you click attack
+    private void turnWhenAttack() 
+    {
+        if (direction.x > 0)
+        {
+            playerMovement.spriteRenderer.flipX = false;
+        }
+        else if (direction.x < 0)
+        {
+            playerMovement.spriteRenderer.flipX = true;
         }
     }
 
