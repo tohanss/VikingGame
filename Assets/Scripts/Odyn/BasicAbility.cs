@@ -9,11 +9,12 @@ public class BasicAbility : MonoBehaviour
     public GameObject projectilePrefab;
     private SpearProjectile projectileScript;
     private Vector2 direction;
-    public Animator animator;
     public float delay = 0.4f;
     private float timeSinceJump = 0f;
     private bool attacking = false;
+
     private PlayerMovement playerMovement;
+    private Animator animator;
 
     // Upgrade related
     public bool basicPierce;
@@ -31,9 +32,17 @@ public class BasicAbility : MonoBehaviour
     {
         projectileScript = projectilePrefab.GetComponent<SpearProjectile>();
         playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
 
         // Apply pierce upgrade to prefab
         setPierce(basicPierce);
+
+        // PLACEHOLDER TO SHOW HOW ATTACK SPEED CAN BE UPGRADED IN THE FUTURE
+        if (spedUP)
+        {
+            animator.SetFloat("SpeedMultiplier", 2);
+            delay = delay / 2;
+        }
     }
 
     void Update()
@@ -42,14 +51,6 @@ public class BasicAbility : MonoBehaviour
             animator.SetTrigger("Basic");
             direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position);
             attacking = true;
-        }
-
-        // PLACEHOLDER TO SHOW HOW ATTACK SPEED CAN BE UPGRADED IN THE FUTURE
-        if (spedUP)
-        {
-            animator.SetFloat("SpeedMultiplier", 2);
-            delay = delay / 2;
-            spedUP = false;
         }
     }
 
@@ -81,7 +82,8 @@ public class BasicAbility : MonoBehaviour
 
         for (int i = 0; i < numberProjectiles; i++)
         {   
-            Rigidbody2D rb = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation ).GetComponent<Rigidbody2D>();        
+            Vector3 spawnOffset = new Vector3(direction.x, direction.y, 0).normalized;
+            Rigidbody2D rb = Instantiate(projectilePrefab, firePoint.position + spawnOffset, transform.rotation).GetComponent<Rigidbody2D>();        
             
             // modify direction to spread out projectiles
             direction = Quaternion.AngleAxis(-rotationStep, Vector3.forward) * direction;
@@ -91,6 +93,7 @@ public class BasicAbility : MonoBehaviour
             rb.transform.rotation = rb.transform.rotation * Quaternion.Euler( new Vector3(0, 0, -45));
         }
     }
+    
     //Makes player face the direction where you click attack
     private void turnWhenAttack() 
     {
