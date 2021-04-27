@@ -133,7 +133,7 @@ public class BasicAbility : MonoBehaviour
 
         for (int i = 0; i < numberProjectiles; i++)
         {   
-            Rigidbody2D rb = Instantiate(projectilePrefab, firePoint.position + offset, transform.rotation).GetComponent<Rigidbody2D>();        
+            Rigidbody2D rb = Instantiate(projectilePrefab, firePoint.position + offset, firePoint.rotation).GetComponent<Rigidbody2D>();        
             
             // modify direction to spread out projectiles
             direction = Quaternion.AngleAxis(-rotationStep, Vector3.forward) * direction;
