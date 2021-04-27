@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 7571023224850178585}
   - component: {fileID: 7571023224850178566}
   - component: {fileID: 7571023224850178586}
-  - component: {fileID: 7571023224850178587}
+  - component: {fileID: -3983768503290020912}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -190,7 +190,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0304604, y: 0.7522185}
   m_EdgeRadius: 0
---- !u!114 &7571023224850178587
+--- !u!114 &-3983768503290020912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7571023224850178567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 562799956c9e08046a0229fa7a70530f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eac9732f6807584f91eee082819c9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Boar
@@ -209,6 +209,7 @@ MonoBehaviour:
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
   aggroRange: 6
-  attackRange: 1
+  attackRange: 4
   damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
     type: 3}
+  chargeSpeed: 5
