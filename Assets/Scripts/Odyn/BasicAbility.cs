@@ -56,9 +56,13 @@ public class BasicAbility : MonoBehaviour
 
             // Set one of three spawn points for projectile depending on mouse position.
             Vector3 cameraPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
             if (cameraPoint.x > transform.position.x)
             {
+                // look right, dont flip sprite
                 lookRight = true;
+                playerMovement.spriteRenderer.flipX = false;
+
                 if (cameraPoint.y < transform.position.y)
                 {
                     direction = cameraPoint - (firePoint.position + new Vector3(1, -0.5f, 0));
@@ -66,7 +70,10 @@ public class BasicAbility : MonoBehaviour
             }
             else
             {
+                // Look left and flip sprite
                 lookRight = false;
+                playerMovement.spriteRenderer.flipX = true;
+
                 if (cameraPoint.y < transform.position.y)
                 {
                     direction = cameraPoint - (firePoint.position + new Vector3(-1, -0.5f, 0));
@@ -79,6 +86,7 @@ public class BasicAbility : MonoBehaviour
             }
 
             attacking = true;
+            playerMovement.moveable = false;
         }
     }
 
@@ -87,8 +95,6 @@ public class BasicAbility : MonoBehaviour
         if (attacking)
         {
             timeSinceJump += Time.fixedDeltaTime;
-            playerMovement.moveable = false;
-            turnWhenAttack();
             if (timeSinceJump > delay)
             {
                 Attack();
@@ -135,19 +141,6 @@ public class BasicAbility : MonoBehaviour
             rb.velocity = direction.normalized * projectileSpeed;
             rb.transform.right = rb.velocity;
             rb.transform.rotation = rb.transform.rotation * Quaternion.Euler( new Vector3(0, 0, -45));
-        }
-    }
-
-    //Makes player face the direction where you click attack
-    private void turnWhenAttack() 
-    {
-        if (lookRight)
-        {
-            playerMovement.spriteRenderer.flipX = false;
-        }
-        else
-        {
-            playerMovement.spriteRenderer.flipX = true;
         }
     }
 
