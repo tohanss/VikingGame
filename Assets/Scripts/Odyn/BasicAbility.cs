@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BasicAbility : MonoBehaviour
 {
-    // Basic attack
+    // Projectile spawn and direction related
     public Transform firePoint;
+    private Vector2 direction;
+    private bool lookRight;
+
+    // Basic attack
     public GameObject projectilePrefab;
     private SpearProjectile projectileScript;
-    private Vector2 direction;
     public float delay = 0.4f;
     private float timeSinceJump = 0f;
     private bool attacking = false;
@@ -18,7 +21,7 @@ public class BasicAbility : MonoBehaviour
 
     // Upgrade related
     public bool basicPierce;
-    public int numberProjectiles = 1;
+    public int numberProjectiles;
 
     // Attack stats
     private float scatterMaxAngle = 30;
@@ -47,9 +50,34 @@ public class BasicAbility : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")){
+        if (Input.GetButtonDown("Fire1") && !attacking)
+        {
             animator.SetTrigger("Basic");
-            direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position);
+
+            // Set one of three spawn points for projectile depending on mouse position.
+            Vector3 cameraPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (cameraPoint.x > transform.position.x)
+            {
+                lookRight = true;
+                if (cameraPoint.y < transform.position.y)
+                {
+                    direction = cameraPoint - (firePoint.position + new Vector3(1, -0.5f, 0));
+                }
+            }
+            else
+            {
+                lookRight = false;
+                if (cameraPoint.y < transform.position.y)
+                {
+                    direction = cameraPoint - (firePoint.position + new Vector3(-1, -0.5f, 0));
+                }
+            }
+
+            if (cameraPoint.y > transform.position.y) 
+            {
+                direction = cameraPoint - firePoint.position;
+            }
+
             attacking = true;
         }
     }
@@ -74,6 +102,23 @@ public class BasicAbility : MonoBehaviour
     // Attack Related
     private void Attack()
     {   
+        Vector3 offset;
+        if (direction.y < 0)
+        {
+            if (lookRight)
+            {
+                offset = new Vector3(1f, -0.5f, 0);
+            } 
+            else
+            {
+                offset = new Vector3(-1f, -0.5f, 0);
+            }
+        }
+        else
+        {
+            offset = new Vector3(direction.x, direction.y, 0).normalized;
+        } 
+
         // Set start rotation
         direction = Quaternion.AngleAxis(scatterMaxAngle, Vector3.forward) * direction;
 
@@ -82,8 +127,7 @@ public class BasicAbility : MonoBehaviour
 
         for (int i = 0; i < numberProjectiles; i++)
         {   
-            Vector3 spawnOffset = new Vector3(direction.x, direction.y, 0).normalized;
-            Rigidbody2D rb = Instantiate(projectilePrefab, firePoint.position + spawnOffset, transform.rotation).GetComponent<Rigidbody2D>();        
+            Rigidbody2D rb = Instantiate(projectilePrefab, firePoint.position + offset, transform.rotation).GetComponent<Rigidbody2D>();        
             
             // modify direction to spread out projectiles
             direction = Quaternion.AngleAxis(-rotationStep, Vector3.forward) * direction;
@@ -93,25 +137,27 @@ public class BasicAbility : MonoBehaviour
             rb.transform.rotation = rb.transform.rotation * Quaternion.Euler( new Vector3(0, 0, -45));
         }
     }
-    
+
     //Makes player face the direction where you click attack
     private void turnWhenAttack() 
     {
-        if (direction.x > 0)
+        if (lookRight)
         {
             playerMovement.spriteRenderer.flipX = false;
         }
-        else if (direction.x < 0)
+        else
         {
             playerMovement.spriteRenderer.flipX = true;
         }
     }
 
-    public void setDamage(int damage){
+    public void setDamage(int damage)
+    {
         projectileScript.damage = damage;
     }
 
-    public void setPierce(bool value){
+    public void setPierce(bool value)
+    {
         projectileScript.pierce = value;
     }
 }
