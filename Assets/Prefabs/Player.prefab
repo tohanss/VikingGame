@@ -96,7 +96,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3204467368402027031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.891, y: 0.886, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8754151747819239470}
@@ -174,8 +174,8 @@ GameObject:
   - component: {fileID: 8754151747819239465}
   - component: {fileID: 853745823}
   - component: {fileID: 2991887067098795626}
-  - component: {fileID: 1856058370}
   - component: {fileID: 1856058376}
+  - component: {fileID: 1856058370}
   - component: {fileID: -8603538043082790881}
   m_Layer: 8
   m_Name: Player
@@ -342,6 +342,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bddb2ce76c75f46853d3f2dbb6ba85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1856058376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754151747819240402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3444f9b36517b44b9a21b4d768a979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 2801466725858030590}
+  projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
+    type: 3}
+  delay: 0.4
+  basicPierce: 1
+  numberProjectiles: 3
+  spedUP: 0
 --- !u!114 &1856058370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,26 +378,6 @@ MonoBehaviour:
   delay: 0.2
   range: 7
   chainRange: 4
---- !u!114 &1856058376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8754151747819240402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff3444f9b36517b44b9a21b4d768a979, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 2801466725858030590}
-  projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
-    type: 3}
-  animator: {fileID: -8603538043082790881}
-  delay: 0.4
-  basicPierce: 1
-  numberProjectiles: 3
-  spedUP: 0
 --- !u!95 &-8603538043082790881
 Animator:
   serializedVersion: 3
