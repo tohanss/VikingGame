@@ -15,8 +15,8 @@ public class SpecialAbility : MonoBehaviour
     private float cooldown = 0;
 
     // Range/Targeting related
-    public float range = 4;
-    public float chainRange = 3;
+    public float range = 5;
+    public float chainRange = 4;
     Vector2 mousePoint;
     LayerMask enemyLayer;
 
@@ -26,6 +26,8 @@ public class SpecialAbility : MonoBehaviour
     private bool attacking = false;
     private int hitsMade = 0;
     private Vector3 oldPos;
+
+    public GameObject slash;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +108,8 @@ public class SpecialAbility : MonoBehaviour
             transform.position = newPos;
 
             // Damage enemy
+            Quaternion slashRotation = closest.transform.rotation * Quaternion.Euler(new Vector3(0, 0, Random.Range(-180, 180)));
+            Instantiate(slash, closest.transform.position, slashRotation);
             closest.GetComponent<Enemy>().takeDamage(damage);
             hitsMade++;
         }
