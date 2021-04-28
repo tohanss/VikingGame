@@ -376,8 +376,9 @@ MonoBehaviour:
   dmgMultiplier: 0.5
   numberOfHits: 3
   delay: 0.2
-  range: 7
+  range: 5
   chainRange: 4
+  slash: {fileID: 6681774670869387640, guid: f2795b34e7143be47bd8eedfef86ba62, type: 3}
 --- !u!95 &-8603538043082790881
 Animator:
   serializedVersion: 3
