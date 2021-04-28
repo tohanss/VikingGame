@@ -31,6 +31,11 @@ public class PlayerClass : MonoBehaviour
         basicAbility.numberProjectiles += times;
     } 
 
+    public void setPierce(bool value)
+    {
+        basicAbility.setPierce(value);
+    }
+
     public int getDamage(){
         return playerDamage;
     }
