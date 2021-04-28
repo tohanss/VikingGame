@@ -7,11 +7,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public float movespeed = 5.0f;
     public Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
     Vector2 movement;
     public bool moveable = true;
-
     public Animator animator;
+
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
 
     private void Start() 
     {
@@ -21,17 +22,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
-        } 
+        if (moveable)
+            Move();
     }
 
     void FixedUpdate()
@@ -41,5 +33,23 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + movement.normalized * movespeed * Time.fixedDeltaTime);
         }
         animator.SetFloat("Speed", (movement.normalized * movespeed * Time.fixedDeltaTime).magnitude * Convert.ToInt32(moveable));
+    }
+
+    void Move() 
+    {
+        movement.x = Input.GetAxisRaw("Horizontal"); //when moving right movement.x = 1 and left movement.x = -1
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        //Don't turn when in attack animation, even if you are eg. holding "D" (moving right)
+        if (movement.x > 0 && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        {
+            spriteRenderer.flipX = false;
+
+        }
+        if (movement.x < 0 && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        {
+            spriteRenderer.flipX = true;
+
+        }
     }
 }
