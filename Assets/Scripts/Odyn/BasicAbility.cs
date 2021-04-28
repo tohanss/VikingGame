@@ -27,8 +27,6 @@ public class BasicAbility : MonoBehaviour
     private float scatterMaxAngle = 30;
     private float projectileSpeed = 10f;
 
-
-
     public bool spedUP = false;
 
     void Start()

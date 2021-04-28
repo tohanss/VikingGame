@@ -26,8 +26,14 @@ public class PlayerClass : MonoBehaviour
         specialAbility.setDamage(playerDamage);
     }
 
+    public void increaseProjectiles(int times)
+    {
+        basicAbility.numberProjectiles += times;
+    } 
+
     public int getDamage(){
         return playerDamage;
     }
+
 
 }

@@ -359,7 +359,7 @@ MonoBehaviour:
     type: 3}
   delay: 0.4
   basicPierce: 1
-  numberProjectiles: 3
+  numberProjectiles: 1
   spedUP: 0
 --- !u!114 &1856058370
 MonoBehaviour:
