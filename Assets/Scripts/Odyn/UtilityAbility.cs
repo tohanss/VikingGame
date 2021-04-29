@@ -16,7 +16,7 @@ public class UtilityAbility : MonoBehaviour
 
     // Dash related
     public float dashDistance;
-    public float dashSpeed;
+    private float dashSpeed = 30f; //Should never be set to 0
     private Vector3 dashStartPos;
     private Vector2 facingDirection;
     private bool isDashing = false;

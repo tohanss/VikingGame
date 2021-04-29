@@ -417,4 +417,4 @@ MonoBehaviour:
   maxCharges: 2
   dashCooldown: 5
   dashDistance: 3
-  dashForce: 30
+  dashSpeed: 30
