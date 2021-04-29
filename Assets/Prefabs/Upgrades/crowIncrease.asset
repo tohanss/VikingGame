@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
+  m_Name: crowIncrease
+  m_EditorClassIdentifier: 
+  name: Increase crows
+  description: Increase number of crows
+  sprite: {fileID: -6407456921988414829, guid: 0efdb41d12eb2e645b3bc9f2ed528d71, type: 3}
+  upgradeID: 1
