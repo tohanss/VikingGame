@@ -42,6 +42,7 @@ public class PlayerActions : MonoBehaviour
         //Modify stats
         level += 1;
         playerClass.increaseDamage(2);
+        playerClass.dropUpgrade(level);
 
         //Modify Exp values
         currentExp -= requiredExp;

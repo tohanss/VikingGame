@@ -20,14 +20,12 @@ public class BasicAbility : MonoBehaviour
     private Animator animator;
 
     // Upgrade related
-    public bool basicPierce;
+    public bool pierce = false;
     public int numberProjectiles;
 
     // Attack stats
     private float scatterMaxAngle = 30;
     private float projectileSpeed = 10f;
-
-
 
     public bool spedUP = false;
 
@@ -38,7 +36,7 @@ public class BasicAbility : MonoBehaviour
         animator = GetComponent<Animator>();
 
         // Apply pierce upgrade to prefab
-        setPierce(basicPierce);
+        setPierce(pierce);
 
         // PLACEHOLDER TO SHOW HOW ATTACK SPEED CAN BE UPGRADED IN THE FUTURE
         if (spedUP)

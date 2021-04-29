@@ -61,7 +61,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -107,7 +107,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c7c0e7b7c1b6546aa5b61555a82b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8754151747819239470, guid: 5a0643e3bc3ec9b488b52505cfcc01d8, type: 3}
+  target: {fileID: 0}
   smoothValue: 2
-  minX: -10
-  maxX: 10
-  minY: -10
-  maxY: 10
+  minX: -11
+  maxX: 13
+  minY: -14.7
+  maxY: 5.8
