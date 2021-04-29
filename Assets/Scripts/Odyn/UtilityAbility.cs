@@ -16,7 +16,7 @@ public class UtilityAbility : MonoBehaviour
 
     // Dash related
     public float dashDistance;
-    public float dashForce;
+    public float dashSpeed;
     private Vector3 dashStartPos;
     private Vector2 facingDirection;
     private bool isDashing = false;
@@ -80,7 +80,7 @@ public class UtilityAbility : MonoBehaviour
     private void dash() 
     {
         //moves the player, using rigidbody velocity. If not using velocity player will get stuck in collidables
-        playerRigidBody.velocity = facingDirection * dashForce; 
+        playerRigidBody.velocity = facingDirection * dashSpeed; 
         
         //Dash ends when player hits a collidable(not enemy) or has dashed the max distance
         if (Vector2.Distance(transform.position, dashStartPos) > dashDistance || hitCollidable)
