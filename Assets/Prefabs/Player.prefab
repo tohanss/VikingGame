@@ -342,9 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bddb2ce76c75f46853d3f2dbb6ba85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrades:
-  - {fileID: 2130679308087066757, guid: b22f68861d5d86e41952f329d81ff9ec, type: 3}
-  - {fileID: 842899965055798989, guid: 333fe90736c89b54a90711ba8fb97cad, type: 3}
+  upgrade: {fileID: 3807634420772638155, guid: a51adcfbf3bc21443a40bb922a68b663, type: 3}
 --- !u!114 &1856058376
 MonoBehaviour:
   m_ObjectHideFlags: 0

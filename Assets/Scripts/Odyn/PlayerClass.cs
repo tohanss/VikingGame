@@ -7,7 +7,7 @@ public class PlayerClass : MonoBehaviour
     private BasicAbility basicAbility;
     private SpecialAbility specialAbility;
 
-    public GameObject[] upgrades;
+    public GameObject upgrade;
 
     // Stats
     private int playerDamage = 10;
@@ -48,11 +48,11 @@ public class PlayerClass : MonoBehaviour
         Vector3 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         switch (level)
         {
-            case 2:
+            /*case 2:
                 Instantiate(upgrades[0], transform.position + offset, transform.rotation);
-                break;
+                break;*/
             default:
-                Instantiate(upgrades[1], transform.position + offset, transform.rotation);
+                Instantiate(upgrade, transform.position + offset, transform.rotation);
                 break;
         }
     }
