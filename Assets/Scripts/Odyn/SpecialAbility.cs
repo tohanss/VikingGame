@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpecialAbility : MonoBehaviour
 {   
     // Damage related
-    private float damage = 4;
+    private float damage;
     public float dmgMultiplier = 0.5f;
     public int numberOfHits = 3;
 
@@ -45,12 +45,13 @@ public class SpecialAbility : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && !attacking && !playerAction.isActive)
         {
-            playerAction.isActive = true;
+            
             mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 distVector = mousePoint - getPlayerPos();
             
             if (distVector.magnitude < range) 
             {
+                playerAction.isActive = true;
                 oldPos = transform.position;
                 attacking = true;
                 hitsMade = 0;
