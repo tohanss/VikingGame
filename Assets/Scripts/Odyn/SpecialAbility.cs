@@ -22,6 +22,7 @@ public class SpecialAbility : MonoBehaviour
 
     private BoxCollider2D playerCollider;
     private PlayerMovement playerMovement;
+    private PlayerActions playerAction;
 
     private bool attacking = false;
     private int hitsMade = 0;
@@ -36,13 +37,15 @@ public class SpecialAbility : MonoBehaviour
         oldPos = transform.position;
         playerCollider = GetComponent<BoxCollider2D>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerAction = GetComponent<PlayerActions>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && !attacking)
+        if (Input.GetMouseButtonDown(1) && !attacking && !playerAction.isActive)
         {
+            playerAction.isActive = true;
             mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 distVector = mousePoint - getPlayerPos();
             
@@ -74,6 +77,8 @@ public class SpecialAbility : MonoBehaviour
                 playerCollider.enabled = true;
                 playerMovement.moveable = true;
                 transform.position = oldPos;
+                playerAction.isActive = false;
+
             }
             // Keep attacking if in the middle of an attack
             else if (timeSinceJump > delay) {

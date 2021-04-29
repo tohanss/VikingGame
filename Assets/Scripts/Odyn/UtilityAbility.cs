@@ -24,6 +24,7 @@ public class UtilityAbility : MonoBehaviour
     private PlayerMovement playerMovement;
     private Rigidbody2D playerRigidBody;
     private SpriteRenderer spriteRenderer;
+    private PlayerActions playerAction;
 
 
     // Start is called before the first frame update
@@ -33,16 +34,18 @@ public class UtilityAbility : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<BoxCollider2D>();
+        playerAction = GetComponent<PlayerActions>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && !playerAction.isActive)
         {
             if (Time.time - lastTime > dashCooldown) 
             {
+                playerAction.isActive = true;
                 playerMovement.moveable = false;
                 isDashing = true;
                 dashStartPos = transform.position;
@@ -80,10 +83,11 @@ public class UtilityAbility : MonoBehaviour
             playerRigidBody.velocity = Vector2.zero;
             isDashing = false;
             playerMovement.moveable = true;
+            playerAction.isActive = false;
+
         }
     }
 
-    
 
     public void setDamage(int damage)
     {
