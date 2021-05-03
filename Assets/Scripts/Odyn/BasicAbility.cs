@@ -23,13 +23,12 @@ public class BasicAbility : MonoBehaviour
     public bool pierce;
     public bool doubleDamageInSpearRange;
     public bool attachCrow;
-    public int numberProjectiles;
+    public int numberProjectiles = 1;
+    private float attackSpeedMultiplier = 1f; 
 
     // Attack stats
     private float scatterMaxAngle = 30;
     private float projectileSpeed = 10f;
-
-    public bool spedUP = false;
 
     void Start()
     {
@@ -41,13 +40,6 @@ public class BasicAbility : MonoBehaviour
         setPierce(pierce);
         setDoubleDamageInSpearRange(doubleDamageInSpearRange);
         setCrowDotEffect(attachCrow);
-
-        // PLACEHOLDER TO SHOW HOW ATTACK SPEED CAN BE UPGRADED IN THE FUTURE
-        if (spedUP)
-        {
-            animator.SetFloat("SpeedMultiplier", 2);
-            delay = delay / 2;
-        }
     }
 
     void Update()
@@ -168,5 +160,12 @@ public class BasicAbility : MonoBehaviour
     {
         doubleDamageInSpearRange = value;
         projectileScript.doubleDamageInSpearRange = value;
+    }
+
+    public void increaseAttackSpeed(float multiplier)
+    {       
+        attackSpeedMultiplier *= multiplier;
+        delay /= attackSpeedMultiplier;
+        animator.SetFloat("SpeedMultiplier", attackSpeedMultiplier);
     }
 }

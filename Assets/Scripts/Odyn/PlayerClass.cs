@@ -30,7 +30,6 @@ public class PlayerClass : MonoBehaviour
         basicAbility.setDamage(playerDamage);
         specialAbility.setDamage(playerDamage);
         utilityAbility.setDamage(playerDamage);
-
     }
 
     public void setPierce(bool value)
@@ -63,6 +62,11 @@ public class PlayerClass : MonoBehaviour
     {
         utilityAbility.maxCharges += 1;
         utilityAbility.chargesLeft += 1;
+    }
+
+    public void increaseAttackSpeed(float multiplier)
+    {
+        basicAbility.increaseAttackSpeed(multiplier);
     }
 
     public int getDamage(){
