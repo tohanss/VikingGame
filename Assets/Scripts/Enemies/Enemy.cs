@@ -11,7 +11,12 @@ public class Enemy : MonoBehaviour
     public int expValue;
     private float health;
 
-    public HealthBar hpBar;
+
+
+    // Cooldown related
+    protected float lastTime = 0;
+    protected float attackCooldown = 3.0f;
+    protected float lastAttackStartTime;
 
     // reference to the player
     public GameObject playerCharacter;
@@ -27,6 +32,7 @@ public class Enemy : MonoBehaviour
     // Misc
     public GameObject damageNumbers;
     private Animator animator;
+    public HealthBar hpBar;
 
     private void Start()
     {
@@ -51,15 +57,15 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        animator.SetBool("running", false);
         if (Vector2.Distance(transform.position, target.position) > attackRange)
         {
             move();
         }
-        if (Vector2.Distance(transform.position, target.position) <= attackRange)
+        if (Vector2.Distance(transform.position, target.position) <= attackRange && Time.time - lastTime > attackCooldown)
         {
-            animator.SetBool("running", false);
             animator.SetTrigger("attack");
-            //attack();
+            //attack is triggered by animation
         } 
         if (isAttacking)
         {

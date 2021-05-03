@@ -8,10 +8,7 @@ public class Boar : Enemy
     public float chargeSpeed;
     public float chargeDuration; //how long to keep charging
     private float chargeDamage = 8f;
-    // Cooldown related
-    private float lastTime = 0;
-    private float attackCooldown = 3.0f;
-    private float lastAttackStartTime;
+
     // Misc
     private Vector3 targetLastPos;
     private Vector3 direction;
