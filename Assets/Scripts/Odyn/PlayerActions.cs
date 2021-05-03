@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PlayerActions : MonoBehaviour
 {
     // Connected objects
     private PlayerClass playerClass;
+    private Rigidbody2D playerRB;
+    private Animator animator;
 
     // Player stats
     private int level = 1;
-    private float currentHealth; 
-
-
-    [HideInInspector]
-    // Bool for if an ability is currently in use
-    public bool isActive = false;
-    public bool isInvulnerable = false;
+    private float currentHealth;
+    public float movespeed;
 
     // Experience and level related
     private int currentExp = 0;
@@ -25,15 +23,41 @@ public class PlayerActions : MonoBehaviour
     public Text favorText;
     public Text levelText;
 
+    // Hidden variables in inspector
+    [HideInInspector]
+    public bool isActive = false;
+    [HideInInspector]
+    public bool isInvulnerable = false;
+    [HideInInspector]
+    public bool moveable = true;
+    [HideInInspector]
+    public Vector2 movement;
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
+
+
     // Unity functions
     private void Start() 
     {
-        
         favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
         levelText.text = "Level: " + level.ToString();
 
         playerClass = GetComponent<PlayerClass>();
+        playerRB = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = transform.GetComponent<SpriteRenderer>();
         currentHealth = playerClass.maxHealth;
+    }
+
+    private void Update()
+    {
+        if (moveable)
+            playerFaceDirection();
+    }
+
+    private void FixedUpdate()
+    {
+        move();
     }
 
     // Level and EXP related
@@ -81,5 +105,32 @@ public class PlayerActions : MonoBehaviour
         Debug.Log("Restarting Level");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //restart to current scene
 
+    }
+    //Handles the players facing direction
+    void playerFaceDirection()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal"); //when moving right movement.x = 1 and left movement.x = -1
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        //Don't turn when in attack animation, even if you are eg. holding "D" (moving right)
+        if (movement.x > 0 && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        {
+            spriteRenderer.flipX = false;
+
+        }
+        if (movement.x < 0 && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        {
+            spriteRenderer.flipX = true;
+
+        }
+    }
+
+    private void move()
+    {
+        if (moveable && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        {
+            playerRB.MovePosition(playerRB.position + movement.normalized * movespeed * Time.fixedDeltaTime);
+        }
+        animator.SetFloat("Speed", (movement.normalized * movespeed * Time.fixedDeltaTime).magnitude * Convert.ToInt32(moveable));
     }
 }

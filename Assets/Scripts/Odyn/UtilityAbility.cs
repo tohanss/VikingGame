@@ -23,7 +23,6 @@ public class UtilityAbility : MonoBehaviour
     private bool hitCollidable = false;
 
     // Misc related
-    private PlayerMovement playerMovement;
     private Rigidbody2D playerRigidBody;
     private SpriteRenderer spriteRenderer;
     private PlayerActions playerAction;
@@ -33,7 +32,6 @@ public class UtilityAbility : MonoBehaviour
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
-        playerMovement = GetComponent<PlayerMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerAction = GetComponent<PlayerActions>();
         chargesLeft = maxCharges;
@@ -50,10 +48,10 @@ public class UtilityAbility : MonoBehaviour
                 StartCoroutine(replenishCharge()); //replenish a charge after a cooldown
                 playerAction.isInvulnerable = true;
                 playerAction.isActive = true;
-                playerMovement.moveable = false;
+                playerAction.moveable = false;
                 isDashing = true;
                 dashStartPos = transform.position;
-                facingDirection = playerMovement.movement.normalized;
+                facingDirection = playerAction.movement.normalized;
                 //if you dash without pressing WASD, then dash in the direction of the sprite
                 if (facingDirection == Vector2.zero)
                 {
@@ -88,7 +86,7 @@ public class UtilityAbility : MonoBehaviour
         {
             playerRigidBody.velocity = Vector2.zero;
             isDashing = false;
-            playerMovement.moveable = true;
+            playerAction.moveable = true;
             playerAction.isInvulnerable = false;
             playerAction.isActive = false;
             hitCollidable = false;
