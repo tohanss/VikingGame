@@ -62,13 +62,14 @@ public class Enemy : MonoBehaviour
         {
             move();
         }
-        if (Vector2.Distance(transform.position, target.position) <= attackRange && Time.time - lastTime > attackCooldown)
+        if (!isAttacking && Vector2.Distance(transform.position, target.position) <= attackRange && Time.time - lastTime > attackCooldown)
         {
             animator.SetTrigger("attack");
             //attack is triggered by animation
         } 
         if (isAttacking)
         {
+            animator.ResetTrigger("attack");
             attack();
         }
     }
