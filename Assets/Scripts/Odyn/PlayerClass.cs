@@ -12,6 +12,7 @@ public class PlayerClass : MonoBehaviour
 
     // Stats
     private int playerDamage = 10;
+    public float maxHealth;  //the class starting max health
 
     // Start is called before the first frame update
     void Start()

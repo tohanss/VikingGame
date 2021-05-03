@@ -7,6 +7,7 @@ public class Boar : Enemy
     //Boar specific stats
     public float chargeSpeed;
     public float chargeDuration; //how long to keep charging
+    private float chargeDamage = 8f;
     // Cooldown related
     private float lastTime = 0;
     private float attackCooldown = 3.0f;
@@ -45,10 +46,8 @@ public class Boar : Enemy
     {   
         if (other.gameObject.CompareTag("Player") && isAttacking && !(hitPlayer == other))
         {
-            //isAttacking = false;
             hitPlayer = other;
-            Debug.Log("Player take 20 damage");
-            //lastTime = Time.time;
+            other.GetComponent<PlayerActions>().playerTakeDamage(chargeDamage);
         }
     }
 
