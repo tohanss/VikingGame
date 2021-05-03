@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpecialAbility : MonoBehaviour
 {   
     // Damage related
-    private float damage = 4;
+    private float damage;
     public float dmgMultiplier = 0.5f;
     public int numberOfHits = 3;
 
@@ -22,6 +22,7 @@ public class SpecialAbility : MonoBehaviour
 
     private BoxCollider2D playerCollider;
     private PlayerMovement playerMovement;
+    private PlayerActions playerAction;
 
     private bool attacking = false;
     private int hitsMade = 0;
@@ -36,18 +37,21 @@ public class SpecialAbility : MonoBehaviour
         oldPos = transform.position;
         playerCollider = GetComponent<BoxCollider2D>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerAction = GetComponent<PlayerActions>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && !attacking)
+        if (Input.GetMouseButtonDown(1) && !attacking && !playerAction.isActive)
         {
+            
             mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 distVector = mousePoint - getPlayerPos();
             
             if (distVector.magnitude < range) 
             {
+                playerAction.isActive = true;
                 oldPos = transform.position;
                 attacking = true;
                 hitsMade = 0;
@@ -74,6 +78,8 @@ public class SpecialAbility : MonoBehaviour
                 playerCollider.enabled = true;
                 playerMovement.moveable = true;
                 transform.position = oldPos;
+                playerAction.isActive = false;
+
             }
             // Keep attacking if in the middle of an attack
             else if (timeSinceJump > delay) {

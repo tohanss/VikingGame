@@ -17,6 +17,7 @@ public class BasicAbility : MonoBehaviour
     private bool attacking = false;
 
     private PlayerMovement playerMovement;
+    private PlayerActions playerAction;
     private Animator animator;
 
     // Upgrade related
@@ -34,9 +35,11 @@ public class BasicAbility : MonoBehaviour
         projectileScript = projectilePrefab.GetComponent<SpearProjectile>();
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
+        playerAction = GetComponent<PlayerActions>();
 
-        // Apply pierce upgrade to prefab
-        setPierce(pierce);
+
+    // Apply pierce upgrade to prefab
+    setPierce(pierce);
 
         // PLACEHOLDER TO SHOW HOW ATTACK SPEED CAN BE UPGRADED IN THE FUTURE
         if (spedUP)
@@ -48,10 +51,10 @@ public class BasicAbility : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !attacking)
+        if (Input.GetButtonDown("Fire1") && !attacking && !playerAction.isActive)
         {
             animator.SetTrigger("Basic");
-
+            playerAction.isActive = true;
             // Set one of three spawn points for projectile depending on mouse position.
             Vector3 cameraPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -98,6 +101,7 @@ public class BasicAbility : MonoBehaviour
                 Attack();
                 attacking = false;
                 playerMovement.moveable = true;
+                playerAction.isActive = false;
                 timeSinceJump = 0f;
             }
         }

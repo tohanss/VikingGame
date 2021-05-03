@@ -6,6 +6,7 @@ public class PlayerClass : MonoBehaviour
 {
     private BasicAbility basicAbility;
     private SpecialAbility specialAbility;
+    private UtilityAbility utilityAbility;
 
     public GameObject upgrade;
 
@@ -17,6 +18,7 @@ public class PlayerClass : MonoBehaviour
     {
         basicAbility = GetComponent<BasicAbility>();
         specialAbility = GetComponent<SpecialAbility>();
+        utilityAbility = GetComponent<UtilityAbility>();
 
         // Initialises ability damages 
         increaseDamage(0);
@@ -26,6 +28,8 @@ public class PlayerClass : MonoBehaviour
         playerDamage += amount;
         basicAbility.setDamage(playerDamage);
         specialAbility.setDamage(playerDamage);
+        utilityAbility.setDamage(playerDamage);
+
     }
 
     public void increaseProjectiles(int times)

@@ -11,6 +11,10 @@ public class PlayerActions : MonoBehaviour
     // Player stats
     private int level = 1;
 
+    [HideInInspector]
+    // Bool for if an ability is currently in use
+    public bool isActive = false;
+
     // Experience and level related
     private int currentExp = 0;
     private int requiredExp = 10;

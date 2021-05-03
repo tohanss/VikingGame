@@ -7,12 +7,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public float movespeed = 5.0f;
     public Rigidbody2D rb;
-    Vector2 movement;
     public bool moveable = true;
     public Animator animator;
 
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
+    public Vector2 movement;
 
     private void Start() 
     {
