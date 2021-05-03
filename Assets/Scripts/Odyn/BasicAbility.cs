@@ -20,7 +20,7 @@ public class BasicAbility : MonoBehaviour
     private Animator animator;
 
     // Upgrade related
-    public bool pierce = false;
+    public bool pierce;
     public int numberProjectiles;
 
     // Attack stats
@@ -36,8 +36,8 @@ public class BasicAbility : MonoBehaviour
         playerAction = GetComponent<PlayerActions>();
 
 
-    // Apply pierce upgrade to prefab
-    setPierce(pierce);
+        // Apply pierce upgrade to prefab
+        setPierce(pierce);
 
         // PLACEHOLDER TO SHOW HOW ATTACK SPEED CAN BE UPGRADED IN THE FUTURE
         if (spedUP)
@@ -151,6 +151,7 @@ public class BasicAbility : MonoBehaviour
 
     public void setPierce(bool value)
     {
+        pierce = value;
         projectileScript.pierce = value;
     }
 }

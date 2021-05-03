@@ -43,6 +43,18 @@ public class PlayerClass : MonoBehaviour
         basicAbility.setPierce(value);
     }
 
+    public void increaseSpecialHits(int amount)
+    {
+        specialAbility.numberOfHits += amount;
+        specialAbility.delay *= 0.9f;
+    }
+
+    public void increaseUtilityCharges(int amoount)
+    {
+        utilityAbility.maxCharges += 1;
+        utilityAbility.chargesLeft += 1;
+    }
+
     public int getDamage(){
         return playerDamage;
     }
@@ -51,14 +63,6 @@ public class PlayerClass : MonoBehaviour
     {
         float angle = Random.Range(0f, 2f * Mathf.PI);
         Vector3 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        switch (level)
-        {
-            /*case 2:
-                Instantiate(upgrades[0], transform.position + offset, transform.rotation);
-                break;*/
-            default:
-                Instantiate(upgrade, transform.position + offset, transform.rotation);
-                break;
-        }
+        Instantiate(upgrade, transform.position + offset, transform.rotation);
     }
 }

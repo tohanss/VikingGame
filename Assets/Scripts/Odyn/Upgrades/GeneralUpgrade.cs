@@ -8,14 +8,16 @@ public class GeneralUpgrade : MonoBehaviour
     private GameObject toolTip;
     public Upgrade[] upgrades;
     private Upgrade thisUpgrade;
+    
 
     private void Start()
     {
         toolTip = gameObject.transform.GetChild(0).gameObject;
         // min is incluseive, max is exclusive
         // picks a random upgrade for this instance from the list upgrades
-        thisUpgrade = upgrades[ Random.Range(0, upgrades.Length)];
-        toolTip.transform.GetChild(1).GetComponent<TextMeshPro>().SetText( thisUpgrade.description, true);
+        int upgradeID = Random.Range(0, upgrades.Length);
+        thisUpgrade = upgrades[3];
+        toolTip.transform.GetChild(1).GetComponent<TextMeshPro>().SetText(thisUpgrade.description, true);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -25,13 +27,23 @@ public class GeneralUpgrade : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
+                PlayerClass player = collidedWith.GetComponent<PlayerClass>();
+
                 switch (thisUpgrade.upgradeID)
                 {
                     case 0:
-                        collidedWith.GetComponent<PlayerClass>().setPierce(true);
+                        player.setPierce(true);
+                        break;
+                    case 1:
+                        player.increaseProjectiles(1);
+                        break;
+                    case 2:
+                        player.increaseSpecialHits(1);
+                        break;
+                    case 3:
+                        player.increaseUtilityCharges(1);
                         break;
                     default:
-                        collidedWith.GetComponent<PlayerClass>().increaseProjectiles(1);
                         break;
                 }
                 Destroy(gameObject);
