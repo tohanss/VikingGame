@@ -8,10 +8,7 @@ public class Boar : Enemy
     public float chargeSpeed;
     public float chargeDuration; //how long to keep charging
     private float chargeDamage = 8f;
-    // Cooldown related
-    private float lastTime = 0;
-    private float attackCooldown = 3.0f;
-    private float lastAttackStartTime;
+
     // Misc
     private Vector3 targetLastPos;
     private Vector3 direction;
@@ -21,7 +18,7 @@ public class Boar : Enemy
     {
         if (!isAttacking)
         {
-            targetLastPos = target.position + new Vector3(0, 0.5f, 0); // This so boar doesen't target feet rather targets the center of player
+            targetLastPos = target.position; // This so boar doesen't target feet rather targets the center of player
             direction = (targetLastPos - transform.position).normalized;
             lastAttackStartTime = Time.time;
 

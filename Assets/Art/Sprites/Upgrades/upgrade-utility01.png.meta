@@ -1,22 +1,31 @@
 fileFormatVersion: 2
-guid: 22aa77caaa17f0a4bb0cb3f555c4223e
+guid: cd2b45e8c953e7e43b7c13b4f99f15d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6107641749442748747
-    second: firepig01-animation_0
+      213: 6481667430600517569
+    second: upgrade-utility01_0
   - first:
-      213: -7036310476759354077
-    second: firepig01-animation_1
+      213: 3458593859548756410
+    second: upgrade-utility01_1
   - first:
-      213: -4745810645719759368
-    second: firepig01-animation_2
+      213: 9076049468384865373
+    second: upgrade-utility01_2
   - first:
-      213: 4407678121649447645
-    second: firepig01-animation_3
+      213: -1765699068001141469
+    second: upgrade-utility01_3
   - first:
-      213: 5785011786582724394
-    second: firepig01-animation_4
+      213: 8087000379810385830
+    second: upgrade-utility01_4
+  - first:
+      213: 1649544414366458261
+    second: upgrade-utility01_5
+  - first:
+      213: -4287506878607344919
+    second: upgrade-utility01_6
+  - first:
+      213: -5414910111091588296
+    second: upgrade-utility01_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: firepig01-animation_0
+      name: upgrade-utility01_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 25
-        width: 34
-        height: 25
+        y: 64
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,20 +129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5be9e15403c4d3ba0800000000000000
-      internalID: -6107641749442748747
+      spriteID: 1c7a921df2283f950800000000000000
+      internalID: 6481667430600517569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: firepig01-animation_1
+      name: upgrade-utility01_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 25
-        width: 34
-        height: 25
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 325366fb6e00a5e90800000000000000
-      internalID: -7036310476759354077
+      spriteID: ab930c47ac46fff20800000000000000
+      internalID: 3458593859548756410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: firepig01-animation_2
+      name: upgrade-utility01_2
       rect:
         serializedVersion: 2
-        x: 68
-        y: 25
-        width: 34
-        height: 25
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +171,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f54b92bc5e732eb0800000000000000
-      internalID: -4745810645719759368
+      spriteID: d5ce3fe87ea94fd70800000000000000
+      internalID: 9076049468384865373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: firepig01-animation_3
+      name: upgrade-utility01_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32dbd8f7d0afe77e0800000000000000
+      internalID: -1765699068001141469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: upgrade-utility01_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af0c09affbca3070800000000000000
+      internalID: 8087000379810385830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: upgrade-utility01_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 591ea8bb7eb54e610800000000000000
+      internalID: 1649544414366458261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: upgrade-utility01_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 25
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +255,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd22d2516e73b2d30800000000000000
-      internalID: 4407678121649447645
+      spriteID: 9eab098c537bf74c0800000000000000
+      internalID: -4287506878607344919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: firepig01-animation_4
+      name: upgrade-utility01_7
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 0
-        width: 34
-        height: 25
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,8 +276,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2f06b0d19d784050800000000000000
-      internalID: 5785011786582724394
+      spriteID: 83307b181ff5ad4b0800000000000000
+      internalID: -5414910111091588296
       vertices: []
       indices: 
       edges: []
@@ -219,9 +291,7 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 7300aea49d1af5b4fb98958cd2e92610, type: 3}
-      name: _Emission
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

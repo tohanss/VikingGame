@@ -11,7 +11,12 @@ public class Enemy : MonoBehaviour
     public int expValue;
     private float health;
 
-    public HealthBar hpBar;
+
+
+    // Cooldown related
+    protected float lastTime = 0;
+    protected float attackCooldown = 3.0f;
+    protected float lastAttackStartTime;
 
     // reference to the player
     public GameObject playerCharacter;
@@ -26,11 +31,15 @@ public class Enemy : MonoBehaviour
 
     // Misc
     public GameObject damageNumbers;
+    private Animator animator;
+    public HealthBar hpBar;
+
     private void Start()
     {
         health = maxHealth;
 
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
+        animator = transform.GetComponent<Animator>();
 
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         target = playerCharacter.GetComponent<Transform>();
@@ -48,22 +57,31 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        animator.SetBool("running", false);
         if (Vector2.Distance(transform.position, target.position) > attackRange)
         {
             move();
         }
-        if (Vector2.Distance(transform.position, target.position) <= attackRange || isAttacking)
+        if (!isAttacking && Vector2.Distance(transform.position, target.position) <= attackRange && Time.time - lastTime > attackCooldown)
         {
+            animator.SetTrigger("attack");
+            //attack is triggered by animation
+        } 
+        if (isAttacking)
+        {
+            animator.ResetTrigger("attack");
             attack();
         }
     }
 
     protected virtual void move()
     {   //move towards player if taken damage or within aggro range
-        if (aggravated || (Vector2.Distance(transform.position, target.position) <= aggroRange)) 
+        if (aggravated || (Vector2.Distance(transform.position, target.position) <= aggroRange))
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            animator.SetBool("running", true);
         }
+        else animator.SetBool("running", false);
 
     }
 
