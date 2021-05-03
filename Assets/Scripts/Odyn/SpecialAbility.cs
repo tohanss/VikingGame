@@ -21,7 +21,6 @@ public class SpecialAbility : MonoBehaviour
     LayerMask enemyLayer;
 
     private BoxCollider2D playerCollider;
-    private PlayerMovement playerMovement;
     private PlayerActions playerAction;
 
     private bool attacking = false;
@@ -36,7 +35,6 @@ public class SpecialAbility : MonoBehaviour
         enemyLayer = LayerMask.GetMask("Enemy");
         oldPos = transform.position;
         playerCollider = GetComponent<BoxCollider2D>();
-        playerMovement = GetComponent<PlayerMovement>();
         playerAction = GetComponent<PlayerActions>();
     }
 
@@ -68,7 +66,7 @@ public class SpecialAbility : MonoBehaviour
             if (hitsMade == 0)
             {
                 playerCollider.enabled = false;
-                playerMovement.moveable = false;
+                playerAction.moveable = false;
                 Attack();
             }
             // quit if max nr of hits reached
@@ -76,7 +74,7 @@ public class SpecialAbility : MonoBehaviour
             {
                 attacking = false;
                 playerCollider.enabled = true;
-                playerMovement.moveable = true;
+                playerAction.moveable = true;
                 transform.position = oldPos;
                 playerAction.isActive = false;
 

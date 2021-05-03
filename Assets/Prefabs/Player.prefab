@@ -171,7 +171,6 @@ GameObject:
   - component: {fileID: 8754151747819239471}
   - component: {fileID: 8754151747819239468}
   - component: {fileID: 8754151747819239469}
-  - component: {fileID: 8754151747819239465}
   - component: {fileID: 853745823}
   - component: {fileID: 2991887067098795626}
   - component: {fileID: 1856058376}
@@ -300,24 +299,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5709072, y: 0.90491885}
   m_EdgeRadius: 0
---- !u!114 &8754151747819239465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8754151747819240402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 815a3b497c8f50047b0efbec7ecec563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movespeed: 3.5
-  rb: {fileID: 8754151747819239468}
-  moveable: 1
-  animator: {fileID: -8603538043082790881}
-  spriteRenderer: {fileID: 0}
-  movement: {x: 0, y: 0}
 --- !u!114 &853745823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,9 +311,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d850f752b7ffa4e9948669b75afd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
+  movespeed: 5
   favorText: {fileID: 0}
   levelText: {fileID: 0}
+  isActive: 0
+  isInvulnerable: 0
+  moveable: 1
+  movement: {x: 0, y: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!114 &2991887067098795626
 MonoBehaviour:
   m_ObjectHideFlags: 0

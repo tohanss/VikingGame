@@ -16,7 +16,6 @@ public class BasicAbility : MonoBehaviour
     private float timeSinceJump = 0f;
     private bool attacking = false;
 
-    private PlayerMovement playerMovement;
     private PlayerActions playerAction;
     private Animator animator;
 
@@ -33,7 +32,6 @@ public class BasicAbility : MonoBehaviour
     void Start()
     {
         projectileScript = projectilePrefab.GetComponent<SpearProjectile>();
-        playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         playerAction = GetComponent<PlayerActions>();
 
@@ -62,7 +60,7 @@ public class BasicAbility : MonoBehaviour
             {
                 // look right, dont flip sprite
                 lookRight = true;
-                playerMovement.spriteRenderer.flipX = false;
+                playerAction.spriteRenderer.flipX = false;
 
                 if (cameraPoint.y < transform.position.y)
                 {
@@ -73,7 +71,7 @@ public class BasicAbility : MonoBehaviour
             {
                 // Look left and flip sprite
                 lookRight = false;
-                playerMovement.spriteRenderer.flipX = true;
+                playerAction.spriteRenderer.flipX = true;
 
                 if (cameraPoint.y < transform.position.y)
                 {
@@ -87,7 +85,7 @@ public class BasicAbility : MonoBehaviour
             }
 
             attacking = true;
-            playerMovement.moveable = false;
+            playerAction.moveable = false;
         }
     }
 
@@ -100,7 +98,7 @@ public class BasicAbility : MonoBehaviour
             {
                 Attack();
                 attacking = false;
-                playerMovement.moveable = true;
+                playerAction.moveable = true;
                 playerAction.isActive = false;
                 timeSinceJump = 0f;
             }
