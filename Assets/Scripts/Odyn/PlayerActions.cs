@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +11,13 @@ public class PlayerActions : MonoBehaviour
 
     // Player stats
     private int level = 1;
+    private float currentHealth; 
+
 
     [HideInInspector]
     // Bool for if an ability is currently in use
     public bool isActive = false;
+    public bool isInvulnerable = false;
 
     // Experience and level related
     private int currentExp = 0;
@@ -24,10 +28,12 @@ public class PlayerActions : MonoBehaviour
     // Unity functions
     private void Start() 
     {
+        
         favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
         levelText.text = "Level: " + level.ToString();
 
         playerClass = GetComponent<PlayerClass>();
+        currentHealth = playerClass.maxHealth;
     }
 
     // Level and EXP related
@@ -54,5 +60,26 @@ public class PlayerActions : MonoBehaviour
 
         // Change level text
         levelText.text = "Level: " + level.ToString();
+    }
+
+    public void playerTakeDamage(float damage)
+    {
+        if (isInvulnerable) return;
+        
+        Debug.Log("Damage Taken: " + damage);
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            die();
+        }
+    }
+
+    //temporary death, restarts level if you died
+    private void die()
+    {
+        Debug.Log("You Died");
+        Debug.Log("Restarting Level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //restart to current scene
+
     }
 }

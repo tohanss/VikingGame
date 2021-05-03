@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     public int expValue;
     private float health;
 
+    public HealthBar hpBar;
+
     // reference to the player
     public GameObject playerCharacter;
 
@@ -29,11 +31,13 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
         animator = transform.GetComponent<Animator>();
 
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         target = playerCharacter.GetComponent<Transform>();
+        hpBar.SetMaxHealth(health); //, maxHealth);
     }
 
     private void Update()
@@ -99,6 +103,8 @@ public class Enemy : MonoBehaviour
 
         aggravated = true;
         health -= damage;
+        hpBar.SetHealth(health);
+        // hpBar.SetHealth(health, maxHealth);
         if (health <= 0)
         {
             die();
