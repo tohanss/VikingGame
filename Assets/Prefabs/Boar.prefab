@@ -254,8 +254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1594785941493586162}
-  Offset: {x: 0, y: 0, z: 0}
-  slider2: {fileID: 0}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -324,7 +322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.011, y: 0.487}
+  m_AnchoredPosition: {x: 0.011, y: 1}
   m_SizeDelta: {x: 380.544, y: 71.6098}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1594785941796654686
@@ -507,7 +505,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.029142976, y: -0.24961561}
+  m_Offset: {x: 0.029142976, y: 0.07411342}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -518,7 +516,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5767939, y: 0.22707868}
+  m_Size: {x: 0.5767939, y: 0.15451874}
   m_EdgeRadius: 0
 --- !u!1 &7571023224850178567
 GameObject:
@@ -533,6 +531,7 @@ GameObject:
   - component: {fileID: 7571023224850178566}
   - component: {fileID: 7571023224850178586}
   - component: {fileID: -3983768503290020912}
+  - component: {fileID: 6223159537571279658}
   m_Layer: 9
   m_Name: Boar
   m_TagString: Enemy
@@ -641,10 +640,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008317232, y: -0.07452017}
+  m_Offset: {x: -0.008317232, y: 0.29804736}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.03125, y: 0.75}
     newSize: {x: 1.28125, y: 1.09375}
     adaptiveTilingThreshold: 0.5
@@ -652,7 +651,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.74054766, y: 0.5962806}
+  m_Size: {x: 0.74054766, y: 0.58790827}
   m_EdgeRadius: 0
 --- !u!114 &-3983768503290020912
 MonoBehaviour:
@@ -679,3 +678,22 @@ MonoBehaviour:
     type: 3}
   chargeSpeed: 6
   chargeDuration: 1.5
+--- !u!95 &6223159537571279658
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571023224850178567}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe578cc7d85bb01498ab1c13d5fa97b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
