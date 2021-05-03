@@ -17,6 +17,7 @@ public class PlayerActions : MonoBehaviour
     [HideInInspector]
     // Bool for if an ability is currently in use
     public bool isActive = false;
+    public bool isInvulnerable = false;
 
     // Experience and level related
     private int currentExp = 0;
@@ -63,8 +64,9 @@ public class PlayerActions : MonoBehaviour
 
     public void playerTakeDamage(float damage)
     {
+        if (isInvulnerable) return;
+        
         Debug.Log("Damage Taken: " + damage);
-
         currentHealth -= damage;
         if (currentHealth <= 0)
         {

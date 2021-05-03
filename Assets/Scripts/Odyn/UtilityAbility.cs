@@ -48,6 +48,7 @@ public class UtilityAbility : MonoBehaviour
             {
                 chargesLeft--; //use one charge per dash
                 StartCoroutine(replenishCharge()); //replenish a charge after a cooldown
+                playerAction.isInvulnerable = true;
                 playerAction.isActive = true;
                 playerMovement.moveable = false;
                 isDashing = true;
@@ -88,6 +89,7 @@ public class UtilityAbility : MonoBehaviour
             playerRigidBody.velocity = Vector2.zero;
             isDashing = false;
             playerMovement.moveable = true;
+            playerAction.isInvulnerable = false;
             playerAction.isActive = false;
             hitCollidable = false;
             hitEnemy = null;
