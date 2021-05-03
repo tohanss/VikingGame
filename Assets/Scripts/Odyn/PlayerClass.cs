@@ -43,6 +43,11 @@ public class PlayerClass : MonoBehaviour
         basicAbility.setDoubleDamageInSpearRange(value);
     }
 
+    public void setCrowDotEffect(bool value)
+    {
+        basicAbility.setCrowDotEffect(value);
+    }
+
     public void increaseProjectiles(int times)
     {
         basicAbility.numberProjectiles += times;

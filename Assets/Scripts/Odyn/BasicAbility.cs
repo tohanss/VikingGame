@@ -22,6 +22,7 @@ public class BasicAbility : MonoBehaviour
     // Upgrade related
     public bool pierce;
     public bool doubleDamageInSpearRange;
+    public bool attachCrow;
     public int numberProjectiles;
 
     // Attack stats
@@ -36,10 +37,10 @@ public class BasicAbility : MonoBehaviour
         animator = GetComponent<Animator>();
         playerAction = GetComponent<PlayerActions>();
 
-
         // Apply pierce upgrade to prefab
         setPierce(pierce);
         setDoubleDamageInSpearRange(doubleDamageInSpearRange);
+        setCrowDotEffect(attachCrow);
 
         // PLACEHOLDER TO SHOW HOW ATTACK SPEED CAN BE UPGRADED IN THE FUTURE
         if (spedUP)
@@ -148,13 +149,19 @@ public class BasicAbility : MonoBehaviour
 
     public void setDamage(int damage)
     {
-        projectileScript.damage = damage;
+        projectileScript.setDamage(damage);
     }
 
     public void setPierce(bool value)
     {
         pierce = value;
         projectileScript.pierce = value;
+    }
+
+    public void setCrowDotEffect(bool value)
+    {
+        attachCrow = value;
+        projectileScript.attachCrow = value;
     }
 
     public void setDoubleDamageInSpearRange(bool value)

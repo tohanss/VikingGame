@@ -211,7 +211,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 14
   rb: {fileID: 6446873694434449909}
+  doubleDamageInSpearRange: 0
   pierce: 1
+  crowDotPrefab: {fileID: 2947126341861528205, guid: 5a0bc3282d927a5469c66a2a736d92b5,
+    type: 3}
 --- !u!95 &8830785786408730010
 Animator:
   serializedVersion: 3

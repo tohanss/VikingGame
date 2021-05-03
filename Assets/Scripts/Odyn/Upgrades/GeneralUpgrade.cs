@@ -16,7 +16,7 @@ public class GeneralUpgrade : MonoBehaviour
         // min is incluseive, max is exclusive
         // picks a random upgrade for this instance from the list upgrades
         int upgradeID = Random.Range(0, upgrades.Length);
-        thisUpgrade = upgrades[4];
+        thisUpgrade = upgrades[5];
         toolTip.transform.GetChild(1).GetComponent<TextMeshPro>().SetText(thisUpgrade.description, true);
     }
 
@@ -45,6 +45,9 @@ public class GeneralUpgrade : MonoBehaviour
                         break;
                     case 4:
                         player.setDoubleDamageInSpearRange(true);
+                        break;
+                    case 5:
+                        player.setCrowDotEffect(true);
                         break;
                     default:
                         break;

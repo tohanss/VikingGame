@@ -19,6 +19,9 @@ public class SpearProjectile : MonoBehaviour
     public bool doubleDamageInSpearRange = false;
     public bool pierce = false;
 
+    public bool attachCrow;
+    public GameObject crowDotPrefab;
+
     private void Start()
     {
         Destroy(gameObject, maxLife);
@@ -39,6 +42,9 @@ public class SpearProjectile : MonoBehaviour
                 other.GetComponent<Enemy>().takeDamage(damage);
             }
 
+            if (attachCrow)
+                Instantiate(crowDotPrefab, other.transform);
+
             knockback(other);
             if (!pierce)
             {
@@ -56,5 +62,11 @@ public class SpearProjectile : MonoBehaviour
     {
         Vector2 difference = other.transform.position - transform.position;
         other.transform.position = new Vector2((other.transform.position.x + difference.x), (other.transform.position.y + difference.y));
+    }
+
+    public void setDamage(float value)
+    {
+        damage = value;
+        crowDotPrefab.GetComponent<CrowDotEffect>().tickDamage = value * 0.1f;
     }
 }
