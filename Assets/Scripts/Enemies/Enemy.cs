@@ -24,10 +24,13 @@ public class Enemy : MonoBehaviour
 
     // Misc
     public GameObject damageNumbers;
+    private Animator animator;
+
     private void Start()
     {
         health = maxHealth;
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
+        animator = transform.GetComponent<Animator>();
 
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         target = playerCharacter.GetComponent<Transform>();
@@ -48,7 +51,13 @@ public class Enemy : MonoBehaviour
         {
             move();
         }
-        if (Vector2.Distance(transform.position, target.position) <= attackRange || isAttacking)
+        if (Vector2.Distance(transform.position, target.position) <= attackRange)
+        {
+            animator.SetBool("running", false);
+            animator.SetTrigger("attack");
+            //attack();
+        } 
+        if (isAttacking)
         {
             attack();
         }
@@ -56,10 +65,12 @@ public class Enemy : MonoBehaviour
 
     protected virtual void move()
     {   //move towards player if taken damage or within aggro range
-        if (aggravated || (Vector2.Distance(transform.position, target.position) <= aggroRange)) 
+        if (aggravated || (Vector2.Distance(transform.position, target.position) <= aggroRange))
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            animator.SetBool("running", true);
         }
+        else animator.SetBool("running", false);
 
     }
 
