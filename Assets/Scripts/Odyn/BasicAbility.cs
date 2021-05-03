@@ -165,7 +165,7 @@ public class BasicAbility : MonoBehaviour
     public void increaseAttackSpeed(float multiplier)
     {       
         attackSpeedMultiplier *= multiplier;
-        delay /= attackSpeedMultiplier;
+        delay /= multiplier;
         animator.SetFloat("SpeedMultiplier", attackSpeedMultiplier);
     }
 }
