@@ -47,7 +47,11 @@ public class Boar : Enemy
         if (other.gameObject.CompareTag("Player") && isAttacking && !(hitPlayer == other))
         {
             hitPlayer = other;
-            other.GetComponent<PlayerActions>().playerTakeDamage(chargeDamage);
+            if (!other.GetComponent<PlayerActions>().isInvulnerable) //only do damage if player is not invulnerable
+            {
+                other.GetComponent<PlayerActions>().playerTakeDamage(chargeDamage);
+            }
+
         }
     }
 
