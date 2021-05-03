@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgrade: {fileID: 3807634420772638155, guid: a51adcfbf3bc21443a40bb922a68b663, type: 3}
+  maxHealth: 100
 --- !u!114 &1856058376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,4 +418,3 @@ MonoBehaviour:
   maxCharges: 2
   dashCooldown: 5
   dashDistance: 3
-  dashSpeed: 30
