@@ -21,6 +21,7 @@ public class BasicAbility : MonoBehaviour
 
     // Upgrade related
     public bool pierce;
+    public bool doubleDamageInSpearRange;
     public int numberProjectiles;
 
     // Attack stats
@@ -38,6 +39,7 @@ public class BasicAbility : MonoBehaviour
 
         // Apply pierce upgrade to prefab
         setPierce(pierce);
+        setDoubleDamageInSpearRange(doubleDamageInSpearRange);
 
         // PLACEHOLDER TO SHOW HOW ATTACK SPEED CAN BE UPGRADED IN THE FUTURE
         if (spedUP)
@@ -153,5 +155,11 @@ public class BasicAbility : MonoBehaviour
     {
         pierce = value;
         projectileScript.pierce = value;
+    }
+
+    public void setDoubleDamageInSpearRange(bool value)
+    {
+        doubleDamageInSpearRange = value;
+        projectileScript.doubleDamageInSpearRange = value;
     }
 }

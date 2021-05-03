@@ -33,20 +33,25 @@ public class PlayerClass : MonoBehaviour
 
     }
 
-    public void increaseProjectiles(int times)
-    {
-        basicAbility.numberProjectiles += times;
-    } 
-
     public void setPierce(bool value)
     {
         basicAbility.setPierce(value);
     }
 
+    public void setDoubleDamageInSpearRange(bool value)
+    {
+        basicAbility.setDoubleDamageInSpearRange(value);
+    }
+
+    public void increaseProjectiles(int times)
+    {
+        basicAbility.numberProjectiles += times;
+    } 
+
     public void increaseSpecialHits(int amount)
     {
         specialAbility.numberOfHits += amount;
-        specialAbility.delay *= 0.9f;
+        specialAbility.delay *= Mathf.Pow(0.9f, amount);
     }
 
     public void increaseUtilityCharges(int amoount)

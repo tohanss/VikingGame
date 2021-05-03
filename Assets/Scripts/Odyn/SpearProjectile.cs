@@ -14,6 +14,9 @@ public class SpearProjectile : MonoBehaviour
     // Life related
     private float maxLife = 2.0f; //temporary solution, max life duration for projectile 
     private float lifeTimer;
+
+    // Upgrade related
+    public bool doubleDamageInSpearRange = false;
     public bool pierce = false;
 
     private void Start()
@@ -26,9 +29,19 @@ public class SpearProjectile : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && !(hitEnemy == other))
         {
             hitEnemy = other;
-            other.GetComponent<Enemy>().takeDamage(damage);
+
+            if (doubleDamageInSpearRange && (transform.position - GameObject.FindWithTag("Player").transform.position).magnitude < 2)
+            {
+                other.GetComponent<Enemy>().takeDamage(damage*2);
+            }
+            else
+            {
+                other.GetComponent<Enemy>().takeDamage(damage);
+            }
+
             knockback(other);
-            if (!pierce){
+            if (!pierce)
+            {
                 Destroy(gameObject);
             }
         }
@@ -38,7 +51,7 @@ public class SpearProjectile : MonoBehaviour
         }
     }
 
-    //Knockback the the hit object
+    //Knockback the hit object
     private void knockback(Collider2D other) 
     {
         Vector2 difference = other.transform.position - transform.position;
