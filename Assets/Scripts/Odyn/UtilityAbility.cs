@@ -11,7 +11,8 @@ public class UtilityAbility : MonoBehaviour
 
     // Cooldown related
     public int maxCharges;
-    private int chargesLeft;
+    [HideInInspector]
+    public int chargesLeft;
     public float dashCooldown;
 
     // Dash related

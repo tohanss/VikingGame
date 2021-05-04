@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 93004255089110494}
   - component: {fileID: 4987036096774711206}
   m_Layer: 0
-  m_Name: GeneralUpgrade
+  m_Name: OdynUpgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,8 +81,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgrades:
-  - {fileID: 11400000, guid: ade227813c75b214189fae524c5dc0f5, type: 2}
   - {fileID: 11400000, guid: e65286654be94944d8f3d64fd16afbbd, type: 2}
+  - {fileID: 11400000, guid: ade227813c75b214189fae524c5dc0f5, type: 2}
+  - {fileID: 11400000, guid: d01cd441c36ea4eb28f015d55f7c9815, type: 2}
+  - {fileID: 11400000, guid: fbd55fe1569b6400599da65fa40dc9e3, type: 2}
+  - {fileID: 11400000, guid: b2f2ac4960f484ea2a33cd8520426776, type: 2}
+  - {fileID: 11400000, guid: b8afb925c6305f849888634a4eac2659, type: 2}
+  - {fileID: 11400000, guid: af746acc69b5aa2429fd014981ff7d32, type: 2}
 --- !u!212 &-7297357553756618690
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -247,7 +252,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 681945093
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1d92b4716d8af8c488405e835ca26ffc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -373,7 +378,7 @@ SortingGroup:
   m_GameObject: {fileID: 7662739041844084949}
   m_Enabled: 1
   m_SortingLayerID: 681945093
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
 --- !u!1 &8446876362312381007
 GameObject:
@@ -450,7 +455,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 681945093
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &6205728489317269630

@@ -7,9 +7,9 @@ public class SpecialAbility : MonoBehaviour
     // Damage related
     private float damage;
     public float dmgMultiplier = 0.5f;
-    public int numberOfHits = 3;
-
+    
     // Cooldown related
+    public int numberOfHits;
     public float delay;
     private float timeSinceJump = 0f;
     private float cooldown = 0;

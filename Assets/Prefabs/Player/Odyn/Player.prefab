@@ -402,5 +402,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCharges: 2
+  chargesLeft: 0
   dashCooldown: 5
   dashDistance: 3

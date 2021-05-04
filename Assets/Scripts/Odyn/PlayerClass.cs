@@ -30,7 +30,21 @@ public class PlayerClass : MonoBehaviour
         basicAbility.setDamage(playerDamage);
         specialAbility.setDamage(playerDamage);
         utilityAbility.setDamage(playerDamage);
+    }
 
+    public void setPierce(bool value)
+    {
+        basicAbility.setPierce(value);
+    }
+
+    public void setDoubleDamageInSpearRange(bool value)
+    {
+        basicAbility.setDoubleDamageInSpearRange(value);
+    }
+
+    public void setCrowDotEffect(bool value)
+    {
+        basicAbility.setCrowDotEffect(value);
     }
 
     public void increaseProjectiles(int times)
@@ -38,9 +52,21 @@ public class PlayerClass : MonoBehaviour
         basicAbility.numberProjectiles += times;
     } 
 
-    public void setPierce(bool value)
+    public void increaseSpecialHits(int amount)
     {
-        basicAbility.setPierce(value);
+        specialAbility.numberOfHits += amount;
+        specialAbility.delay *= Mathf.Pow(0.9f, amount);
+    }
+
+    public void increaseUtilityCharges(int amoount)
+    {
+        utilityAbility.maxCharges += 1;
+        utilityAbility.chargesLeft += 1;
+    }
+
+    public void increaseAttackSpeed(float multiplier)
+    {
+        basicAbility.increaseAttackSpeed(multiplier);
     }
 
     public int getDamage(){
@@ -51,14 +77,6 @@ public class PlayerClass : MonoBehaviour
     {
         float angle = Random.Range(0f, 2f * Mathf.PI);
         Vector3 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        switch (level)
-        {
-            /*case 2:
-                Instantiate(upgrades[0], transform.position + offset, transform.rotation);
-                break;*/
-            default:
-                Instantiate(upgrade, transform.position + offset, transform.rotation);
-                break;
-        }
+        Instantiate(upgrade, transform.position + offset, transform.rotation);
     }
 }
