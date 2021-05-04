@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 93004255089110494}
   - component: {fileID: 4987036096774711206}
   m_Layer: 0
-  m_Name: GeneralUpgrade
+  m_Name: OdynUpgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,8 +81,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgrades:
-  - {fileID: 11400000, guid: ade227813c75b214189fae524c5dc0f5, type: 2}
   - {fileID: 11400000, guid: e65286654be94944d8f3d64fd16afbbd, type: 2}
+  - {fileID: 11400000, guid: ade227813c75b214189fae524c5dc0f5, type: 2}
   - {fileID: 11400000, guid: d01cd441c36ea4eb28f015d55f7c9815, type: 2}
   - {fileID: 11400000, guid: fbd55fe1569b6400599da65fa40dc9e3, type: 2}
   - {fileID: 11400000, guid: b2f2ac4960f484ea2a33cd8520426776, type: 2}
