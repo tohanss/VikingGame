@@ -11,12 +11,13 @@ public class Enemy : MonoBehaviour
     public int expValue;
     private float health;
 
-
-
     // Cooldown related
     protected float lastTime = 0;
     protected float attackCooldown = 3.0f;
     protected float lastAttackStartTime;
+    private float knockBackCooldown = 1f;
+    [HideInInspector]
+    public bool canBeKnockedBack;
 
     // reference to the player
     public GameObject playerCharacter;
@@ -32,11 +33,13 @@ public class Enemy : MonoBehaviour
     // Misc
     public GameObject damageNumbers;
     private Animator animator;
+    private float knockBackForce = 10f;
     public HealthBar hpBar;
 
     private void Start()
     {
         health = maxHealth;
+        canBeKnockedBack = true;
 
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
         animator = transform.GetComponent<Animator>();
@@ -124,5 +127,21 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //handles cooldown for knockback
+    public IEnumerator knockbackTimer()
+    {
+        yield return new WaitForSeconds(knockBackCooldown);
+        canBeKnockedBack = true;
+    }
+
+    //Handles the knockback of this enemy gameObject
+    public void knockback(Vector2 knockBackDirection)
+    {
+        Vector2 direction = knockBackDirection;
+        Vector2 force = direction * knockBackForce;
+        GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+        canBeKnockedBack = false;
+        StartCoroutine(knockbackTimer());
+    }
 
 }

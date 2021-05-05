@@ -45,7 +45,13 @@ public class SpearProjectile : MonoBehaviour
             if (attachCrow)
                 Instantiate(crowDotPrefab, other.transform);
 
-            knockback(other);
+            //Knockback
+            if (other.GetComponent<Enemy>().canBeKnockedBack)
+            {
+                Vector2 knockBackDir = GetComponent<Rigidbody2D>().velocity.normalized; //direction of the projectile
+                other.GetComponent<Enemy>().knockback(knockBackDir);
+            }
+
             if (!pierce)
             {
                 Destroy(gameObject);
@@ -55,13 +61,6 @@ public class SpearProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    //Knockback the hit object
-    private void knockback(Collider2D other) 
-    {
-        Vector2 difference = other.transform.position - transform.position;
-        other.transform.position = new Vector2((other.transform.position.x + difference.x), (other.transform.position.y + difference.y));
     }
 
     public void setDamage(float value)
