@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Troll : MonoBehaviour
+public class Troll : Enemy
 {
-    // Start is called before the first frame update
-    void Start()
+    //Troll specific stats
+    private float slamDamage;
+    // Misc
+
+
+    protected override void Start()
     {
-        
+        base.Start();
+        attackCooldown = 3.0f;
+    }
+    protected override void attack()
+    {
+        base.attack();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

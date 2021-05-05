@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     // Cooldown related
     protected float lastTime = 0;
-    protected float attackCooldown = 3.0f;
+    protected float attackCooldown;
     protected float lastAttackStartTime;
     private float knockBackCooldown = 1f;
     [HideInInspector]
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     private float knockBackForce = 10f;
     public HealthBar hpBar;
 
-    private void Start()
+    protected virtual void Start()
     {
         health = maxHealth;
         canBeKnockedBack = true;
