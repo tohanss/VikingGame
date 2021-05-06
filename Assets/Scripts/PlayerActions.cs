@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class PlayerActions : MonoBehaviour
 {
@@ -21,8 +22,16 @@ public class PlayerActions : MonoBehaviour
     // Experience and level related
     private int currentExp = 0;
     private int requiredExp = 10;
-    public Text favorText;
-    public Text levelText;
+
+    // UI related
+    //public Text favorText;
+    //public Text levelText;
+    public Canvas canvas;
+    private Image HPbar;
+    private TMP_Text HPcurrent;
+    private TMP_Text HPmax;
+    private Image XPbar;
+    private TMP_Text levelText;
 
     // Hidden variables in inspector
     [HideInInspector]
@@ -40,8 +49,15 @@ public class PlayerActions : MonoBehaviour
     // Unity functions
     private void Start() 
     {
-        favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
-        levelText.text = "Level: " + level.ToString();
+        //favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
+        //levelText.text = "Level: " + level.ToString();
+        HPbar = canvas.transform.GetChild(1).GetChild(1).GetComponent<Image>();
+        HPcurrent = canvas.transform.GetChild(1).GetChild(3).GetComponent<TMP_Text>();
+        HPmax = canvas.transform.GetChild(1).GetChild(5).GetComponent<TMP_Text>();
+
+        XPbar = canvas.transform.GetChild(2).GetChild(1).GetComponent<Image>();
+        XPbar.fillAmount = 0f;
+        levelText = canvas.transform.GetChild(2).GetChild(3).GetComponent<TMP_Text>();
 
         playerClass = GetComponent<PlayerClass>();
         playerRB = GetComponent<Rigidbody2D>();
@@ -62,14 +78,15 @@ public class PlayerActions : MonoBehaviour
     }
 
     // Level and EXP related
-    public void GainExp(int exp) 
+    public void GainExp(int exp)
     {
         currentExp += exp;
+        XPbar.fillAmount = (float) currentExp / (float) requiredExp;
+
         if (currentExp >= requiredExp){
             LevelUp();
         }
-
-        favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
+        //favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
     }
 
     private void LevelUp()
@@ -83,8 +100,9 @@ public class PlayerActions : MonoBehaviour
         currentExp -= requiredExp;
         requiredExp += level * 5;
 
-        // Change level text
-        levelText.text = "Level: " + level.ToString();
+        // Update UI for new level
+        levelText.text = "Lv. " + level.ToString();
+        XPbar.fillAmount = currentExp / requiredExp;
     }
 
     public void playerTakeDamage(float damage)
