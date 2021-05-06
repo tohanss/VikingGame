@@ -65,12 +65,12 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.2
+    - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.8333333
-    - _ScaleRatioB: 0.6770833
-    - _ScaleRatioC: 0.6770833
+    - _ScaleRatioA: 1
+    - _ScaleRatioB: 1
+    - _ScaleRatioC: 1
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Perfect DOS-TMP
   m_EditorClassIdentifier: 
-  hashCode: -167518929
+  hashCode: 0
   material: {fileID: -2375200317044325875}
-  materialHashCode: 1351650479
+  materialHashCode: 0
   m_Version: 1.1.0
   m_SourceFontFileGUID: e1d94bc6ce2baa14f9e762d2e933276e
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: e1d94bc6ce2baa14f9e762d2e933276e,

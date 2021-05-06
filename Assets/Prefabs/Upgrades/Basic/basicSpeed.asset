@@ -15,4 +15,3 @@ MonoBehaviour:
   name: Attack Speed
   description: Increase basic ability attackspeed by 20%
   upgradeID: 6
-  animator: {fileID: 9100000, guid: ae2148539bf410f48b336d7deeb04345, type: 2}

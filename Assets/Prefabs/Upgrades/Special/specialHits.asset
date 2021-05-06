@@ -15,4 +15,3 @@ MonoBehaviour:
   name: Special Hits
   description: Increases number of hits of special attack
   upgradeID: 2
-  animator: {fileID: 9100000, guid: fd88fd29e56edb942a416bf35303cc51, type: 2}
