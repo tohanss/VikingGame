@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: -7297357553756618690}
   - component: {fileID: 93004255089110494}
   - component: {fileID: 4987036096774711206}
+  - component: {fileID: -3452695802932646950}
   m_Layer: 0
   m_Name: OdynUpgrades
   m_TagString: Untagged
@@ -183,6 +184,25 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &-3452695802932646950
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807634420772638155}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4593932640259130167
 GameObject:
   m_ObjectHideFlags: 0

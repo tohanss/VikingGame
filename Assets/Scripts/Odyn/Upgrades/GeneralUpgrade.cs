@@ -16,8 +16,9 @@ public class GeneralUpgrade : MonoBehaviour
         // min is incluseive, max is exclusive
         // picks a random upgrade for this instance from the list upgrades
         int upgradeID = Random.Range(0, upgrades.Length);
-        thisUpgrade = upgrades[12];
+        thisUpgrade = upgrades[upgradeID];
         toolTip.transform.GetChild(1).GetComponent<TextMeshPro>().SetText(thisUpgrade.description, true);
+        GetComponent<Animator>().runtimeAnimatorController = thisUpgrade.animator;
     }
 
     private void OnTriggerStay2D(Collider2D other)
