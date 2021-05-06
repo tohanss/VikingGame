@@ -314,8 +314,8 @@ MonoBehaviour:
   damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
     type: 3}
   movespeed: 5
-  favorText: {fileID: 0}
-  levelText: {fileID: 0}
+  canvas: {fileID: 0}
+  XPbar: {fileID: 0}
   isActive: 0
   isInvulnerable: 0
   moveable: 1

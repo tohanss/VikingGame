@@ -15,3 +15,4 @@ MonoBehaviour:
   name: Utility Charges
   description: Increase number of charges on Dash
   upgradeID: 3
+  animator: {fileID: 9100000, guid: 0ce68d07d3b9d5c4b8b661b950e2e687, type: 2}
