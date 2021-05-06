@@ -6,15 +6,16 @@ public class TrollSlamAttack : MonoBehaviour
 {
 
     //Slam attack stats and logic
-    private float slamDamage;
+    [HideInInspector]
+    public float slamDamage;
     private Collider2D hitPlayer;
     private ParticleSystem particleSystem;
     private float lifeTime;
 
-
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(colliderTimer());
         particleSystem = GetComponent<ParticleSystem>();
         var main = particleSystem.main;
         lifeTime = main.startLifetime.constant;
@@ -36,5 +37,11 @@ public class TrollSlamAttack : MonoBehaviour
                 other.GetComponent<PlayerActions>().playerTakeDamage(slamDamage);
             }
         }
+    }
+    //Handles turning off collider, otherwise player can take damage as long as the particle effect is still alive
+    IEnumerator colliderTimer() 
+    {
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 }

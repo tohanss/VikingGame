@@ -131,7 +131,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 8
+  m_Mass: 2.5
   m_LinearDrag: 8
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Troll
   moveSpeed: 2
-  maxHealth: 200
+  maxHealth: 150
   expValue: 10
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
@@ -684,7 +684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6411494724640178861}
   - component: {fileID: 8010675499714134436}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: feetCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

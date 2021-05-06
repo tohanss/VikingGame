@@ -12,16 +12,19 @@ public class Troll : Enemy
     // Misc
     private ParticleSystem particleSystem;
     public Transform attackPoint;
+    private CircleCollider2D collider;
+
 
     protected override void Start()
     {
         base.Start();
         particleSystem = slamPrefab.GetComponent<ParticleSystem>();
+        trollSlamAttack = slamPrefab.GetComponent<TrollSlamAttack>();
+        collider = slamPrefab.GetComponent<CircleCollider2D>();
+        
         var shape = particleSystem.shape;
         shape.radius = attackRange;
-
-        trollSlamAttack = slamPrefab.GetComponent<TrollSlamAttack>();
-
+        collider.radius = attackRange;
         attackCooldown = 3.0f;
         setDamage(slamDamage); //set damage for slamPrefab
     }

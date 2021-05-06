@@ -1,31 +1,40 @@
 fileFormatVersion: 2
-guid: a40108034fa78b24e8beb29e5fcf6021
+guid: 61f26a0bc8128494597714af3350f0bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6314364091145470986
-    second: troll01-attack_0
+      213: 6612506523836372571
+    second: troll-attack_0
   - first:
-      213: 187450127603810868
-    second: troll01-attack_1
+      213: -7062386593589439242
+    second: troll-attack_1
   - first:
-      213: 4167613989727908788
-    second: troll01-attack_2
+      213: 6988777179380323736
+    second: troll-attack_2
   - first:
-      213: 537532598560808757
-    second: troll01-attack_3
+      213: 5128393593287892199
+    second: troll-attack_3
   - first:
-      213: 2186343822233977957
-    second: troll01-attack_4
+      213: -2787963641477644924
+    second: troll-attack_4
   - first:
-      213: 4669953244054959015
-    second: troll01-attack_5
+      213: -6585428359999515767
+    second: troll-attack_5
   - first:
-      213: -2412237688495714986
-    second: troll01-attack_6
+      213: 7849325815999236556
+    second: troll-attack_6
   - first:
-      213: -6819987581499363772
-    second: troll01-attack_7
+      213: 7640167378829624760
+    second: troll-attack_7
+  - first:
+      213: -3315463083969746716
+    second: troll-attack_8
+  - first:
+      213: 432637911112771152
+    second: troll-attack_9
+  - first:
+      213: 6107310252157928235
+    second: troll-attack_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,139 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: troll01-attack_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 158
-        width: 101
-        height: 79
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6fbbac4605fde58a0800000000000000
-      internalID: -6314364091145470986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: troll01-attack_1
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 158
-        width: 101
-        height: 79
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4324decd5e4f99200800000000000000
-      internalID: 187450127603810868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: troll01-attack_2
-      rect:
-        serializedVersion: 2
-        x: 202
-        y: 158
-        width: 101
-        height: 79
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b33eaab7d656d930800000000000000
-      internalID: 4167613989727908788
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: troll01-attack_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 79
-        width: 101
-        height: 79
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53fd868ec03b57700800000000000000
-      internalID: 537532598560808757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: troll01-attack_4
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 79
-        width: 101
-        height: 79
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56440216f14775e10800000000000000
-      internalID: 2186343822233977957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: troll01-attack_5
-      rect:
-        serializedVersion: 2
-        x: 202
-        y: 79
-        width: 101
-        height: 79
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a33495abb10fc040800000000000000
-      internalID: 4669953244054959015
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: troll01-attack_6
+      name: troll-attack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 101
-        height: 79
+        height: 80
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65d47675a92068ed0800000000000000
-      internalID: -2412237688495714986
+      spriteID: b56583c16a754cb50800000000000000
+      internalID: 6612506523836372571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: troll01-attack_7
+      name: troll-attack_1
       rect:
         serializedVersion: 2
         x: 101
         y: 0
         width: 101
-        height: 79
+        height: 80
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,8 +159,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44ea720bd698a51a0800000000000000
-      internalID: -6819987581499363772
+      spriteID: 6f4de9eafcc5dfd90800000000000000
+      internalID: -7062386593589439242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-attack_2
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 0
+        width: 101
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895125701df1df060800000000000000
+      internalID: 6988777179380323736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-attack_3
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 0
+        width: 101
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ec505c3dc6bb2740800000000000000
+      internalID: 5128393593287892199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-attack_4
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 0
+        width: 101
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48d350fd6d92f49d0800000000000000
+      internalID: -2787963641477644924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-attack_5
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 0
+        width: 101
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98312743ccbdb94a0800000000000000
+      internalID: -6585428359999515767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-attack_6
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 0
+        width: 101
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc900fcfd386eec60800000000000000
+      internalID: 7849325815999236556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-attack_7
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 0
+        width: 101
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b5caaf60c3570a60800000000000000
+      internalID: 7640167378829624760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-attack_8
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 0
+        width: 101
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e8ef0624eb1df1d0800000000000000
+      internalID: -3315463083969746716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-attack_9
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 0
+        width: 101
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0566e3053e9010600800000000000000
+      internalID: 432637911112771152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll-attack_10
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 0
+        width: 101
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2389f0015681c450800000000000000
+      internalID: 6107310252157928235
       vertices: []
       indices: 
       edges: []
