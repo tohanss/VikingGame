@@ -15,3 +15,4 @@ MonoBehaviour:
   name: Double Damage in Spear Range
   description: Deal double damage to enemies in melee range
   upgradeID: 4
+  animator: {fileID: 9100000, guid: ae2148539bf410f48b336d7deeb04345, type: 2}

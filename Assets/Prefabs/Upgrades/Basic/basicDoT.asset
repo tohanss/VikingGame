@@ -15,3 +15,4 @@ MonoBehaviour:
   name: Crow dot effect
   description: Basic attacks attach a damaging crow to enemies
   upgradeID: 5
+  animator: {fileID: 9100000, guid: ae2148539bf410f48b336d7deeb04345, type: 2}
