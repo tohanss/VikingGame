@@ -83,6 +83,7 @@ public class PlayerClass : MonoBehaviour
     public void increaseProjectiles(int times)
     {
         basicAbility.numberProjectiles += times;
+        basicProjectileUpgrades += 1;
     } 
 
     public void increaseSpecialHits(int amount)
