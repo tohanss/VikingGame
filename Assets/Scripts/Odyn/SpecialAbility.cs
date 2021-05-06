@@ -29,6 +29,13 @@ public class SpecialAbility : MonoBehaviour
 
     public GameObject slash;
 
+    // Upgrade related
+    public GameObject dotPrefab;
+    public bool placeDot;
+
+    public bool areaOfEffect;
+    public float aoeRadius = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +50,6 @@ public class SpecialAbility : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && !attacking && !playerAction.isActive)
         {
-            
             mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 distVector = mousePoint - getPlayerPos();
             
@@ -115,6 +121,27 @@ public class SpecialAbility : MonoBehaviour
             Quaternion slashRotation = closest.transform.rotation * Quaternion.Euler(new Vector3(0, 0, Random.Range(-180, 180)));
             Instantiate(slash, closest.transform.position, slashRotation);
             closest.GetComponent<Enemy>().takeDamage(damage);
+
+            // Place dot if upgraded
+            if (placeDot)
+            {
+                Instantiate(dotPrefab, closest.transform);
+            }
+
+            // Deal AoE damage to nearby enemies if upgraded.
+            if (areaOfEffect)
+            {
+                Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(closest.transform.position, aoeRadius, enemyLayer);
+
+                foreach (var nearby in nearbyEnemies)
+                {
+                    if (nearby.gameObject.GetInstanceID() != closest.GetInstanceID())
+                    {
+                        nearby.GetComponent<Enemy>().takeDamage(damage * 0.5f);
+                    }
+                }
+            }
+            
             hitsMade++;
         }
         else
@@ -143,6 +170,12 @@ public class SpecialAbility : MonoBehaviour
 
     public void setDamage(int damage){
         this.damage = damage * dmgMultiplier;
+    }
+    
+    public void upgradeAoeEffect()
+    {
+        aoeRadius += 0.5f;
+        areaOfEffect = true;
     }
 
     private Vector2 getPlayerPos(){

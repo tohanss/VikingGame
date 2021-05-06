@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
-  m_Name: pierce
+  m_Name: basicSpeed
   m_EditorClassIdentifier: 
-  name: Pierce
-  description: Crows pierce enemies
-  upgradeID: 0
+  name: Attack Speed
+  description: Increase basic ability attackspeed by 20%
+  upgradeID: 6
