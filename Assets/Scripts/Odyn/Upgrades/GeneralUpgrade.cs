@@ -7,17 +7,17 @@ using UnityEngine.Experimental.Rendering.LWRP;
 public class GeneralUpgrade : MonoBehaviour
 {
     private GameObject toolTip;
-    public Upgrade[] upgrades;
     private Upgrade thisUpgrade;
+    private UpgradeDropper upgradeDropper;
     
-
     private void Start()
     {
+        upgradeDropper = gameObject.transform.parent.GetComponent<UpgradeDropper>(); 
+
         toolTip = gameObject.transform.GetChild(0).gameObject;
         // min is incluseive, max is exclusive
         // picks a random upgrade for this instance from the list upgrades
-        int upgradeID = Random.Range(0, upgrades.Length);
-        thisUpgrade = upgrades[upgradeID];
+        thisUpgrade = upgradeDropper.upgrades[Random.Range(0, upgradeDropper.upgrades.Count)];
         toolTip.transform.GetChild(1).GetComponent<TextMeshPro>().SetText(thisUpgrade.description, true);
         GetComponent<Animator>().runtimeAnimatorController = thisUpgrade.animator;
         StartCoroutine(decreaseLight());
@@ -36,9 +36,12 @@ public class GeneralUpgrade : MonoBehaviour
                 {
                     case 0:
                         player.setPierce(true);
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 1:
                         player.increaseProjectiles(1);
+                        if (player.basicProjectileUpgrades == 5)
+                            upgradeDropper.remove(thisUpgrade);
                         break;
                     case 2:
                         player.increaseSpecialHits(1);
@@ -48,30 +51,36 @@ public class GeneralUpgrade : MonoBehaviour
                         break;
                     case 4:
                         player.setDoubleDamageInSpearRange(true);
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 5:
                         player.setCrowDotEffect(true);
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 6:
                         player.increaseAttackSpeed(1.2f);
                         break;
                     case 7:
                         player.setSpecialDotEffect(true);
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 8:
-                        player.upgradeAoeEffect();
+                        player.increaseSpecialAoE();
                         break;
                     case 9:
                         player.setUtilityDot();
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 10:
                         player.setUtilityLeech();
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 11:
                         player.increaseUtilityRange(1f);
                         break;
                     case 12:
                         player.setUtilityAttackToSides();
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     default:
                         break;

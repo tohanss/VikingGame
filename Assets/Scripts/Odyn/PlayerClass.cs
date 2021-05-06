@@ -8,11 +8,17 @@ public class PlayerClass : MonoBehaviour
     private SpecialAbility specialAbility;
     private UtilityAbility utilityAbility;
 
-    public GameObject upgrade;
+    // Upgrade dropper related
+    public GameObject upgradeDropperPrefab;
+    [HideInInspector]
+    public UpgradeDropper upgradeDropper;
 
     // Stats
     private int playerDamage = 10;
     public float maxHealth;  //the class starting max health
+
+    // Keep track of how many upgrades have been given
+    public int basicProjectileUpgrades = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +26,8 @@ public class PlayerClass : MonoBehaviour
         basicAbility = GetComponent<BasicAbility>();
         specialAbility = GetComponent<SpecialAbility>();
         utilityAbility = GetComponent<UtilityAbility>();
+
+        upgradeDropper = Instantiate(upgradeDropperPrefab).GetComponent<UpgradeDropper>();
 
         // Initialises ability damages 
         increaseDamage(0);
@@ -52,7 +60,7 @@ public class PlayerClass : MonoBehaviour
         specialAbility.placeDot = true;
     }
 
-    public void upgradeAoeEffect()
+    public void increaseSpecialAoE()
     {
         specialAbility.upgradeAoeEffect();
     }
@@ -75,6 +83,7 @@ public class PlayerClass : MonoBehaviour
     public void increaseProjectiles(int times)
     {
         basicAbility.numberProjectiles += times;
+        basicProjectileUpgrades += 1;
     } 
 
     public void increaseSpecialHits(int amount)
@@ -107,6 +116,6 @@ public class PlayerClass : MonoBehaviour
     {
         float angle = Random.Range(0f, 2f * Mathf.PI);
         Vector3 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        Instantiate(upgrade, transform.position + offset, transform.rotation);
+        upgradeDropper.dropUpgrade();
     }
 }
