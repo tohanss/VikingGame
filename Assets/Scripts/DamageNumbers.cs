@@ -8,6 +8,8 @@ public class DamageNumbers : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 0.5f);
-        transform.localPosition += new Vector3(0, 0.5f, 0);
+
+        float xOffset = Random.Range(-0.5f, 0.5f);
+        transform.localPosition += new Vector3(xOffset, 0.5f, 0);
     }
 }

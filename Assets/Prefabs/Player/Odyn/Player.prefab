@@ -311,6 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d850f752b7ffa4e9948669b75afd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
+    type: 3}
   movespeed: 5
   favorText: {fileID: 0}
   levelText: {fileID: 0}
@@ -350,8 +352,9 @@ MonoBehaviour:
     type: 3}
   delay: 0.4
   pierce: 0
+  doubleDamageInSpearRange: 0
+  attachCrow: 0
   numberProjectiles: 1
-  spedUP: 0
 --- !u!114 &1856058370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +373,11 @@ MonoBehaviour:
   range: 5
   chainRange: 4
   slash: {fileID: 6681774670869387640, guid: f2795b34e7143be47bd8eedfef86ba62, type: 3}
+  dotPrefab: {fileID: 2947126341861528205, guid: 5a0bc3282d927a5469c66a2a736d92b5,
+    type: 3}
+  placeDot: 0
+  areaOfEffect: 0
+  aoeRadius: 1
 --- !u!95 &-8603538043082790881
 Animator:
   serializedVersion: 3
@@ -405,3 +413,10 @@ MonoBehaviour:
   chargesLeft: 0
   dashCooldown: 5
   dashDistance: 3
+  placeDot: 0
+  dotPrefab: {fileID: 2947126341861528205, guid: 5a0bc3282d927a5469c66a2a736d92b5,
+    type: 3}
+  lifeLeech: 0
+  attackToSides: 0
+  projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
+    type: 3}

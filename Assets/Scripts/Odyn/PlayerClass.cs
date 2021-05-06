@@ -47,6 +47,31 @@ public class PlayerClass : MonoBehaviour
         basicAbility.setCrowDotEffect(value);
     }
 
+    public void setSpecialDotEffect(bool value)
+    {
+        specialAbility.placeDot = true;
+    }
+
+    public void upgradeAoeEffect()
+    {
+        specialAbility.upgradeAoeEffect();
+    }
+
+    public void setUtilityDot()
+    {
+        utilityAbility.placeDot = true;
+    }
+
+    public void setUtilityLeech()
+    {
+        utilityAbility.lifeLeech = true;
+    }
+
+    public void setUtilityAttackToSides()
+    {
+        utilityAbility.attackToSides = true;
+    }
+
     public void increaseProjectiles(int times)
     {
         basicAbility.numberProjectiles += times;
@@ -62,6 +87,11 @@ public class PlayerClass : MonoBehaviour
     {
         utilityAbility.maxCharges += 1;
         utilityAbility.chargesLeft += 1;
+    }
+
+    public void increaseUtilityRange(float amount)
+    {
+        utilityAbility.dashDistance += amount;
     }
 
     public void increaseAttackSpeed(float multiplier)
