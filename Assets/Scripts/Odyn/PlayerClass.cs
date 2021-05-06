@@ -8,6 +8,9 @@ public class PlayerClass : MonoBehaviour
     private SpecialAbility specialAbility;
     private UtilityAbility utilityAbility;
 
+    // Upgrade dropper related
+    public GameObject upgradeDropperPrefab;
+    [HideInInspector]
     public UpgradeDropper upgradeDropper;
 
     // Stats
@@ -21,7 +24,7 @@ public class PlayerClass : MonoBehaviour
         specialAbility = GetComponent<SpecialAbility>();
         utilityAbility = GetComponent<UtilityAbility>();
 
-        upgradeDropper = gameObject.transform.GetChild(3).GetComponent<UpgradeDropper>();
+        upgradeDropper = Instantiate(upgradeDropperPrefab).GetComponent<UpgradeDropper>();
 
         // Initialises ability damages 
         increaseDamage(0);

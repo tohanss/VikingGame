@@ -9,6 +9,8 @@ public class UpgradeDropper : MonoBehaviour
 
     public void dropUpgrade()
     {
+        transform.position = GameObject.Find("Player").transform.position;
+
         Instantiate(upgradePrefab, gameObject.transform);
     }
 
