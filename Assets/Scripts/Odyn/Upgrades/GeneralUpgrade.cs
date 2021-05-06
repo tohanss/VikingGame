@@ -37,6 +37,8 @@ public class GeneralUpgrade : MonoBehaviour
                         break;
                     case 1:
                         player.increaseProjectiles(1);
+                        if (player.basicProjectileUpgrades == 5)
+                            upgradeDropper.remove(thisUpgrade);
                         break;
                     case 2:
                         player.increaseSpecialHits(1);
@@ -46,30 +48,36 @@ public class GeneralUpgrade : MonoBehaviour
                         break;
                     case 4:
                         player.setDoubleDamageInSpearRange(true);
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 5:
                         player.setCrowDotEffect(true);
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 6:
                         player.increaseAttackSpeed(1.2f);
                         break;
                     case 7:
                         player.setSpecialDotEffect(true);
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 8:
-                        player.upgradeAoeEffect();
+                        player.increaseSpecialAoE();
                         break;
                     case 9:
                         player.setUtilityDot();
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 10:
                         player.setUtilityLeech();
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 11:
                         player.increaseUtilityRange(1f);
                         break;
                     case 12:
                         player.setUtilityAttackToSides();
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     default:
                         break;

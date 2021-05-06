@@ -17,6 +17,9 @@ public class PlayerClass : MonoBehaviour
     private int playerDamage = 10;
     public float maxHealth;  //the class starting max health
 
+    // Keep track of how many upgrades have been given
+    public int basicProjectileUpgrades = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +60,7 @@ public class PlayerClass : MonoBehaviour
         specialAbility.placeDot = true;
     }
 
-    public void upgradeAoeEffect()
+    public void increaseSpecialAoE()
     {
         specialAbility.upgradeAoeEffect();
     }
