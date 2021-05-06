@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
-  m_Name: utilityCharges
+  m_Name: dashCharges
   m_EditorClassIdentifier: 
   name: Utility Charges
   description: Increase number of charges on Dash

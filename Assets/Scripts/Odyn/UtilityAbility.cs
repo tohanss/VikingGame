@@ -28,6 +28,15 @@ public class UtilityAbility : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PlayerActions playerAction;
 
+    // Upgrade related
+    public bool placeDot = false;
+    public GameObject dotPrefab;
+
+    public bool lifeLeech = false;
+
+    public bool attackToSides = false;
+    public GameObject projectilePrefab;
+    private float movementSinceAttack = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +47,7 @@ public class UtilityAbility : MonoBehaviour
         chargesLeft = maxCharges;
 
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -50,6 +60,7 @@ public class UtilityAbility : MonoBehaviour
                 playerAction.isInvulnerable = true;
                 playerAction.isActive = true;
                 playerAction.moveable = false;
+                movementSinceAttack = 0f;
                 isDashing = true;
                 dashStartPos = transform.position;
                 facingDirection = playerAction.movement.normalized;
@@ -67,8 +78,8 @@ public class UtilityAbility : MonoBehaviour
                 }
             }
         }
-
     }
+
     void FixedUpdate()
     {
         if (isDashing) 
@@ -81,6 +92,24 @@ public class UtilityAbility : MonoBehaviour
     {
         //moves the player, using rigidbody velocity. If not using velocity player will get stuck in collidables
         playerRigidBody.velocity = facingDirection * dashSpeed; 
+
+        if (attackToSides && movementSinceAttack > 1f)
+        {
+            Vector2 left = Quaternion.AngleAxis(90, Vector3.forward) * facingDirection;
+            Vector2 right = Quaternion.AngleAxis(-90, Vector3.forward) * facingDirection;
+
+            Rigidbody2D rbLeft = Instantiate(projectilePrefab, transform.position, transform.rotation).GetComponent<Rigidbody2D>();        
+            Rigidbody2D rbRight = Instantiate(projectilePrefab, transform.position, transform.rotation).GetComponent<Rigidbody2D>();
+            
+            rbLeft.velocity = left * 10f;
+            rbRight.velocity = right * 10f;
+
+            movementSinceAttack = 0f;
+        }
+        else
+        {
+            movementSinceAttack = Vector2.Distance(transform.position, dashStartPos);
+        }
         
         //Dash ends when player hits a collidable(not enemy) or has dashed the max distance
         if (Vector2.Distance(transform.position, dashStartPos) > dashDistance || hitCollidable)
@@ -106,12 +135,23 @@ public class UtilityAbility : MonoBehaviour
         {
             hitEnemy = other;
             other.GetComponent<Enemy>().takeDamage(damage);
+
+            if (lifeLeech)
+            {
+                gameObject.GetComponent<PlayerActions>().playerRestoreHealth(damage * 0.5f);
+            }
+
+            if (placeDot)
+            {
+                Instantiate(dotPrefab, other.transform);
+            }
         }
         else if (other.gameObject.CompareTag("Collidables"))
         {
             hitCollidable = true;
         }
     }
+
     //Using coroutine, works great. replenishes a dash charge after cooldown has passed
     IEnumerator replenishCharge() 
     {

@@ -11,6 +11,7 @@ public class PlayerActions : MonoBehaviour
     private PlayerClass playerClass;
     private Rigidbody2D playerRB;
     private Animator animator;
+    public GameObject damageNumbers;
 
     // Player stats
     private int level = 1;
@@ -96,6 +97,20 @@ public class PlayerActions : MonoBehaviour
         {
             die();
         }
+    }
+
+    public void playerRestoreHealth(float amount)
+    {
+        currentHealth += amount;
+
+        if (currentHealth > playerClass.maxHealth)
+        {
+            currentHealth = playerClass.maxHealth;
+        }
+
+        TextMesh damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity).transform.GetChild(0).GetComponent<TextMesh>();
+        damageNumber.color = Color.green;
+        damageNumber.text = amount.ToString();
     }
 
     //temporary death, restarts level if you died
