@@ -16,6 +16,7 @@ public class PlayerActions : MonoBehaviour
 
     // Player stats
     private int level = 1;
+    private float maxHealth;
     private float currentHealth;
     public float movespeed;
 
@@ -24,8 +25,6 @@ public class PlayerActions : MonoBehaviour
     private int requiredExp = 10;
 
     // UI related
-    //public Text favorText;
-    //public Text levelText;
     public Canvas canvas;
     private Image HPbar;
     private TMP_Text HPcurrent;
@@ -49,21 +48,26 @@ public class PlayerActions : MonoBehaviour
     // Unity functions
     private void Start() 
     {
-        //favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
-        //levelText.text = "Level: " + level.ToString();
-        HPbar = canvas.transform.GetChild(1).GetChild(1).GetComponent<Image>();
-        HPcurrent = canvas.transform.GetChild(1).GetChild(3).GetComponent<TMP_Text>();
-        HPmax = canvas.transform.GetChild(1).GetChild(5).GetComponent<TMP_Text>();
-
-        XPbar = canvas.transform.GetChild(2).GetChild(1).GetComponent<Image>();
-        XPbar.fillAmount = 0f;
-        levelText = canvas.transform.GetChild(2).GetChild(3).GetComponent<TMP_Text>();
-
         playerClass = GetComponent<PlayerClass>();
         playerRB = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
-        currentHealth = playerClass.maxHealth;
+        maxHealth = playerClass.maxHealth;
+        currentHealth = maxHealth;
+
+        // Set up UI
+        // HP related UI
+        HPbar = canvas.transform.GetChild(1).GetChild(1).GetComponent<Image>();
+        HPcurrent = canvas.transform.GetChild(1).GetChild(3).GetComponent<TMP_Text>();
+        HPmax = canvas.transform.GetChild(1).GetChild(5).GetComponent<TMP_Text>();
+        HPbar.fillAmount = 1;
+        HPmax.text = currentHealth.ToString();
+        HPcurrent.text = currentHealth.ToString();
+        // XP related
+        XPbar = canvas.transform.GetChild(2).GetChild(1).GetComponent<Image>();
+        levelText = canvas.transform.GetChild(2).GetChild(3).GetComponent<TMP_Text>();
+        XPbar.fillAmount = 0f;
+        levelText.text = "Lv. " + level;
     }
 
     private void Update()
@@ -86,7 +90,6 @@ public class PlayerActions : MonoBehaviour
         if (currentExp >= requiredExp){
             LevelUp();
         }
-        //favorText.text = "Favour: " + currentExp.ToString() + " / " + requiredExp.ToString();
     }
 
     private void LevelUp()
@@ -111,6 +114,9 @@ public class PlayerActions : MonoBehaviour
         
         Debug.Log("Damage Taken: " + damage);
         currentHealth -= damage;
+        HPcurrent.text = currentHealth.ToString();
+        HPbar.fillAmount = currentHealth / maxHealth;
+
         if (currentHealth <= 0)
         {
             die();
@@ -121,9 +127,9 @@ public class PlayerActions : MonoBehaviour
     {
         currentHealth += amount;
 
-        if (currentHealth > playerClass.maxHealth)
+        if (currentHealth > maxHealth)
         {
-            currentHealth = playerClass.maxHealth;
+            currentHealth = maxHealth;
         }
 
         TextMesh damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity).transform.GetChild(0).GetComponent<TextMesh>();
