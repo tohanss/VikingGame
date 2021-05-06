@@ -7,7 +7,7 @@ public class Boar : Enemy
     //Boar specific stats
     public float chargeSpeed;
     public float chargeDuration; //how long to keep charging
-    private float chargeDamage = 8f;
+    public float chargeDamage;
 
     // Misc
     private Vector3 targetLastPos;
@@ -15,6 +15,11 @@ public class Boar : Enemy
     private Collider2D hitPlayer;
     private bool hitCollidable = false;
 
+    protected override void Start()
+    {
+        base.Start();
+        attackCooldown = 3.0f;
+    }
     protected override void attack()
     {
         if (!isAttacking)

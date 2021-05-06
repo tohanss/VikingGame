@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     // Cooldown related
     protected float lastTime = 0;
-    protected float attackCooldown = 3.0f;
+    protected float attackCooldown;
     protected float lastAttackStartTime;
     private float knockBackCooldown = 1f;
     [HideInInspector]
@@ -26,17 +26,17 @@ public class Enemy : MonoBehaviour
     public Transform target;
     public float aggroRange;
     public float attackRange;
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
     private bool aggravated = false; //true if taken damage
     protected bool isAttacking = false;
 
     // Misc
     public GameObject damageNumbers;
-    private Animator animator;
+    protected Animator animator;
     private float knockBackForce = 10f;
     public HealthBar hpBar;
 
-    private void Start()
+    protected virtual void Start()
     {
         health = maxHealth;
         canBeKnockedBack = true;
@@ -55,20 +55,18 @@ public class Enemy : MonoBehaviour
         {
             facePlayer();
         }
-
     }
 
     private void FixedUpdate()
     {
         animator.SetBool("running", false);
-        if (Vector2.Distance(transform.position, target.position) > attackRange)
+        if (Vector2.Distance(transform.position, target.position) > attackRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
         {
             move();
         }
         if (!isAttacking && Vector2.Distance(transform.position, target.position) <= attackRange && Time.time - lastTime > attackCooldown)
         {
-            animator.SetTrigger("attack");
-            //attack is triggered by animation
+            animator.SetTrigger("attack"); //attack is triggered by animation
         } 
         if (isAttacking)
         {
@@ -93,7 +91,7 @@ public class Enemy : MonoBehaviour
         //does nothing now. For future cases.
     }
 
-    protected void facePlayer() 
+    protected virtual void facePlayer() 
     {
         //Enemy faces player by fliping the sprite
         if ((aggravated || Vector2.Distance(transform.position, target.position) <= aggroRange) && transform.position.x < target.position.x)
