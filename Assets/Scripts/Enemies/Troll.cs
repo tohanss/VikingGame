@@ -1,50 +1,55 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Troll : Enemy
 {
     //Troll specific stats
-    private float slamDamage;
+    public float slamDamage;
+    public GameObject slamPrefab;
+    private TrollSlamAttack trollSlamAttack;
+
     // Misc
-    private Vector3 targetLastPos;
-    private Vector3 direction;
+    private ParticleSystem particleSystem;
+    public Transform attackPoint;
 
     protected override void Start()
     {
         base.Start();
-        attackCooldown = 2.0f;
+        particleSystem = slamPrefab.GetComponent<ParticleSystem>();
+        var shape = particleSystem.shape;
+        shape.radius = attackRange;
+
+        trollSlamAttack = slamPrefab.GetComponent<TrollSlamAttack>();
+
+        attackCooldown = 3.0f;
+        setDamage(slamDamage); //set damage for slamPrefab
     }
+
     protected override void attack()
     {
-        if (!isAttacking)
+        if (spriteRenderer.flipX)
         {
-            targetLastPos = target.position; 
-            direction = (targetLastPos - transform.position).normalized;
-            lastAttackStartTime = Time.time;
-
+            attackPoint.localPosition = Vector2.right;
         }
+        else
+        {
+            attackPoint.localPosition = Vector2.left;
+        }
+
+        //if cooldown has passed, do slam attack
         if (Time.time - lastTime > attackCooldown)
         {
-            isAttacking = true;
+            Instantiate(slamPrefab, attackPoint.position, attackPoint.rotation);
+            lastTime = Time.time;
+            animator.ResetTrigger("attack");
         }
-        else 
-        {
-            isAttacking = false;
-
-        }
-
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void setDamage(float slamDamage)
     {
-        if (other.gameObject.CompareTag("Player") && isAttacking)
-        {
-            if (!other.GetComponent<PlayerActions>().isInvulnerable) //only do damage if player is not invulnerable
-            {
-                other.GetComponent<PlayerActions>().playerTakeDamage(slamDamage);
-            }
-        }
+        trollSlamAttack.setDamage(slamDamage);
     }
+
 
 }
