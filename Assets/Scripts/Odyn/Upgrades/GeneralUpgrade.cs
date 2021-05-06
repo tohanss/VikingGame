@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class GeneralUpgrade : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class GeneralUpgrade : MonoBehaviour
         thisUpgrade = upgrades[upgradeID];
         toolTip.transform.GetChild(1).GetComponent<TextMeshPro>().SetText(thisUpgrade.description, true);
         GetComponent<Animator>().runtimeAnimatorController = thisUpgrade.animator;
+        StartCoroutine(decreaseLight());
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -94,6 +96,22 @@ public class GeneralUpgrade : MonoBehaviour
         if (collidedWith.tag == "Player")
         {
             toolTip.SetActive(false);
+        }
+    }
+
+    IEnumerator decreaseLight()
+    {
+        UnityEngine.Experimental.Rendering.Universal.Light2D light = transform.GetChild(1).GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
+        yield return new WaitForSeconds(0.2f);
+        while (true)
+        {
+            yield return new WaitForSeconds(0.05f);
+            light.intensity -= 1;
+            Debug.Log("inne");
+            if (light.intensity < 2)
+            {
+                break;
+            }
         }
     }
 }
