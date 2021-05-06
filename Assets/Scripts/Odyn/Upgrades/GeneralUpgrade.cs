@@ -6,17 +6,17 @@ using TMPro;
 public class GeneralUpgrade : MonoBehaviour
 {
     private GameObject toolTip;
-    public Upgrade[] upgrades;
     private Upgrade thisUpgrade;
+    private UpgradeDropper upgradeDropper;
     
-
     private void Start()
     {
+        upgradeDropper = gameObject.transform.parent.GetComponent<UpgradeDropper>(); 
+
         toolTip = gameObject.transform.GetChild(0).gameObject;
         // min is incluseive, max is exclusive
         // picks a random upgrade for this instance from the list upgrades
-        int upgradeID = Random.Range(0, upgrades.Length);
-        thisUpgrade = upgrades[12];
+        thisUpgrade = upgradeDropper.upgrades[Random.Range(0, upgradeDropper.upgrades.Count)];
         toolTip.transform.GetChild(1).GetComponent<TextMeshPro>().SetText(thisUpgrade.description, true);
     }
 
@@ -33,6 +33,7 @@ public class GeneralUpgrade : MonoBehaviour
                 {
                     case 0:
                         player.setPierce(true);
+                        upgradeDropper.remove(thisUpgrade);
                         break;
                     case 1:
                         player.increaseProjectiles(1);

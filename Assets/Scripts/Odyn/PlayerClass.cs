@@ -8,7 +8,7 @@ public class PlayerClass : MonoBehaviour
     private SpecialAbility specialAbility;
     private UtilityAbility utilityAbility;
 
-    public GameObject upgrade;
+    public UpgradeDropper upgradeDropper;
 
     // Stats
     private int playerDamage = 10;
@@ -20,6 +20,8 @@ public class PlayerClass : MonoBehaviour
         basicAbility = GetComponent<BasicAbility>();
         specialAbility = GetComponent<SpecialAbility>();
         utilityAbility = GetComponent<UtilityAbility>();
+
+        upgradeDropper = gameObject.transform.GetChild(3).GetComponent<UpgradeDropper>();
 
         // Initialises ability damages 
         increaseDamage(0);
@@ -107,6 +109,6 @@ public class PlayerClass : MonoBehaviour
     {
         float angle = Random.Range(0f, 2f * Mathf.PI);
         Vector3 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        Instantiate(upgrade, transform.position + offset, transform.rotation);
+        upgradeDropper.dropUpgrade();
     }
 }
