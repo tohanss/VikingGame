@@ -556,12 +556,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!223 &478797432 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 7029687515420745690, guid: cac0e74188fd1f540af8f19f229527dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 7029687515697180907}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &551744409 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7571023224850178584, guid: 671e38b92bb5c4743b7f954de4945d9c,
@@ -1313,10 +1307,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 853745823, guid: 5a0643e3bc3ec9b488b52505cfcc01d8, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 478797432}
     - target: {fileID: 853745823, guid: 5a0643e3bc3ec9b488b52505cfcc01d8, type: 3}
       propertyPath: favorText
       value: 

@@ -10,5 +10,4 @@ public class Upgrade : ScriptableObject
     //public Sprite sprite;
 
     public int upgradeID;
-    public RuntimeAnimatorController animator;
 }

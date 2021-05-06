@@ -15,4 +15,3 @@ MonoBehaviour:
   name: Pierce
   description: Crows pierce enemies
   upgradeID: 0
-  animator: {fileID: 9100000, guid: ae2148539bf410f48b336d7deeb04345, type: 2}
