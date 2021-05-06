@@ -1315,6 +1315,12 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 460918986}
+    - target: {fileID: 2991887067098795626, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
+        type: 3}
+      propertyPath: upgradeDropperPrefab
+      value: 
+      objectReference: {fileID: 8533044298107271860, guid: b5f224df8301789438856a2a4cdde192,
+        type: 3}
     - target: {fileID: 8754151747819239470, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
         type: 3}
       propertyPath: m_RootOrder
