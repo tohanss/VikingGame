@@ -126,7 +126,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: troll01-walking_0
+  m_Name: troll
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: running
@@ -289,7 +289,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: troll-idle
+  m_Name: idle
   m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
