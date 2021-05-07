@@ -30,24 +30,30 @@ public class Enemy : MonoBehaviour
     protected bool isAttacking = false;
 
     // Material related
-    public Material matWhite;
+    protected Material matWhite;
+    protected Material matDeath;
     protected Material matDefault;
     protected SpriteRenderer spriteRenderer;
+    protected Material activeMaterial;
 
     // Misc
+    protected Rigidbody2D rigidbody;
     public GameObject damageNumbers;
     protected Animator animator;
     private float knockBackForce = 10f;
     public HealthBar hpBar;
-
+    protected bool isAlive;
     protected virtual void Start()
     {
         health = maxHealth;
         canBeKnockedBack = true;
-
+        isAlive = true;
+        rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
         animator = transform.GetComponent<Animator>();
+        activeMaterial = transform.GetComponent<Material>();
         matWhite = Resources.Load("Materials/White-Flash", typeof(Material)) as Material;
+        matDeath = Resources.Load("Materials/Dissolve", typeof(Material)) as Material;
         matDefault = spriteRenderer.material;
 
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
@@ -57,7 +63,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (!isAttacking) 
+        if (!isAttacking && isAlive) 
         {
             facePlayer();
         }
@@ -66,18 +72,22 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         animator.SetBool("running", false);
-        if (Vector2.Distance(transform.position, target.position) > attackRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+        if (Vector2.Distance(transform.position, target.position) > attackRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && isAlive)
         {
             move();
         }
-        if (!isAttacking && Vector2.Distance(transform.position, target.position) <= attackRange && Time.time - lastTime > attackCooldown)
+        if (!isAttacking && Vector2.Distance(transform.position, target.position) <= attackRange && Time.time - lastTime > attackCooldown && isAlive)
         {
             animator.SetTrigger("attack"); //attack is triggered by animation
         } 
-        if (isAttacking)
+        if (isAttacking && isAlive)
         {
             animator.ResetTrigger("attack");
             attack();
+        }
+        if (!isAlive) 
+        {
+            animator.Play("idle");
         }
     }
 
@@ -122,18 +132,15 @@ public class Enemy : MonoBehaviour
         // hpBar.SetHealth(health, maxHealth);
         if (health <= 0)
         {
-            die();
+            isAlive = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+            rigidbody.velocity = Vector2.zero;
+            StartCoroutine(die());
         }
         else 
         {
             Invoke("resetMat", 0.1f);
         }
-    }
-
-    protected virtual void die() 
-    {
-        playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
-        Destroy(gameObject);
     }
 
     //handles cooldown for knockback
@@ -148,7 +155,7 @@ public class Enemy : MonoBehaviour
     {
         Vector2 direction = knockBackDirection;
         Vector2 force = direction * knockBackForce;
-        GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+        rigidbody.AddForce(force, ForceMode2D.Impulse);
         canBeKnockedBack = false;
         StartCoroutine(knockbackTimer());
     }
@@ -157,6 +164,19 @@ public class Enemy : MonoBehaviour
     private void resetMat() 
     {
         spriteRenderer.material = matDefault;
+    }
+
+    private IEnumerator die()
+    {
+        playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
+        spriteRenderer.material = matDeath;
+        float ticks = 10f;
+        for (int i = 1; i < ticks+1; i++)
+        {
+            spriteRenderer.material.SetFloat("_Fade", 1-i/ticks);
+            yield return new WaitForSeconds(0.08f);
+        }
+        Destroy(gameObject);
     }
 
 }

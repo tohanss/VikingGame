@@ -28,6 +28,10 @@ public class HealthBar : MonoBehaviour
         {
             showHPBar = true;
         }
+        if (slider.value <= 0) 
+        {
+            showHPBar = false; //turn off HP bar if health is zero or less
+        }
         fill.color = gradient.Evaluate(slider.normalizedValue);
         hpBarCanvas.SetActive(showHPBar);
     }
