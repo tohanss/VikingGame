@@ -7,11 +7,11 @@ public class UpgradeDropper : MonoBehaviour
     public List<Upgrade> upgrades;
     public GeneralUpgrade upgradePrefab;
 
-    public void dropUpgrade()
+    public void dropUpgrade(Vector2 offset)
     {
-        transform.position = GameObject.Find("Player").transform.position;
+        Vector2 spawnPosition = GameObject.Find("Player").transform.position;
 
-        Instantiate(upgradePrefab, gameObject.transform);
+        Instantiate(upgradePrefab, spawnPosition + offset, Quaternion.identity);
     }
 
     public void remove(Upgrade upgrade)

@@ -114,8 +114,6 @@ public class PlayerClass : MonoBehaviour
 
     public void dropUpgrade(int level)
     {
-        float angle = Random.Range(0f, 2f * Mathf.PI);
-        Vector3 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        upgradeDropper.dropUpgrade();
+        upgradeDropper.dropUpgrade(Random.insideUnitCircle.normalized * 2);
     }
 }

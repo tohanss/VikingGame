@@ -12,7 +12,7 @@ public class GeneralUpgrade : MonoBehaviour
     
     private void Start()
     {
-        upgradeDropper = gameObject.transform.parent.GetComponent<UpgradeDropper>(); 
+        upgradeDropper = GameObject.Find("UpgradeDropper(Clone)").GetComponent<UpgradeDropper>(); 
 
         toolTip = gameObject.transform.GetChild(0).gameObject;
         // min is incluseive, max is exclusive
