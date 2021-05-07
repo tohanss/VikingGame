@@ -26,9 +26,13 @@ public class Enemy : MonoBehaviour
     public Transform target;
     public float aggroRange;
     public float attackRange;
-    protected SpriteRenderer spriteRenderer;
     private bool aggravated = false; //true if taken damage
     protected bool isAttacking = false;
+
+    // Material related
+    public Material matWhite;
+    protected Material matDefault;
+    protected SpriteRenderer spriteRenderer;
 
     // Misc
     public GameObject damageNumbers;
@@ -43,6 +47,8 @@ public class Enemy : MonoBehaviour
 
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
         animator = transform.GetComponent<Animator>();
+        matWhite = Resources.Load("Materials/White-Flash", typeof(Material)) as Material;
+        matDefault = spriteRenderer.material;
 
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         target = playerCharacter.GetComponent<Transform>();
@@ -111,11 +117,16 @@ public class Enemy : MonoBehaviour
 
         aggravated = true;
         health -= damage;
+        spriteRenderer.material = matWhite;
         hpBar.SetHealth(health);
         // hpBar.SetHealth(health, maxHealth);
         if (health <= 0)
         {
             die();
+        }
+        else 
+        {
+            Invoke("resetMat", 0.1f);
         }
     }
 
@@ -140,6 +151,12 @@ public class Enemy : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
         canBeKnockedBack = false;
         StartCoroutine(knockbackTimer());
+    }
+
+    //Resets the material to default
+    private void resetMat() 
+    {
+        spriteRenderer.material = matDefault;
     }
 
 }
