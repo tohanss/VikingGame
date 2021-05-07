@@ -32,6 +32,10 @@ public class PlayerActions : MonoBehaviour
     private Image XPbar;
     private TMP_Text levelText;
 
+    // Material related
+    private Material matWhenHit;
+    private Material matDefault;
+
     // Hidden variables in inspector
     [HideInInspector]
     public bool isActive = false;
@@ -54,7 +58,9 @@ public class PlayerActions : MonoBehaviour
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
         maxHealth = playerClass.maxHealth;
         currentHealth = maxHealth;
-
+        // Set up Material
+        matWhenHit = Resources.Load("Materials/Player-Flash", typeof(Material)) as Material;
+        matDefault = spriteRenderer.material;
         // Set up UI
         // HP related UI
         HPbar = canvas.transform.GetChild(1).GetChild(1).GetComponent<Image>();
@@ -114,6 +120,8 @@ public class PlayerActions : MonoBehaviour
         
         Debug.Log("Damage Taken: " + damage);
         currentHealth -= damage;
+        StopCoroutine(playerFlash());
+        StartCoroutine(playerFlash());
         HPcurrent.text = currentHealth.ToString();
         HPbar.fillAmount = currentHealth / maxHealth;
 
@@ -171,5 +179,17 @@ public class PlayerActions : MonoBehaviour
             playerRB.MovePosition(playerRB.position + movement.normalized * movespeed * Time.fixedDeltaTime);
         }
         animator.SetFloat("Speed", (movement.normalized * movespeed * Time.fixedDeltaTime).magnitude * Convert.ToInt32(moveable));
+    }
+
+    //handles the player flashing when taking damage
+    private IEnumerator playerFlash()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            spriteRenderer.material = matWhenHit;
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.material = matDefault;
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
