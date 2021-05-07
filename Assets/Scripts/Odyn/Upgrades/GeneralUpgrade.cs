@@ -116,7 +116,6 @@ public class GeneralUpgrade : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
             light.intensity -= 1;
-            Debug.Log("inne");
             if (light.intensity < 2)
             {
                 break;
