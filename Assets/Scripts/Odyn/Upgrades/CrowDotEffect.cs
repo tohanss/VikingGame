@@ -29,7 +29,7 @@ public class CrowDotEffect : MonoBehaviour
             timeSinceTick = 0;
             ticksDone += 1;
 
-            if (ticksDone == tickTotal)
+            if (ticksDone == tickTotal || !parent.isAlive)
             {
                 Destroy(gameObject);
             }

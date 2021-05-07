@@ -42,7 +42,8 @@ public class Enemy : MonoBehaviour
     protected Animator animator;
     private float knockBackForce = 10f;
     public HealthBar hpBar;
-    protected bool isAlive;
+    [HideInInspector]
+    public bool isAlive;
     protected virtual void Start()
     {
         health = maxHealth;
