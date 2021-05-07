@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour
     protected Material matDeath;
     protected Material matDefault;
     protected SpriteRenderer spriteRenderer;
-    protected Material activeMaterial;
 
     // Misc
     protected Rigidbody2D rigidbody;
@@ -52,7 +51,6 @@ public class Enemy : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
         animator = transform.GetComponent<Animator>();
-        activeMaterial = transform.GetComponent<Material>();
         matWhite = Resources.Load("Materials/White-Flash", typeof(Material)) as Material;
         matDeath = Resources.Load("Materials/Dissolve", typeof(Material)) as Material;
         matDefault = spriteRenderer.material;

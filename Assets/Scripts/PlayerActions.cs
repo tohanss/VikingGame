@@ -35,6 +35,7 @@ public class PlayerActions : MonoBehaviour
     // Material related
     private Material matWhenHit;
     private Material matDefault;
+    private Material matDeath;
 
     // Hidden variables in inspector
     [HideInInspector]
@@ -60,6 +61,7 @@ public class PlayerActions : MonoBehaviour
         currentHealth = maxHealth;
         // Set up Material
         matWhenHit = Resources.Load("Materials/Player-Flash", typeof(Material)) as Material;
+        matDeath = Resources.Load("Materials/Dissolve", typeof(Material)) as Material;
         matDefault = spriteRenderer.material;
         // Set up UI
         // HP related UI
@@ -120,14 +122,27 @@ public class PlayerActions : MonoBehaviour
         
         Debug.Log("Damage Taken: " + damage);
         currentHealth -= damage;
-        StopCoroutine(playerFlash());
-        StartCoroutine(playerFlash());
+
+
+        if (currentHealth < 0) 
+        {
+            currentHealth = 0; //stops UI from displaying negative HP
+        }
         HPcurrent.text = currentHealth.ToString();
         HPbar.fillAmount = currentHealth / maxHealth;
 
         if (currentHealth <= 0)
         {
-            die();
+            moveable = false;
+            isActive = true; //stops player from attacking when death effect is playing
+            playerRB.velocity = Vector2.zero;
+            GetComponent<BoxCollider2D>().enabled = false;
+            StartCoroutine(die());
+        }
+        else 
+        {
+            StopCoroutine(playerFlash());
+            StartCoroutine(playerFlash());
         }
     }
 
@@ -147,11 +162,18 @@ public class PlayerActions : MonoBehaviour
         damageNumber.text = amount.ToString();
     }
 
-    //temporary death, restarts level if you died
-    private void die()
+    //Handle player death
+    private IEnumerator die()
     {
+        spriteRenderer.material = matDeath;
+        float ticks = 10f;
+        for (int i = 1; i < ticks + 1; i++)
+        {
+            spriteRenderer.material.SetFloat("_Fade", 1 - i / ticks);
+            yield return new WaitForSeconds(0.2f);
+        }
         Debug.Log("You Died");
-        Debug.Log("Restarting Level");
+        yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //restart to current scene
 
     }
@@ -186,10 +208,19 @@ public class PlayerActions : MonoBehaviour
     //handles the player flashing when taking damage
     private IEnumerator playerFlash()
     {
+        
         for(int i = 0; i < 3; i++)
         {
+            if (currentHealth <= 0)
+            {
+                yield break; //having this fixes bug where death effect doesen't play if killed by simultaneous attacks
+            }
             spriteRenderer.material = matWhenHit;
             yield return new WaitForSeconds(0.1f);
+            if (currentHealth <= 0)
+            {
+                yield break;
+            }
             spriteRenderer.material = matDefault;
             yield return new WaitForSeconds(0.1f);
         }
