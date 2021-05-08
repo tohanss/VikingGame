@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2313367200994525955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2313367199754985984}
@@ -76,6 +76,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfEnemies: {fileID: 2313367199754985987}
+  boar: {fileID: 0}
+  troll: {fileID: 0}
+  elf: {fileID: 0}
+  enemyPortals: []
+  waves: []
 --- !u!114 &2313367200994525952
 MonoBehaviour:
   m_ObjectHideFlags: 0

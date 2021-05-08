@@ -168,6 +168,8 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator die()
     {
+        isAlive = false;
+        //transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
         spriteRenderer.material = matDeath;
         float ticks = 10f;
@@ -178,5 +180,4 @@ public class Enemy : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
 }
