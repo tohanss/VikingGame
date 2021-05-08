@@ -36,6 +36,9 @@ public class SpecialAbility : MonoBehaviour
     public bool areaOfEffect;
     public float aoeRadius = 1f;
 
+    //Misc
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,7 @@ public class SpecialAbility : MonoBehaviour
         oldPos = transform.position;
         playerCollider = GetComponent<BoxCollider2D>();
         playerAction = GetComponent<PlayerActions>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -121,6 +125,8 @@ public class SpecialAbility : MonoBehaviour
             Quaternion slashRotation = closest.transform.rotation * Quaternion.Euler(new Vector3(0, 0, Random.Range(-180, 180)));
             Instantiate(slash, closest.transform.position, slashRotation);
             closest.GetComponent<Enemy>().takeDamage(damage);
+
+            animator.SetTrigger("Special");
 
             // Place dot if upgraded
             if (placeDot)
