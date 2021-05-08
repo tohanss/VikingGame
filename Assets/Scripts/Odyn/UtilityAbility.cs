@@ -23,11 +23,13 @@ public class UtilityAbility : MonoBehaviour
     private bool isDashing = false;
     private bool hitCollidable = false;
 
-    // Misc related
+    // Misc
     private Rigidbody2D playerRigidBody;
     private SpriteRenderer spriteRenderer;
     private PlayerActions playerAction;
     private Animator animator;
+    public GameObject trail;
+    private GameObject activeTrail;
 
     // Upgrade related
     public bool placeDot = false;
@@ -80,6 +82,7 @@ public class UtilityAbility : MonoBehaviour
                         facingDirection = Vector2.left;
                     }
                 }
+                //Play the appropriate animation
                 if (0 == Vector3.Dot( facingDirection, Vector3.right))
                 {
                         if(facingDirection == Vector2.up)
@@ -95,6 +98,13 @@ public class UtilityAbility : MonoBehaviour
                 {
                     animator.SetTrigger("UtilityRight");
                 }
+                // give the player a trail
+                activeTrail = Instantiate(trail, gameObject.transform);
+                activeTrail.transform.localPosition += Vector3.up * 0.6f;
+                if(spriteRenderer.flipX == false)
+                {
+                    activeTrail.transform.localPosition += Vector3.right * 0.09f;
+                } else activeTrail.transform.localPosition += Vector3.left * 0.09f;
             }
         }
     }
@@ -111,6 +121,7 @@ public class UtilityAbility : MonoBehaviour
     {
         //moves the player, using rigidbody velocity. If not using velocity player will get stuck in collidables
         playerRigidBody.velocity = facingDirection * dashSpeed;
+        // Adjust the animation length accordingly
         animator.SetFloat("DashSpeed", 0.05f / (playerRigidBody.velocity.magnitude * Time.deltaTime * dashDistance * Time.deltaTime));
 
         if (attackToSides && movementSinceAttack > 1f)
@@ -145,6 +156,7 @@ public class UtilityAbility : MonoBehaviour
             playerAction.isActive = false;
             hitCollidable = false;
             hitEnemy = null;
+            Destroy(activeTrail, 0.1f);
         }
     }
 
