@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     // Aggro related
     public Transform target;
     public float aggroRange;
+    [Tooltip("This parameter doesn't change attack range for the troll")]
     public float attackRange;
     private bool aggravated = false; //true if taken damage
     protected bool isAttacking = false;
@@ -36,7 +37,7 @@ public class Enemy : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
 
     // Misc
-    protected Rigidbody2D rigidbody;
+    protected Rigidbody2D enemyRigidbody;
     public GameObject damageNumbers;
     protected Animator animator;
     private float knockBackForce = 10f;
@@ -48,7 +49,7 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
         canBeKnockedBack = true;
         isAlive = true;
-        rigidbody = GetComponent<Rigidbody2D>();
+        enemyRigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
         animator = transform.GetComponent<Animator>();
         matWhite = Resources.Load("Materials/White-Flash", typeof(Material)) as Material;
@@ -133,7 +134,7 @@ public class Enemy : MonoBehaviour
         {
             isAlive = false;
             GetComponent<BoxCollider2D>().enabled = false;
-            rigidbody.velocity = Vector2.zero;
+            enemyRigidbody.velocity = Vector2.zero;
             StartCoroutine(die());
         }
         else 
@@ -154,7 +155,7 @@ public class Enemy : MonoBehaviour
     {
         Vector2 direction = knockBackDirection;
         Vector2 force = direction * knockBackForce;
-        rigidbody.AddForce(force, ForceMode2D.Impulse);
+        enemyRigidbody.AddForce(force, ForceMode2D.Impulse);
         canBeKnockedBack = false;
         StartCoroutine(knockbackTimer());
     }
