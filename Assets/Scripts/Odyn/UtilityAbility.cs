@@ -27,6 +27,7 @@ public class UtilityAbility : MonoBehaviour
     private Rigidbody2D playerRigidBody;
     private SpriteRenderer spriteRenderer;
     private PlayerActions playerAction;
+    private Animator animator;
 
     // Upgrade related
     public bool placeDot = false;
@@ -44,6 +45,7 @@ public class UtilityAbility : MonoBehaviour
         playerRigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerAction = GetComponent<PlayerActions>();
+        animator = GetComponent<Animator>();
         chargesLeft = maxCharges;
 
     }
@@ -53,9 +55,11 @@ public class UtilityAbility : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing && !playerAction.isActive)
         {
-            if (chargesLeft > 0) 
+            if (chargesLeft > 0)
             {
+                
                 chargesLeft--; //use one charge per dash
+                Debug.Log(chargesLeft);
                 StartCoroutine(replenishCharge()); //replenish a charge after a cooldown
                 playerAction.isInvulnerable = true;
                 playerAction.isActive = true;
@@ -76,6 +80,21 @@ public class UtilityAbility : MonoBehaviour
                         facingDirection = Vector2.left;
                     }
                 }
+                if (0 == Vector3.Dot( facingDirection, Vector3.right))
+                {
+                        if(facingDirection == Vector2.up)
+                        {
+                            animator.SetTrigger("UtilityUp");
+                        }
+                        else
+                        {
+                            animator.SetTrigger("UtilityDown");
+                        }
+                }
+                else
+                {
+                    animator.SetTrigger("UtilityRight");
+                }
             }
         }
     }
@@ -91,7 +110,8 @@ public class UtilityAbility : MonoBehaviour
     private void dash() 
     {
         //moves the player, using rigidbody velocity. If not using velocity player will get stuck in collidables
-        playerRigidBody.velocity = facingDirection * dashSpeed; 
+        playerRigidBody.velocity = facingDirection * dashSpeed;
+        animator.SetFloat("DashSpeed", 0.05f / (playerRigidBody.velocity.magnitude * Time.deltaTime * dashDistance * Time.deltaTime));
 
         if (attackToSides && movementSinceAttack > 1f)
         {
@@ -114,6 +134,10 @@ public class UtilityAbility : MonoBehaviour
         //Dash ends when player hits a collidable(not enemy) or has dashed the max distance
         if (Vector2.Distance(transform.position, dashStartPos) > dashDistance || hitCollidable)
         {
+            if (hitCollidable)
+            {
+                animator.Play("player-idle");
+            }
             playerRigidBody.velocity = Vector2.zero;
             isDashing = false;
             playerAction.moveable = true;
