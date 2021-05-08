@@ -11,6 +11,8 @@ public class RoomManager : MonoBehaviour
     private int NumberOfEnemies;
     [Tooltip("The parent to all enemies that are in the room from the start")]
     [SerializeField] private GameObject listOfEnemies;
+    public Transform[] enemyPortals;
+    public Transform enemy;
 
     // Event related
     public event EventHandler OnStartingEnemiesDead;
@@ -52,11 +54,25 @@ public class RoomManager : MonoBehaviour
         {
             OnStartingEnemiesDead?.Invoke(this, EventArgs.Empty);
         }
+
+        if (state == State.WaveActive && NumberOfEnemies != 4) 
+        {
+            spawnEnemy(enemy);
+            
+        }
     }
     private void startWaveBattle()
     {
         Debug.Log("Starting Waves");
         state = State.WaveActive;
         OnBattleStarted?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void spawnEnemy(Transform _enemy)
+    {
+        Transform spawnPoint = enemyPortals[UnityEngine.Random.Range(0, enemyPortals.Length)];
+        Debug.Log(UnityEngine.Random.insideUnitCircle);
+        Instantiate(_enemy, spawnPoint.position + (Vector3)UnityEngine.Random.insideUnitCircle*1.5f, Quaternion.identity);
+        NumberOfEnemies++;
     }
 }
