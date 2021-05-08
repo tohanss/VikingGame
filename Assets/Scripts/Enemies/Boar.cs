@@ -33,13 +33,13 @@ public class Boar : Enemy
         if (Time.time - lastTime > attackCooldown)
         {
             isAttacking = true;
-            rigidbody.velocity = direction * chargeSpeed; 
+            enemyRigidbody.velocity = direction * chargeSpeed; 
 
         }
         //Stop charge attack when a certain ammount of time has passed
         if (Time.time - lastAttackStartTime >= chargeDuration || hitCollidable)
         {
-            rigidbody.velocity = Vector2.zero;
+            enemyRigidbody.velocity = Vector2.zero;
             lastTime = Time.time;
             isAttacking = false;
             hitCollidable = false;
