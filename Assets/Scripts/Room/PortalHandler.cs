@@ -29,6 +29,8 @@ public class PortalHandler : MonoBehaviour
     {
         //Open transition Portal so the player can go to the next room
         Debug.Log("Exit Portal Open");
+        portalExit.GetComponent<SpriteRenderer>().color = Color.blue;
+        portalExit.transform.GetChild(0).gameObject.SetActive(true);
         roomManager.OnBattleOver -= RoomManager_OnBattleOver;
 
     }
