@@ -270,7 +270,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &8754151747819239469
@@ -315,7 +315,6 @@ MonoBehaviour:
     type: 3}
   movespeed: 5
   canvas: {fileID: 0}
-  XPbar: {fileID: 0}
   isActive: 0
   isInvulnerable: 0
   moveable: 1
