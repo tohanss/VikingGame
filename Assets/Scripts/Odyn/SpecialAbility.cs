@@ -7,9 +7,9 @@ public class SpecialAbility : MonoBehaviour
     // Damage related
     private float damage;
     public float dmgMultiplier = 0.5f;
-    public int numberOfHits = 3;
-
+    
     // Cooldown related
+    public int numberOfHits;
     public float delay;
     private float timeSinceJump = 0f;
     private float cooldown = 0;
@@ -29,6 +29,16 @@ public class SpecialAbility : MonoBehaviour
 
     public GameObject slash;
 
+    // Upgrade related
+    public GameObject dotPrefab;
+    public bool placeDot;
+
+    public bool areaOfEffect;
+    public float aoeRadius = 1f;
+
+    //Misc
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +46,7 @@ public class SpecialAbility : MonoBehaviour
         oldPos = transform.position;
         playerCollider = GetComponent<BoxCollider2D>();
         playerAction = GetComponent<PlayerActions>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,7 +54,6 @@ public class SpecialAbility : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && !attacking && !playerAction.isActive)
         {
-            
             mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 distVector = mousePoint - getPlayerPos();
             
@@ -115,6 +125,29 @@ public class SpecialAbility : MonoBehaviour
             Quaternion slashRotation = closest.transform.rotation * Quaternion.Euler(new Vector3(0, 0, Random.Range(-180, 180)));
             Instantiate(slash, closest.transform.position, slashRotation);
             closest.GetComponent<Enemy>().takeDamage(damage);
+
+            animator.SetTrigger("Special");
+
+            // Place dot if upgraded
+            if (placeDot)
+            {
+                Instantiate(dotPrefab, closest.transform);
+            }
+
+            // Deal AoE damage to nearby enemies if upgraded.
+            if (areaOfEffect)
+            {
+                Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(closest.transform.position, aoeRadius, enemyLayer);
+
+                foreach (var nearby in nearbyEnemies)
+                {
+                    if (nearby.gameObject.GetInstanceID() != closest.GetInstanceID())
+                    {
+                        nearby.GetComponent<Enemy>().takeDamage(damage * 0.5f);
+                    }
+                }
+            }
+            
             hitsMade++;
         }
         else
@@ -143,6 +176,12 @@ public class SpecialAbility : MonoBehaviour
 
     public void setDamage(int damage){
         this.damage = damage * dmgMultiplier;
+    }
+    
+    public void upgradeAoeEffect()
+    {
+        aoeRadius += 0.5f;
+        areaOfEffect = true;
     }
 
     private Vector2 getPlayerPos(){

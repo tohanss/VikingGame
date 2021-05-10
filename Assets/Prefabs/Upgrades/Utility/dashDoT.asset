@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
+  m_Name: dashDoT
+  m_EditorClassIdentifier: 
+  name: Apply Dot
+  description: Attach a damaging crow to enemies
+  upgradeID: 9
+  animator: {fileID: 9100000, guid: 0ce68d07d3b9d5c4b8b661b950e2e687, type: 2}

@@ -19,7 +19,7 @@ TagManager:
   - Enemy
   - PlayerFeet
   - EnemyFeet
-  - 
+  - TrollFeet
   - 
   - 
   - 
@@ -43,14 +43,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: ground
+  - name: Ground
     uniqueID: 2249672465
     locked: 0
-  - name: plants
+  - name: Plants
     uniqueID: 4242480779
     locked: 0
-  - name: characters
+  - name: Characters
     uniqueID: 1287051063
+    locked: 0
+  - name: Character Effects
+    uniqueID: 1273590413
     locked: 0
   - name: UI
     uniqueID: 681945093

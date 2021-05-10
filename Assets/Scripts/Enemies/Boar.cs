@@ -7,13 +7,19 @@ public class Boar : Enemy
     //Boar specific stats
     public float chargeSpeed;
     public float chargeDuration; //how long to keep charging
-    private float chargeDamage = 8f;
+    public float chargeDamage;
 
     // Misc
     private Vector3 targetLastPos;
     private Vector3 direction;
     private Collider2D hitPlayer;
+    private bool hitCollidable = false;
 
+    protected override void Start()
+    {
+        base.Start();
+        attackCooldown = 3.0f;
+    }
     protected override void attack()
     {
         if (!isAttacking)
@@ -27,20 +33,22 @@ public class Boar : Enemy
         if (Time.time - lastTime > attackCooldown)
         {
             isAttacking = true;
-            transform.position = Vector2.MoveTowards(transform.position, transform.position + direction, chargeSpeed * Time.deltaTime);       
+            enemyRigidbody.velocity = direction * chargeSpeed; 
 
         }
         //Stop charge attack when a certain ammount of time has passed
-        if (Time.time - lastAttackStartTime >= chargeDuration)
+        if (Time.time - lastAttackStartTime >= chargeDuration || hitCollidable)
         {
+            enemyRigidbody.velocity = Vector2.zero;
             lastTime = Time.time;
             isAttacking = false;
+            hitCollidable = false;
             hitPlayer = null;
         }
     }
     //Handles player taking damage and player can't get hit more than once per attack
     private void OnTriggerEnter2D(Collider2D other)
-    {   
+    {
         if (other.gameObject.CompareTag("Player") && isAttacking && !(hitPlayer == other))
         {
             hitPlayer = other;
@@ -49,6 +57,10 @@ public class Boar : Enemy
                 other.GetComponent<PlayerActions>().playerTakeDamage(chargeDamage);
             }
 
+        }
+        else if (other.gameObject.CompareTag("Collidables")) //stop the charge attack if boar hit a collidable
+        {
+            hitCollidable = true;
         }
     }
 

@@ -14,7 +14,13 @@ public class SpearProjectile : MonoBehaviour
     // Life related
     private float maxLife = 2.0f; //temporary solution, max life duration for projectile 
     private float lifeTimer;
+
+    // Upgrade related
+    public bool doubleDamageInSpearRange = false;
     public bool pierce = false;
+
+    public bool attachCrow;
+    public GameObject crowDotPrefab;
 
     private void Start()
     {
@@ -26,9 +32,28 @@ public class SpearProjectile : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && !(hitEnemy == other))
         {
             hitEnemy = other;
-            other.GetComponent<Enemy>().takeDamage(damage);
-            knockback(other);
-            if (!pierce){
+
+            if (doubleDamageInSpearRange && (transform.position - GameObject.FindWithTag("Player").transform.position).magnitude < 2)
+            {
+                other.GetComponent<Enemy>().takeDamage(damage*2);
+            }
+            else
+            {
+                other.GetComponent<Enemy>().takeDamage(damage);
+            }
+
+            if (attachCrow)
+                Instantiate(crowDotPrefab, other.transform);
+
+            //Knockback
+            if (other.GetComponent<Enemy>().canBeKnockedBack)
+            {
+                Vector2 knockBackDir = GetComponent<Rigidbody2D>().velocity.normalized; //direction of the projectile
+                other.GetComponent<Enemy>().knockback(knockBackDir);
+            }
+
+            if (!pierce)
+            {
                 Destroy(gameObject);
             }
         }
@@ -38,10 +63,9 @@ public class SpearProjectile : MonoBehaviour
         }
     }
 
-    //Knockback the the hit object
-    private void knockback(Collider2D other) 
+    public void setDamage(float value)
     {
-        Vector2 difference = other.transform.position - transform.position;
-        other.transform.position = new Vector2((other.transform.position.x + difference.x), (other.transform.position.y + difference.y));
+        damage = value;
+        crowDotPrefab.GetComponent<CrowDotEffect>().tickDamage = value * 0.1f;
     }
 }

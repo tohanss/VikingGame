@@ -20,14 +20,15 @@ public class BasicAbility : MonoBehaviour
     private Animator animator;
 
     // Upgrade related
-    public bool pierce = false;
-    public int numberProjectiles;
+    public bool pierce;
+    public bool doubleDamageInSpearRange;
+    public bool attachCrow;
+    public int numberProjectiles = 1;
+    private float attackSpeedMultiplier = 1f; 
 
     // Attack stats
     private float scatterMaxAngle = 30;
     private float projectileSpeed = 10f;
-
-    public bool spedUP = false;
 
     void Start()
     {
@@ -35,16 +36,10 @@ public class BasicAbility : MonoBehaviour
         animator = GetComponent<Animator>();
         playerAction = GetComponent<PlayerActions>();
 
-
-    // Apply pierce upgrade to prefab
-    setPierce(pierce);
-
-        // PLACEHOLDER TO SHOW HOW ATTACK SPEED CAN BE UPGRADED IN THE FUTURE
-        if (spedUP)
-        {
-            animator.SetFloat("SpeedMultiplier", 2);
-            delay = delay / 2;
-        }
+        // Apply pierce upgrade to prefab
+        setPierce(pierce);
+        setDoubleDamageInSpearRange(doubleDamageInSpearRange);
+        setCrowDotEffect(attachCrow);
     }
 
     void Update()
@@ -146,11 +141,31 @@ public class BasicAbility : MonoBehaviour
 
     public void setDamage(int damage)
     {
-        projectileScript.damage = damage;
+        projectileScript.setDamage(damage);
     }
 
     public void setPierce(bool value)
     {
+        pierce = value;
         projectileScript.pierce = value;
+    }
+
+    public void setCrowDotEffect(bool value)
+    {
+        attachCrow = value;
+        projectileScript.attachCrow = value;
+    }
+
+    public void setDoubleDamageInSpearRange(bool value)
+    {
+        doubleDamageInSpearRange = value;
+        projectileScript.doubleDamageInSpearRange = value;
+    }
+
+    public void increaseAttackSpeed(float multiplier)
+    {       
+        attackSpeedMultiplier *= multiplier;
+        delay /= multiplier;
+        animator.SetFloat("SpeedMultiplier", attackSpeedMultiplier);
     }
 }
