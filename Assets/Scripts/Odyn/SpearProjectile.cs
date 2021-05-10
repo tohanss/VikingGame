@@ -10,6 +10,7 @@ public class SpearProjectile : MonoBehaviour
     // Logic
     public Rigidbody2D rb;
     private Collider2D hitEnemy;
+    private bool hit = false;
 
     // Life related
     private float maxLife = 2.0f; //temporary solution, max life duration for projectile 
@@ -33,20 +34,22 @@ public class SpearProjectile : MonoBehaviour
         {
             hitEnemy = other;
 
-            if (doubleDamageInSpearRange && (transform.position - GameObject.FindWithTag("Player").transform.position).magnitude < 2)
+            if (!hit && doubleDamageInSpearRange && (transform.position - GameObject.FindWithTag("Player").transform.position).magnitude < 2)
             {
+                hit = true;
                 other.GetComponent<Enemy>().takeDamage(damage*2);
             }
-            else
+            else if(!hit)
             {
+                hit = true;
                 other.GetComponent<Enemy>().takeDamage(damage);
             }
 
-            if (attachCrow)
+            if (!hit && attachCrow)
                 Instantiate(crowDotPrefab, other.transform);
 
             //Knockback
-            if (other.GetComponent<Enemy>().canBeKnockedBack)
+            if (!hit && other.GetComponent<Enemy>().canBeKnockedBack)
             {
                 Vector2 knockBackDir = GetComponent<Rigidbody2D>().velocity.normalized; //direction of the projectile
                 other.GetComponent<Enemy>().knockback(knockBackDir);
@@ -55,6 +58,10 @@ public class SpearProjectile : MonoBehaviour
             if (!pierce)
             {
                 Destroy(gameObject);
+            }
+            else
+            {
+                hit = false;
             }
         }
         else if(other.gameObject.CompareTag("Collidables"))
