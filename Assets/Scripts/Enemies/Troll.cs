@@ -13,6 +13,7 @@ public class Troll : Enemy
     private ParticleSystem ps;
     public Transform attackPoint;
     private CircleCollider2D slamCollider;
+    public Transform shadow;
 
 
     protected override void Start()
@@ -27,6 +28,19 @@ public class Troll : Enemy
         slamCollider.radius = attackRange;
         attackCooldown = 3.0f;
         setDamage(slamDamage); //set damage for slamPrefab
+    }
+
+    protected override void facePlayer()
+    {
+        base.facePlayer();
+        if (spriteRenderer.flipX)
+        {
+            shadow.localPosition = new Vector2(-0.03f, 0);
+        }
+        else
+        {
+            shadow.localPosition = new Vector2(0.05f, 0);
+        }
     }
 
     protected override void attack()
