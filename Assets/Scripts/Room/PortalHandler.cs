@@ -20,7 +20,7 @@ public class PortalHandler : MonoBehaviour
     private void RoomManager_OnBattleStarted(object sender, System.EventArgs e)
     {
         //Close transition Portal that was open
-        Debug.Log("Entry Portal Closed");
+        //Debug.Log("Entry Portal Closed");
         roomManager.OnBattleStarted -= RoomManager_OnBattleStarted;
 
     }
@@ -29,8 +29,11 @@ public class PortalHandler : MonoBehaviour
     {
         //Open transition Portal so the player can go to the next room
         Debug.Log("Exit Portal Open");
-        portalExit.GetComponent<SpriteRenderer>().color = Color.blue;
-        portalExit.transform.GetChild(0).gameObject.SetActive(true);
+        if (portalExit != null)
+        {
+            portalExit.GetComponent<SpriteRenderer>().color = Color.blue;
+            portalExit.transform.GetChild(0).gameObject.SetActive(true);
+        }
         roomManager.OnBattleOver -= RoomManager_OnBattleOver;
 
     }
