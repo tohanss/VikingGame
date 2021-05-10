@@ -133,6 +133,7 @@ public class PlayerActions : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            isInvulnerable = true;
             moveable = false;
             isActive = true; //stops player from attacking when death effect is playing
             playerRB.velocity = Vector2.zero;

@@ -122,25 +122,29 @@ public class Enemy : MonoBehaviour
 
     public void takeDamage(float damage) 
     {
-        GameObject damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity);
-        damageNumber.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+        if (isAlive)
+        {
+            GameObject damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity);
+            damageNumber.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
 
-        aggravated = true;
-        health -= damage;
-        spriteRenderer.material = matWhite;
-        hpBar.SetHealth(health);
-        // hpBar.SetHealth(health, maxHealth);
-        if (health <= 0)
-        {
-            isAlive = false;
-            GetComponent<BoxCollider2D>().enabled = false;
-            enemyRigidbody.velocity = Vector2.zero;
-            StartCoroutine(die());
+            aggravated = true;
+            health -= damage;
+            spriteRenderer.material = matWhite;
+            hpBar.SetHealth(health);
+            // hpBar.SetHealth(health, maxHealth);
+            if (health <= 0)
+            {
+                isAlive = false;
+                GetComponent<BoxCollider2D>().enabled = false;
+                enemyRigidbody.velocity = Vector2.zero;
+                StartCoroutine(die());
+            }
+            else
+            {
+                Invoke("resetMat", 0.1f);
+            }
         }
-        else 
-        {
-            Invoke("resetMat", 0.1f);
-        }
+        
     }
 
     //handles cooldown for knockback
@@ -163,12 +167,12 @@ public class Enemy : MonoBehaviour
     //Resets the material to default
     private void resetMat() 
     {
+        if(isAlive)
         spriteRenderer.material = matDefault;
     }
 
     private IEnumerator die()
     {
-        isAlive = false;
         //transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
         spriteRenderer.material = matDeath;
