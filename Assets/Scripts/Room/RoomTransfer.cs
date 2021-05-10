@@ -5,16 +5,16 @@ using UnityEngine;
 public class RoomTransfer : MonoBehaviour
 {
     private GameObject toolTip;
+    private Transform nextRoomPortalPos;
 
-    public Vector2 cameraChangeMax;
-    public Vector2 cameraChangeMin;
-    public Vector3 playerChange;
-    private CameraController cam;
+    public GameObject currentRoom;
+    public GameObject nextRoom;
+    public GameObject vcamFade;
     // Start is called before the first frame update
     void Start()
     {
         toolTip = gameObject.transform.GetChild(0).gameObject;
-        cam = Camera.main.GetComponent<CameraController>();
+        nextRoomPortalPos = nextRoom.gameObject.transform.GetChild(1).gameObject.transform;
     }
 
     private void OnTriggerStay2D(Collider2D other) 
@@ -23,14 +23,9 @@ public class RoomTransfer : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                // Updates camera boundries to the new map. The added values are for adjusting the camera just slightly to fit all tiles in the camera aspect.
-                float height = 2f * Camera.main.orthographicSize;
-                float width = height * (Screen.width / Screen.height);
-                cam.minX = cameraChangeMin.x + (width / 2) + 0.6f;
-                cam.minY = cameraChangeMin.y + (height / 2);
-                cam.maxX = cameraChangeMax.x - (width / 2) + 0.4f;
-                cam.maxY = cameraChangeMax.y - (height / 2) + 1;
-                other.transform.position = playerChange;
+                vcamFade.SetActive(true);
+                Invoke("enableNextRoomCamera", 1.1f);
+                other.transform.position = nextRoomPortalPos.position;
             }
         }
     }
@@ -48,5 +43,12 @@ public class RoomTransfer : MonoBehaviour
         {
             toolTip.SetActive(false);
         }
+    }
+
+    private void enableNextRoomCamera()
+    {
+        currentRoom.SetActive(false);
+        vcamFade.SetActive(false);
+        nextRoom.SetActive(true);
     }
 }
