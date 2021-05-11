@@ -13,6 +13,7 @@ public class PlayerActions : MonoBehaviour
     private Rigidbody2D playerRB;
     private Animator animator;
     public GameObject damageNumbers;
+    public Transform shadow;
 
     // Player stats
     private int level = 1;
@@ -188,12 +189,12 @@ public class PlayerActions : MonoBehaviour
         if (movement.x > 0 && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
         {
             spriteRenderer.flipX = false;
-
+            shadow.localPosition = new Vector2(-0.02f, 0);
         }
         if (movement.x < 0 && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
         {
             spriteRenderer.flipX = true;
-
+            shadow.localPosition = new Vector2(0.02f, 0);
         }
     }
 
