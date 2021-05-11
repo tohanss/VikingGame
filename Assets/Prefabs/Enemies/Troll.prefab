@@ -192,6 +192,7 @@ MonoBehaviour:
     type: 3}
   hpBar: {fileID: 1835120291096735780}
   isAlive: 0
+  isFleeing: 0
   slamDamage: 30
   slamPrefab: {fileID: 6214492714146616344, guid: dbbafe0cfe4c82840af9a2e4b28f2b4c,
     type: 3}
@@ -410,7 +411,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 1287051063
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &5094500866090891339
 MonoBehaviour:

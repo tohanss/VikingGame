@@ -416,7 +416,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 1287051063
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1594785941796654687
 MonoBehaviour:
@@ -834,6 +834,7 @@ MonoBehaviour:
     type: 3}
   hpBar: {fileID: 3491639516135353511}
   isAlive: 0
+  isFleeing: 0
   chargeSpeed: 7
   chargeDuration: 1.5
   chargeDamage: 8

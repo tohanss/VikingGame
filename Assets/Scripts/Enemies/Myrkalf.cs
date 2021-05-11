@@ -8,7 +8,10 @@ public class Myrkalf : Enemy
     public float projectileDamage;
     public float projSpeed;
     public GameObject projectilePrefab;
-    private Myrkalf_projectile myrkalf_Projectile;
+    public float fleeRange;
+    private Vector3 fleeDirection;
+    private bool hitCollidable = false;
+    private float defaultMoveSpeed;
 
     // Projectile spawn and direction related
     public Transform firePoint;
@@ -19,15 +22,43 @@ public class Myrkalf : Enemy
     protected override void Start()
     {
         base.Start();
-        myrkalf_Projectile = projectilePrefab.GetComponent<Myrkalf_projectile>();
         setDamage(projectileDamage); //set damage for projectilePrefab
+        defaultMoveSpeed = moveSpeed;
         attackCooldown = 1.2f;
 
     }
-
-    protected override void move()
+    protected override void FixedUpdate()
     {
-        base.move();
+        if(!animator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && isAlive && !hitCollidable && Vector2.Distance(transform.position, target.position) < fleeRange)
+        {
+            flee();
+        }
+        else
+        {
+            moveSpeed = defaultMoveSpeed;
+            isFleeing = false;
+            base.FixedUpdate();
+        }
+      
+
+    }
+  
+    private void flee()
+    {
+        isFleeing = true;
+        moveSpeed = 2.5f;
+        fleeDirection = (transform.position - target.position).normalized;
+        transform.position = Vector2.MoveTowards(transform.position, fleeDirection + transform.position, moveSpeed * Time.deltaTime); //move towards opposite direction of the player
+        animator.SetBool("running", true);
+        facePlayer();
+        if(spriteRenderer.flipX == true)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else 
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     protected override void attack()
@@ -60,6 +91,23 @@ public class Myrkalf : Enemy
         else
         {
             firePoint.localPosition = new Vector2(-0.54f, 0.69f);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Collidables") || other.gameObject.CompareTag("HighCollidables")) //stop the charge attack if boar hit a collidable
+        {
+            hitCollidable = true;
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Collidables") || other.gameObject.CompareTag("HighCollidables")) //stop the charge attack if boar hit a collidable
+        {
+            hitCollidable = false;
+
         }
     }
 }

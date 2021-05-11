@@ -214,16 +214,18 @@ MonoBehaviour:
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
-  aggroRange: 8
-  attackRange: 5
+  aggroRange: 9
+  attackRange: 7
   damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
     type: 3}
   hpBar: {fileID: 6588122696585263717}
   isAlive: 0
+  isFleeing: 0
   projectileDamage: 12
   projSpeed: 8
   projectilePrefab: {fileID: 2189402935353740258, guid: dc6833f6c14022a49b8d87f438c4bbb5,
     type: 3}
+  fleeRange: 4
   firePoint: {fileID: 6145773525915575363}
 --- !u!95 &222868599766843529
 Animator:
@@ -775,7 +777,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 1287051063
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &4043106773772906081
 MonoBehaviour:
