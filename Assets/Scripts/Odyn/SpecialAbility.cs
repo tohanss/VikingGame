@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpecialAbility : MonoBehaviour
 {   
@@ -12,7 +13,8 @@ public class SpecialAbility : MonoBehaviour
     public int numberOfHits;
     public float delay;
     private float timeSinceJump = 0f;
-    private float cooldown = 0;
+    private float cooldown = 5;
+    bool onCooldown = false;
 
     // Range/Targeting related
     public float range = 5;
@@ -38,6 +40,7 @@ public class SpecialAbility : MonoBehaviour
 
     //Misc
     private Animator animator;
+    private Image icon;
 
     // Start is called before the first frame update
     void Start()
@@ -47,12 +50,13 @@ public class SpecialAbility : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
         playerAction = GetComponent<PlayerActions>();
         animator = GetComponent<Animator>();
+        icon = playerAction.canvas.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && !attacking && !playerAction.isActive)
+        if (Input.GetMouseButtonDown(1) && !attacking && !playerAction.isActive && !onCooldown)
         {
             mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 distVector = mousePoint - getPlayerPos();
@@ -90,7 +94,9 @@ public class SpecialAbility : MonoBehaviour
 
             }
             // Keep attacking if in the middle of an attack
-            else if (timeSinceJump > delay) {
+            else if (timeSinceJump > delay)
+            {
+                if(!onCooldown) StartCoroutine(coolDown());
                 Attack();
             }
         }
@@ -172,6 +178,22 @@ public class SpecialAbility : MonoBehaviour
         {
             return enemies[Random.Range(0, enemies.Length - 1)].gameObject;
         }
+    }
+
+    IEnumerator coolDown()
+    {
+        icon.fillAmount = 0;
+        icon.color = new Color(1, 1, 1, 0.5f);
+        float loops = cooldown * 10;
+        onCooldown = true;
+        for(int i = 0; i < loops; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            icon.fillAmount = icon.fillAmount + 1 / loops;
+        }
+        icon.color = Color.white;
+        onCooldown = false;
+        yield break;
     }
 
     public void setDamage(int damage){
