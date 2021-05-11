@@ -114,6 +114,6 @@ public class PlayerClass : MonoBehaviour
 
     public void dropUpgrade(int level)
     {
-        upgradeDropper.dropUpgrade(Random.insideUnitCircle.normalized * 2);
+        upgradeDropper.dropUpgrade(new Vector2(0, 1));
     }
 }

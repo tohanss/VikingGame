@@ -20,8 +20,8 @@ public class UpgradeDropper : MonoBehaviour
         Vector2 spawnPosition = GameObject.Find("Player").transform.position;
 
         currentDrops[0] = Instantiate(upgradePrefab, spawnPosition + offset, Quaternion.identity);
-        currentDrops[1] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(2,0), Quaternion.identity);
-        currentDrops[2] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(-2,0), Quaternion.identity);
+        currentDrops[1] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(3f,0), Quaternion.identity);
+        currentDrops[2] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(-3f,0), Quaternion.identity);
     }
 
     public void destroyDrops()
