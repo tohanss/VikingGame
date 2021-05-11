@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Myrkalf
   moveSpeed: 1.5
-  maxHealth: 70
+  maxHealth: 60
   expValue: 6
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
