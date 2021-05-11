@@ -19,7 +19,10 @@ public class PortalHandler : MonoBehaviour
     {
         //roomManager.OnBattleStarted += RoomManager_OnBattleStarted;
         roomManager.OnBattleOver += RoomManager_OnBattleOver;
-        spriteRenderer = portalExit.GetComponent<SpriteRenderer>();
+        if(portalExit != null)
+        {
+            spriteRenderer = portalExit.GetComponent<SpriteRenderer>();
+        }
         matActive = Resources.Load("Materials/exit-portal", typeof(Material)) as Material;
     }
 

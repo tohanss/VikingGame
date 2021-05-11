@@ -60,7 +60,6 @@ public class RoomManager : MonoBehaviour
         numberOfEnemies = listOfEnemies.transform.childCount;
         waveIndex = 0;
         numberOfWaves = waves.Length;
-        Debug.Log(numberOfEnemies);
 
     }
 
