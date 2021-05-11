@@ -9,15 +9,15 @@ public class TrollSlamAttack : MonoBehaviour
     [HideInInspector]
     public float slamDamage;
     private Collider2D hitPlayer;
-    private ParticleSystem particleSystem;
+    private ParticleSystem ps;
     private float lifeTime;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(colliderTimer());
-        particleSystem = GetComponent<ParticleSystem>();
-        var main = particleSystem.main;
+        ps = GetComponent<ParticleSystem>();
+        var main = ps.main;
         lifeTime = main.startLifetime.constant;
         Destroy(gameObject, lifeTime);
     }

@@ -35,7 +35,7 @@ public class RoomManager : MonoBehaviour
 
     // Event related
     public event EventHandler OnStartingEnemiesDead;
-    public event EventHandler OnBattleStarted;
+    //public event EventHandler OnBattleStarted;
     public event EventHandler OnBattleOver;
 
     // State related
@@ -60,6 +60,7 @@ public class RoomManager : MonoBehaviour
         numberOfEnemies = listOfEnemies.transform.childCount;
         waveIndex = 0;
         numberOfWaves = waves.Length;
+
     }
 
     //start wavebattle event
@@ -71,7 +72,7 @@ public class RoomManager : MonoBehaviour
     private void startWaveBattle()
     {
         state = State.WaveActive;
-        OnBattleStarted?.Invoke(this, EventArgs.Empty); //close entry portal
+        //OnBattleStarted?.Invoke(this, EventArgs.Empty); //close entry portal
     }
 
     // Update is called once per frame

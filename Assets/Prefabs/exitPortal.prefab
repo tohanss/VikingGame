@@ -199,9 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53fe7519ca9b4341a6323b8b43ac73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraChangeMax: {x: 73, y: 11}
-  cameraChangeMin: {x: 41, y: -8}
-  playerChange: {x: 41, y: 0, z: 0}
+  currentRoom: {fileID: 0}
+  nextRoom: {fileID: 0}
+  vcamFade: {fileID: 0}
 --- !u!1 &5363343023519393335
 GameObject:
   m_ObjectHideFlags: 0

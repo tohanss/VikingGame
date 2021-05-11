@@ -63,7 +63,6 @@ public class UtilityAbility : MonoBehaviour
             {
                 
                 chargesLeft--; //use one charge per dash
-                Debug.Log(chargesLeft);
                 StartCoroutine(replenishCharge()); //replenish a charge after a cooldown
                 playerAction.isInvulnerable = true;
                 playerAction.isActive = true;
@@ -180,7 +179,6 @@ public class UtilityAbility : MonoBehaviour
     IEnumerator replenishCharge() 
     {
         yield return new WaitForSeconds(dashCooldown);
-        Debug.Log("1 Dash Charge replenished");
         chargesLeft++;
     }
 
