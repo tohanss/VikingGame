@@ -10,20 +10,26 @@ public class PortalHandler : MonoBehaviour
     [SerializeField] private GameObject portalEntry;
     [SerializeField] private RoomManager roomManager;
 
+    // Material related
+    private Material matActive;
+    private SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
-        roomManager.OnBattleStarted += RoomManager_OnBattleStarted;
+        //roomManager.OnBattleStarted += RoomManager_OnBattleStarted;
         roomManager.OnBattleOver += RoomManager_OnBattleOver;
+        spriteRenderer = portalExit.GetComponent<SpriteRenderer>();
+        matActive = Resources.Load("Materials/exit-portal", typeof(Material)) as Material;
     }
 
-    private void RoomManager_OnBattleStarted(object sender, System.EventArgs e)
+    /*private void RoomManager_OnBattleStarted(object sender, System.EventArgs e)
     {
         //Close transition Portal that was open
         //Debug.Log("Entry Portal Closed");
         roomManager.OnBattleStarted -= RoomManager_OnBattleStarted;
 
-    }
+    }*/
 
     private void RoomManager_OnBattleOver(object sender, System.EventArgs e)
     {
@@ -31,8 +37,11 @@ public class PortalHandler : MonoBehaviour
         Debug.Log("Exit Portal Open");
         if (portalExit != null)
         {
-            portalExit.GetComponent<SpriteRenderer>().color = Color.blue;
+            spriteRenderer.color = Color.white;
+            spriteRenderer.material = matActive;
             portalExit.transform.GetChild(0).gameObject.SetActive(true);
+            portalExit.transform.GetChild(1).gameObject.SetActive(true);
+
         }
         roomManager.OnBattleOver -= RoomManager_OnBattleOver;
 

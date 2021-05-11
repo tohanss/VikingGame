@@ -10,6 +10,7 @@ public class RoomTransfer : MonoBehaviour
     public GameObject currentRoom;
     public GameObject nextRoom;
     public GameObject vcamFade;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,7 @@ public class RoomTransfer : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 vcamFade.SetActive(true);
-                Invoke("enableNextRoomCamera", 1.1f);
-                other.transform.position = nextRoomPortalPos.position;
+                StartCoroutine(enableNextRoomCamera(other.transform));
             }
         }
     }
@@ -45,10 +45,14 @@ public class RoomTransfer : MonoBehaviour
         }
     }
 
-    private void enableNextRoomCamera()
+    private IEnumerator enableNextRoomCamera(Transform player)
     {
+        yield return new WaitForSeconds(1.1f);
+
         currentRoom.SetActive(false);
         vcamFade.SetActive(false);
         nextRoom.SetActive(true);
+        player.position = nextRoomPortalPos.position; //Teleport the player to next room
+
     }
 }
