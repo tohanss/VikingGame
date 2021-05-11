@@ -18,6 +18,7 @@ public class UtilityAbility : MonoBehaviour
     public float dashCooldown;
     private Image icon;
     private TMP_Text chargesText;
+    private Image flash;
 
     // Dash related
     public float dashDistance;
@@ -57,8 +58,10 @@ public class UtilityAbility : MonoBehaviour
         chargesLeft = maxCharges;
 
         icon = playerAction.canvas.transform.GetChild(3).GetChild(2).GetChild(1).GetComponent<Image>();
-        chargesText = playerAction.canvas.transform.GetChild(3).GetChild(2).GetChild(3).GetComponent<TMP_Text>();
+        chargesText = playerAction.canvas.transform.GetChild(3).GetChild(2).GetChild(4).GetComponent<TMP_Text>();
         chargesText.text = maxCharges.ToString();
+        flash = playerAction.canvas.transform.GetChild(3).GetChild(2).GetChild(2).GetComponent<Image>();
+        flash.color = new Color(1, 1, 1, 0);
     }
 
     // Update is called once per frame
@@ -194,6 +197,13 @@ public class UtilityAbility : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         chargesLeft++;
         chargesText.text = chargesLeft.ToString();
+        flash.color = Color.white;
+        for (int i = 0; i < 6; i++)
+        {
+            flash.color = new Color(1, 1, 1, (1.0f - i / 5.0f));
+            yield return new WaitForSeconds(0.05f);
+        }
+        flash.color = new Color(1, 1, 1, 0);
     }
 
     public void resetDash()

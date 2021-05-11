@@ -41,6 +41,7 @@ public class SpecialAbility : MonoBehaviour
     //Misc
     private Animator animator;
     private Image icon;
+    private Image flash;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,8 @@ public class SpecialAbility : MonoBehaviour
         playerAction = GetComponent<PlayerActions>();
         animator = GetComponent<Animator>();
         icon = playerAction.canvas.transform.GetChild(3).GetChild(1).GetChild(1).GetComponent<Image>();
+        flash = playerAction.canvas.transform.GetChild(3).GetChild(1).GetChild(2).GetComponent<Image>();
+        flash.color = new Color(1, 1, 1, 0);
     }
 
     // Update is called once per frame
@@ -191,9 +194,16 @@ public class SpecialAbility : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             icon.fillAmount = icon.fillAmount + 1 / loops;
         }
-        icon.color = Color.white;
         onCooldown = false;
-        yield break;
+        // flash to tell the player it's ready for use
+        flash.color = Color.white;
+        icon.color = Color.white;
+        for (int j = 0; j < 6; j++)
+        {
+            flash.color = new Color(1, 1, 1, (1.0f - j / 5.0f));
+            yield return new WaitForSeconds(0.05f);
+        }
+        flash.color = new Color(1, 1, 1, 0);
     }
 
     public void setDamage(int damage){
