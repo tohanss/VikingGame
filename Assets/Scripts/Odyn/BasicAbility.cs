@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasicAbility : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class BasicAbility : MonoBehaviour
 
     private PlayerActions playerAction;
     private Animator animator;
+    private Image icon;
 
     // Upgrade related
     public bool pierce;
@@ -35,6 +37,7 @@ public class BasicAbility : MonoBehaviour
         projectileScript = projectilePrefab.GetComponent<SpearProjectile>();
         animator = GetComponent<Animator>();
         playerAction = GetComponent<PlayerActions>();
+        icon = playerAction.canvas.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<Image>();
 
         // Apply pierce upgrade to prefab
         setPierce(pierce);
@@ -47,6 +50,8 @@ public class BasicAbility : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && !attacking && !playerAction.isActive)
         {
             animator.SetTrigger("Basic");
+            icon.color = new Color(1, 1, 1, 0.3f);
+            Invoke("resetIcon", 0.15f);
             playerAction.isActive = true;
             // Set one of three spawn points for projectile depending on mouse position.
             Vector3 cameraPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -137,6 +142,11 @@ public class BasicAbility : MonoBehaviour
             rb.transform.right = rb.velocity;
             rb.transform.rotation = rb.transform.rotation * Quaternion.Euler( new Vector3(0, 0, -45));
         }
+    }
+
+    private void resetIcon()
+    {
+        icon.color = Color.white;
     }
 
     public void setDamage(int damage)
