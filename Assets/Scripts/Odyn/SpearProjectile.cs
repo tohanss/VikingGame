@@ -64,7 +64,7 @@ public class SpearProjectile : MonoBehaviour
                 hit = false;
             }
         }
-        else if(other.gameObject.CompareTag("Collidables"))
+        else if(other.gameObject.CompareTag("HighCollidables"))
         {
             Destroy(gameObject);
         }

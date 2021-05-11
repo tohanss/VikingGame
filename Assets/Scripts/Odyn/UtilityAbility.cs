@@ -20,8 +20,10 @@ public class UtilityAbility : MonoBehaviour
     private float dashSpeed = 30f; //Should never be set to 0
     private Vector3 dashStartPos;
     private Vector2 facingDirection;
-    private bool isDashing = false;
-    private bool hitCollidable = false;
+    [HideInInspector]
+    public bool isDashing = false;
+    [HideInInspector]
+    public bool hitCollidable = false;
 
     // Misc
     private Rigidbody2D playerRigidBody;
@@ -143,20 +145,9 @@ public class UtilityAbility : MonoBehaviour
         }
         
         //Dash ends when player hits a collidable(not enemy) or has dashed the max distance
-        if (Vector2.Distance(transform.position, dashStartPos) > dashDistance || hitCollidable)
+        if (Vector2.Distance(transform.position, dashStartPos) > dashDistance)
         {
-            if (hitCollidable)
-            {
-                animator.Play("player-idle");
-            }
-            playerRigidBody.velocity = Vector2.zero;
-            isDashing = false;
-            playerAction.moveable = true;
-            playerAction.isInvulnerable = false;
-            playerAction.isActive = false;
-            hitCollidable = false;
-            hitEnemy = null;
-            Destroy(activeTrail, 0.1f);
+            resetDash();
         }
     }
 
@@ -182,10 +173,7 @@ public class UtilityAbility : MonoBehaviour
                 Instantiate(dotPrefab, other.transform);
             }
         }
-        else if (other.gameObject.CompareTag("Collidables"))
-        {
-            hitCollidable = true;
-        }
+      
     }
 
     //Using coroutine, works great. replenishes a dash charge after cooldown has passed
@@ -194,5 +182,21 @@ public class UtilityAbility : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         Debug.Log("1 Dash Charge replenished");
         chargesLeft++;
+    }
+
+    public void resetDash()
+    {
+        if (hitCollidable)
+        {
+            animator.Play("player-idle");
+        }
+        playerRigidBody.velocity = Vector2.zero;
+        isDashing = false;
+        playerAction.moveable = true;
+        playerAction.isInvulnerable = false;
+        playerAction.isActive = false;
+        hitCollidable = false;
+        hitEnemy = null;
+        Destroy(activeTrail, 0.1f);
     }
 }
