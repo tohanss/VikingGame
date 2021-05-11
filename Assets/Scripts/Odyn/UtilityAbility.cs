@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UtilityAbility : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class UtilityAbility : MonoBehaviour
     [HideInInspector]
     public int chargesLeft;
     public float dashCooldown;
+    private Image icon;
+    private TMP_Text chargesText;
+    private Image flash;
 
     // Dash related
     public float dashDistance;
@@ -52,6 +57,11 @@ public class UtilityAbility : MonoBehaviour
         animator = GetComponent<Animator>();
         chargesLeft = maxCharges;
 
+        icon = playerAction.canvas.transform.GetChild(3).GetChild(2).GetChild(1).GetComponent<Image>();
+        chargesText = playerAction.canvas.transform.GetChild(3).GetChild(2).GetChild(4).GetComponent<TMP_Text>();
+        chargesText.text = maxCharges.ToString();
+        flash = playerAction.canvas.transform.GetChild(3).GetChild(2).GetChild(2).GetComponent<Image>();
+        flash.color = new Color(1, 1, 1, 0);
     }
 
     // Update is called once per frame
@@ -63,6 +73,12 @@ public class UtilityAbility : MonoBehaviour
             {
                 
                 chargesLeft--; //use one charge per dash
+                chargesText.text = chargesLeft.ToString();
+                if(chargesLeft < 1)
+                {
+                    StartCoroutine(coolDown());
+                }
+
                 StartCoroutine(replenishCharge()); //replenish a charge after a cooldown
                 playerAction.isInvulnerable = true;
                 playerAction.isActive = true;
@@ -180,6 +196,14 @@ public class UtilityAbility : MonoBehaviour
     {
         yield return new WaitForSeconds(dashCooldown);
         chargesLeft++;
+        chargesText.text = chargesLeft.ToString();
+        flash.color = Color.white;
+        for (int i = 0; i < 6; i++)
+        {
+            flash.color = new Color(1, 1, 1, (1.0f - i / 5.0f));
+            yield return new WaitForSeconds(0.05f);
+        }
+        flash.color = new Color(1, 1, 1, 0);
     }
 
     public void resetDash()
@@ -196,5 +220,15 @@ public class UtilityAbility : MonoBehaviour
         hitCollidable = false;
         hitEnemy = null;
         Destroy(activeTrail, 0.1f);
+    }
+
+    IEnumerator coolDown()
+    {
+        icon.color = new Color(1, 1, 1, 0.3f);
+        while (chargesLeft < 1)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        icon.color = Color.white;
     }
 }
