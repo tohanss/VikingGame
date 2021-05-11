@@ -80,12 +80,12 @@ public class Enemy : MonoBehaviour
         {
             animator.SetTrigger("attack"); //attack is triggered by animation
         } 
-        if (isAttacking && isAlive)
+        if (isAttacking && isAlive) //Continues attack (Boar)
         {
             animator.ResetTrigger("attack");
             attack();
         }
-        if (!isAlive) 
+        if (!isAlive) //stand still when dying
         {
             animator.Play("idle");
         }
@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator die()
     {
-        transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
+        //transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
         spriteRenderer.material = matDeath;
         float ticks = 10f;
