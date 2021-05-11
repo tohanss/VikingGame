@@ -499,6 +499,7 @@ MonoBehaviour:
   chargesLeft: 0
   dashCooldown: 5
   dashDistance: 3
+  hitCollidable: 0
   trail: {fileID: 2618153830540783188, guid: 442f9f2c1fdb0fa45ba8f5fdd39610e0, type: 3}
   placeDot: 0
   dotPrefab: {fileID: 2947126341861528205, guid: 5a0bc3282d927a5469c66a2a736d92b5,

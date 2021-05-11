@@ -58,7 +58,7 @@ public class Boar : Enemy
             }
 
         }
-        else if (other.gameObject.CompareTag("Collidables")) //stop the charge attack if boar hit a collidable
+        else if (other.gameObject.CompareTag("Collidables") || other.gameObject.CompareTag("HighCollidables")) //stop the charge attack if boar hit a collidable
         {
             hitCollidable = true;
         }

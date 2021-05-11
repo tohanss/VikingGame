@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5579885214313545594}
   m_Layer: 0
   m_Name: fence_top_left_corner
-  m_TagString: Fence
+  m_TagString: HighCollidables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
