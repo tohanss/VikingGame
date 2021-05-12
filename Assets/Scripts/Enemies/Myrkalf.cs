@@ -40,9 +40,8 @@ public class Myrkalf : Enemy
             base.FixedUpdate();
         }
       
-
     }
-  
+    //Myrkalf will flee if player gets to close and start attacking/moving when player gets outside its fleeRange
     private void flee()
     {
         isFleeing = true;
@@ -95,7 +94,7 @@ public class Myrkalf : Enemy
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Collidables") || other.gameObject.CompareTag("HighCollidables")) //stop the charge attack if boar hit a collidable
+        if (other.gameObject.CompareTag("Collidables") || other.gameObject.CompareTag("HighCollidables")) //stop flee when the myrkalf hits a collidable
         {
             hitCollidable = true;
 
@@ -104,7 +103,7 @@ public class Myrkalf : Enemy
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Collidables") || other.gameObject.CompareTag("HighCollidables")) //stop the charge attack if boar hit a collidable
+        if (other.gameObject.CompareTag("Collidables") || other.gameObject.CompareTag("HighCollidables")) //reset boolean so myrkalf can flee again
         {
             hitCollidable = false;
 

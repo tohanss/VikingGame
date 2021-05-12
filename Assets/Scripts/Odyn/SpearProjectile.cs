@@ -34,25 +34,28 @@ public class SpearProjectile : MonoBehaviour
         {
             hitEnemy = other;
 
-            if (!hit && doubleDamageInSpearRange && (transform.position - GameObject.FindWithTag("Player").transform.position).magnitude < 2)
-            {
-                hit = true;
-                other.GetComponent<Enemy>().takeDamage(damage*2);
-            }
-            else if(!hit)
-            {
-                hit = true;
-                other.GetComponent<Enemy>().takeDamage(damage);
-            }
-
             if (!hit && attachCrow)
                 Instantiate(crowDotPrefab, other.transform);
 
-            //Knockback
-            if (!hit && other.GetComponent<Enemy>().canBeKnockedBack)
+            //Knockback and damage
+            if (!hit)
             {
-                Vector2 knockBackDir = GetComponent<Rigidbody2D>().velocity.normalized; //direction of the projectile
-                other.GetComponent<Enemy>().knockback(knockBackDir);
+                if (other.GetComponent<Enemy>().canBeKnockedBack)
+                {
+                    Vector2 knockBackDir = GetComponent<Rigidbody2D>().velocity.normalized; //direction of the projectile
+                    other.GetComponent<Enemy>().knockback(knockBackDir);
+                }
+                if (doubleDamageInSpearRange && (transform.position - GameObject.FindWithTag("Player").transform.position).magnitude < 2)
+                {
+                    hit = true;
+                    other.GetComponent<Enemy>().takeDamage(damage * 2);
+                }
+                else
+                {
+                    hit = true;
+                    other.GetComponent<Enemy>().takeDamage(damage);
+                }
+
             }
 
             if (!pierce)
