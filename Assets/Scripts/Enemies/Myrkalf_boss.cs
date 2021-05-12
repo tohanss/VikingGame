@@ -12,7 +12,6 @@ public class Myrkalf_boss : Enemy
     private Vector3 fleeDirection;
     private bool hitCollidable = false;
     private float defaultMoveSpeed;
-
     // Projectile spawn and direction related
     public Transform firePoint;
     private GameObject arrowProjectile;
@@ -24,8 +23,7 @@ public class Myrkalf_boss : Enemy
         base.Start();
         setDamage(projectileDamage); //set damage for projectilePrefab
         defaultMoveSpeed = moveSpeed;
-        attackCooldown = 1.0f;
-
+        attackCooldown = 1.2f;
     }
     protected override void FixedUpdate()
     {
@@ -59,22 +57,23 @@ public class Myrkalf_boss : Enemy
             spriteRenderer.flipX = true;
         }
     }
-
+    //the myrkalf boss shots three consecutive arrows instead of one
     protected override void attack()
     {
         rotateFirepoint();
         targetLastPos = target.position;
         direction = (targetLastPos - transform.position);
+        arrowProjectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        arrowProjectile.GetComponent<Rigidbody2D>().velocity = direction.normalized * projSpeed;
+        arrowProjectile.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+        lastTime = Time.time;
+        animator.ResetTrigger("attack");
 
-        //if cooldown has passed, shoot an arrow
-        if (Time.time - lastTime > attackCooldown)
-        {
-            arrowProjectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-            arrowProjectile.GetComponent<Rigidbody2D>().velocity = direction.normalized * projSpeed;
-            arrowProjectile.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
-            lastTime = Time.time;
-            animator.ResetTrigger("attack");
-        }
+    }
+    protected override void move()
+    {
+        base.move();
+        aggravated = true; //always aggravated if you have entered the myrkalf aggro range
     }
     private void setDamage(float projectileDamage)
     {

@@ -46,6 +46,12 @@ public class Boar_boss : Enemy
             hitPlayer = null;
         }
     }
+
+    protected override void move()
+    {
+        base.move();
+        aggravated = true; //always aggravated if you have entered the boars aggro range
+    }
     //Handles player taking damage and player can't get hit more than once per attack
     private void OnTriggerEnter2D(Collider2D other)
     {

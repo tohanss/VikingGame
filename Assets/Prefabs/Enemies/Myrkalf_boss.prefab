@@ -630,7 +630,7 @@ Transform:
   m_GameObject: {fileID: 6524174085812747244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -84.69513, y: -8.240942, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1}
   m_Children:
   - {fileID: 5726296796159448177}
   - {fileID: 6457401055978752537}
@@ -725,7 +725,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025582552, y: 0.6047334}
+  m_Offset: {x: -0.0013322979, y: 0.6047334}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.6, y: 0}
@@ -736,7 +736,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.59720826, y: 1.2161607}
+  m_Size: {x: 0.5344094, y: 1.2161607}
   m_EdgeRadius: 0
 --- !u!95 &6524174085812747245
 Animator:
@@ -771,7 +771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Alfaro
   moveSpeed: 2
-  maxHealth: 200
+  maxHealth: 300
   expValue: 50
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
@@ -784,8 +784,9 @@ MonoBehaviour:
   isAlive: 0
   isFleeing: 0
   projectileDamage: 12
-  projSpeed: 10
-  projectilePrefab: {fileID: 2189402935353740258, guid: dc6833f6c14022a49b8d87f438c4bbb5,
+  projSpeed: 8
+  numberProjectiles: 3
+  projectilePrefab: {fileID: 1727527796212000, guid: 6f0ae92905f874344aa3f344840e486b,
     type: 3}
   fleeRange: 4
   firePoint: {fileID: 925314325402279719}
