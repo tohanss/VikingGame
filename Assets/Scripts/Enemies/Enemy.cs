@@ -174,9 +174,9 @@ public class Enemy : MonoBehaviour
         spriteRenderer.material = matDefault;
     }
 
-    private IEnumerator die()
+    protected virtual IEnumerator die()
     {
-        //transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
+        transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
         spriteRenderer.material = matDeath;
         float ticks = 10f;
