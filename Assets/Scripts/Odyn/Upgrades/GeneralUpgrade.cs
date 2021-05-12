@@ -9,6 +9,8 @@ public class GeneralUpgrade : MonoBehaviour
     private GameObject toolTip;
     private Upgrade thisUpgrade;
     private UpgradeDropper upgradeDropper;
+
+    public int dropIndex;
     
     private void Start()
     {
@@ -87,7 +89,7 @@ public class GeneralUpgrade : MonoBehaviour
                     default:
                         break;
                 }
-                upgradeDropper.destroyDrops();
+                upgradeDropper.destroyDrops(dropIndex);
             }
         }
     }

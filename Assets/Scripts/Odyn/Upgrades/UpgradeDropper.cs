@@ -6,31 +6,41 @@ public class UpgradeDropper : MonoBehaviour
 {
     public List<Upgrade> upgrades;
     public GeneralUpgrade upgradePrefab;
-    private GeneralUpgrade[] currentDrops;
+    private List<GeneralUpgrade[]> currentDrops;
+    private int numDroppedUpgrades;
+
+    private void Start() {
+        numDroppedUpgrades = 0;
+        currentDrops = new List<GeneralUpgrade[]>();
+    }
 
     public void dropUpgrade(Vector2 offset)
     {   
-        if (currentDrops != null)
-        {
-            destroyDrops();
-        }
+        numDroppedUpgrades += 1;
 
-        currentDrops = new GeneralUpgrade[3];
+        currentDrops.Add(new GeneralUpgrade[3]);
 
         Vector2 spawnPosition = GameObject.Find("Player").transform.position;
 
-        currentDrops[0] = Instantiate(upgradePrefab, spawnPosition + offset, Quaternion.identity);
-        currentDrops[1] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(2,0), Quaternion.identity);
-        currentDrops[2] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(-2,0), Quaternion.identity);
+        currentDrops[numDroppedUpgrades-1][0] = Instantiate(upgradePrefab, spawnPosition + offset, Quaternion.identity);
+        currentDrops[numDroppedUpgrades-1][1] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(3f,0), Quaternion.identity);
+        currentDrops[numDroppedUpgrades-1][2] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(-3f,0), Quaternion.identity);
+    
+        // Tells all upgrades what order they were dropped in, so that we can remove the associated
+        // upgrades when picking one up
+        for (int i = 0; i < 3; i++)
+        {
+            currentDrops[numDroppedUpgrades-1][i].dropIndex = numDroppedUpgrades-1;
+        }
+
     }
 
-    public void destroyDrops()
+    public void destroyDrops(int index)
     {
         for (int i = 0; i < 3; i++)
         {
-            Destroy(currentDrops[i].gameObject);
+            Destroy(currentDrops[index][i].gameObject);
         }
-        currentDrops = null;
     }
 
     public void remove(Upgrade upgrade)
