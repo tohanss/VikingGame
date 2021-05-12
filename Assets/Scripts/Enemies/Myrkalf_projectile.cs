@@ -25,6 +25,7 @@ public class Myrkalf_projectile : MonoBehaviour
             if (!other.GetComponent<PlayerActions>().isInvulnerable) //only do damage if player is not invulnerable
             {
                 other.GetComponent<PlayerActions>().playerTakeDamage(projectileDamage);
+                Destroy(gameObject);
             }
         }
         else if (other.gameObject.CompareTag("HighCollidables"))

@@ -6,15 +6,20 @@ public class Myrkalf_boss : Enemy
 {
     // Myrkalf specific stats and logic
     public float projectileDamage;
+    public float homingprojectileDamage;
     public float projSpeed;
-    public GameObject projectilePrefab;
     public float fleeRange;
     private Vector3 fleeDirection;
     private bool hitCollidable = false;
     private float defaultMoveSpeed;
+    private int homingCounter;
+    [SerializeField]private int homingRate;
     // Projectile spawn and direction related
+    public GameObject projectilePrefab;
+    public GameObject homingPrefab;
     public Transform firePoint;
     private GameObject arrowProjectile;
+    private GameObject homingProjectile;
     private Vector3 targetLastPos;
     private Vector3 direction;
 
@@ -24,6 +29,7 @@ public class Myrkalf_boss : Enemy
         setDamage(projectileDamage); //set damage for projectilePrefab
         defaultMoveSpeed = moveSpeed;
         attackCooldown = 1.2f;
+        homingCounter = 0;
     }
     protected override void FixedUpdate()
     {
@@ -62,12 +68,25 @@ public class Myrkalf_boss : Enemy
     {
         rotateFirepoint();
         targetLastPos = target.position;
-        direction = (targetLastPos - transform.position);
+        direction = (targetLastPos - firePoint.position) + new Vector3(0,0.5f,0);
         arrowProjectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         arrowProjectile.GetComponent<Rigidbody2D>().velocity = direction.normalized * projSpeed;
         arrowProjectile.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
         lastTime = Time.time;
+        homingCounter++;
         animator.ResetTrigger("attack");
+
+        //if cooldown has passed, shoot two homing arrows
+        if (homingCounter >= homingRate*3)
+        {
+            
+            homingProjectile = Instantiate(homingPrefab, firePoint.position, firePoint.rotation);
+            homingProjectile.GetComponent<Myrkalf_homingProj>().startingYOffset = 5f;
+
+            homingProjectile = Instantiate(homingPrefab, firePoint.position, firePoint.rotation);
+            homingProjectile.GetComponent<Myrkalf_homingProj>().startingYOffset = -5f;
+            homingCounter = 0;
+        }
 
     }
     protected override void move()
@@ -78,6 +97,7 @@ public class Myrkalf_boss : Enemy
     private void setDamage(float projectileDamage)
     {
         projectilePrefab.GetComponent<Myrkalf_projectile>().setDamage(projectileDamage);
+        homingPrefab.GetComponent<Myrkalf_homingProj>().setDamage(homingprojectileDamage);
     }
 
     private void rotateFirepoint()

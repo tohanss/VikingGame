@@ -783,12 +783,15 @@ MonoBehaviour:
   hpBar: {fileID: 211944764092399873}
   isAlive: 0
   isFleeing: 0
-  projectileDamage: 12
+  projectileDamage: 10
+  homingprojectileDamage: 4
   projSpeed: 8
-  numberProjectiles: 3
+  fleeRange: 4
+  homingRate: 1
   projectilePrefab: {fileID: 1727527796212000, guid: 6f0ae92905f874344aa3f344840e486b,
     type: 3}
-  fleeRange: 4
+  homingPrefab: {fileID: 1860041320204997608, guid: 5e0d6d459fde815408a731c02a4b9518,
+    type: 3}
   firePoint: {fileID: 925314325402279719}
 --- !u!1 &7595736552397350625
 GameObject:
