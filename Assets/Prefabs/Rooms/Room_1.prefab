@@ -504,7 +504,7 @@ MonoBehaviour:
   listOfEnemies: {fileID: 6032528711914666829}
   boar: {fileID: 7571023224850178584, guid: 671e38b92bb5c4743b7f954de4945d9c, type: 3}
   troll: {fileID: 6986698349062358841, guid: 973a4731d092aab4d8913c03407cd562, type: 3}
-  elf: {fileID: 0}
+  elf: {fileID: 222868599766843538, guid: c8a8d381eb2533c439595734611cb6f2, type: 3}
   enemyPortals: []
   waves: []
 --- !u!114 &6032528710676683342
