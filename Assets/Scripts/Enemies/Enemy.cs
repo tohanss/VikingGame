@@ -44,11 +44,14 @@ public class Enemy : MonoBehaviour
     public HealthBar hpBar;
     [HideInInspector]
     public bool isAlive;
+    [HideInInspector]
+    public bool isFleeing;
     protected virtual void Start()
     {
         health = maxHealth;
         canBeKnockedBack = true;
         isAlive = true;
+        isFleeing = false;
         enemyRigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
         animator = transform.GetComponent<Animator>();
@@ -63,13 +66,13 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (!isAttacking && isAlive) 
+        if (!isAttacking && isAlive && !isFleeing) 
         {
             facePlayer();
         }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         animator.SetBool("running", false);
         if (Vector2.Distance(transform.position, target.position) > attackRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && isAlive)
@@ -80,12 +83,12 @@ public class Enemy : MonoBehaviour
         {
             animator.SetTrigger("attack"); //attack is triggered by animation
         } 
-        if (isAttacking && isAlive)
+        if (isAttacking && isAlive) //Continues attack (Boar)
         {
             animator.ResetTrigger("attack");
             attack();
         }
-        if (!isAlive) 
+        if (!isAlive) //stand still when dying
         {
             animator.Play("idle");
         }
@@ -173,7 +176,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator die()
     {
-        transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
+        //transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
         spriteRenderer.material = matDeath;
         float ticks = 10f;

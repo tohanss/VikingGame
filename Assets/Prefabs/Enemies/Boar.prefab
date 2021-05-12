@@ -386,7 +386,7 @@ RectTransform:
   m_GameObject: {fileID: 1594785941796654657}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
+  m_LocalScale: {x: 0.002, y: 0.003, z: 0.003}
   m_Children:
   - {fileID: 1594785941493586164}
   m_Father: {fileID: 7571023224850178584}
@@ -415,8 +415,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: 1287051063
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1594785941796654687
 MonoBehaviour:
@@ -834,6 +834,7 @@ MonoBehaviour:
     type: 3}
   hpBar: {fileID: 3491639516135353511}
   isAlive: 0
+  isFleeing: 0
   chargeSpeed: 7
   chargeDuration: 1.5
   chargeDamage: 8

@@ -24,7 +24,7 @@ public class Boar : Enemy
     {
         if (!isAttacking)
         {
-            targetLastPos = target.position; // This so boar doesen't target feet rather targets the center of player
+            targetLastPos = target.position; 
             direction = (targetLastPos - transform.position).normalized;
             lastAttackStartTime = Time.time;
 
