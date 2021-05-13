@@ -15,6 +15,9 @@ public class Boar_boss : Enemy
     private Collider2D hitPlayer;
     private bool hitCollidable = false;
 
+    //Orb related
+    public GameObject orbPrefab;
+
     protected override void Start()
     {
         base.Start();
@@ -68,5 +71,11 @@ public class Boar_boss : Enemy
         {
             hitCollidable = true;
         }
+    }
+
+    private void setDamage(float projectileDamage)
+    {
+        orbPrefab.GetComponent<Myrkalf_projectile>().setDamage(projectileDamage);
+
     }
 }
