@@ -30,15 +30,15 @@ public class Boar : Enemy
 
         }
         //if cooldown has passed, do charge attack in the direction of the player when the attack started
-        if (Time.time - lastTime > attackCooldown)
-        {
-            isAttacking = true;
-            enemyRigidbody.velocity = direction * chargeSpeed; 
+        
+        isAttacking = true;
+        enemyRigidbody.velocity = direction * chargeSpeed; 
 
-        }
+        
         //Stop charge attack when a certain ammount of time has passed
         if (Time.time - lastAttackStartTime >= chargeDuration || hitCollidable)
         {
+            animator.Play("idle");
             enemyRigidbody.velocity = Vector2.zero;
             lastTime = Time.time;
             isAttacking = false;

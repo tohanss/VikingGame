@@ -188,6 +188,7 @@ MonoBehaviour:
   target: {fileID: 0}
   aggroRange: 7
   attackRange: 2
+  approachRange: 1
   damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
     type: 3}
   hpBar: {fileID: 1835120291096735780}

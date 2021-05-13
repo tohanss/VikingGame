@@ -110,8 +110,13 @@ public class Myrkalf_boss : Enemy
     }
     protected override void move()
     {
-        base.move();
-        aggravated = true; //always aggravated if you have entered the myrkalf aggro range
+        if (aggravated || (Vector2.Distance(transform.position, target.position) <= aggroRange))
+        {
+            aggravated = true; //always aggravated if you have entered the myrkalf aggro range
+            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            animator.SetBool("running", true);
+        }
+        else animator.SetBool("running", false);
     }
     private void setDamage(float projectileDamage)
     {

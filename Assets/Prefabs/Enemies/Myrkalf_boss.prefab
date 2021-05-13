@@ -630,7 +630,7 @@ Transform:
   m_GameObject: {fileID: 6524174085812747244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -84.69513, y: -8.240942, z: 0}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1}
+  m_LocalScale: {x: 1.65, y: 1.65, z: 1}
   m_Children:
   - {fileID: 5726296796159448177}
   - {fileID: 6457401055978752537}
@@ -703,7 +703,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 15
   m_LinearDrag: 8
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -778,6 +778,7 @@ MonoBehaviour:
   target: {fileID: 0}
   aggroRange: 10
   attackRange: 8
+  approachRange: 7.5
   damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
     type: 3}
   hpBar: {fileID: 211944764092399873}
