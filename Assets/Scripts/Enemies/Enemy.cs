@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float moveSpeed;
     public float maxHealth;
     public int expValue;
-    private float health;
+    protected float health;
 
     // Cooldown related
     protected float lastTime = 0;
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     protected bool aggravated = false; //true if taken damage
     protected bool isAttacking = false;
-
+    public float approachRange; //how close the enemy will move when attack is on cooldown
     // Material related
     protected Material matWhite;
     protected Material matDeath;
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         animator.SetBool("running", false);
-        if (Vector2.Distance(transform.position, target.position) > attackRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && isAlive)
+        if (Vector2.Distance(transform.position, target.position) > approachRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && isAlive)
         {
             move();
         }
@@ -176,7 +176,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual IEnumerator die()
     {
-        transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
+        //transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
         spriteRenderer.material = matDeath;
         float ticks = 10f;
