@@ -11,13 +11,15 @@ public class Myrkalf_homingProj : MonoBehaviour
     private float lifeTime = 3.0f;
     private GameObject playerCharacter;
     private Transform target;
-    private Vector3 targetDirection;
-    private Vector3 rotationDirection;
-    private Vector3 startDirection;
-    private Vector3 startRotationDirection;
     private float homingProjSpeed;
+
+    // Homing-projectile spawn related
+    private Vector3 targetDirection;
+    private Vector3 startDirection;
     [HideInInspector]
     public float startingYOffset;
+    [HideInInspector]
+    public float startingXOffset;
     private float t = 0;
 
     // Start is called before the first frame update
@@ -58,14 +60,11 @@ public class Myrkalf_homingProj : MonoBehaviour
 
     private void spawnHomingProj()
     {
-        startRotationDirection = (transform.position - target.position) - new Vector3(startingYOffset, startingYOffset, 0);
-        rotationDirection = (transform.position - target.position) - new Vector3(0, 0.5f, 0);
-        
-        startDirection = (target.position - transform.position) + new Vector3(startingYOffset, startingYOffset, 0);
+        startDirection = (target.position - transform.position) + new Vector3(startingXOffset, startingYOffset, 0);
         targetDirection = (target.position - transform.position) + new Vector3(0, 0.5f, 0);
 
         Vector3 interpolated = (1 - t) * startDirection + t * targetDirection;
-        Vector3 interpolated2 = (1 - t) * startRotationDirection + t * rotationDirection;
+        Vector3 interpolated2 = (1 - t) * (startDirection*-1) + t * (targetDirection*-1);
         if (t < 1)
         {
             t += 0.005f;

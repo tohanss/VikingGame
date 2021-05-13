@@ -748,7 +748,7 @@ Animator:
   m_GameObject: {fileID: 6524174085812747244}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a14cb622c68ffcd419c651c0641ccc28, type: 2}
+  m_Controller: {fileID: 9100000, guid: cee174703f15bbb4b874a0d76eee752c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -776,8 +776,8 @@ MonoBehaviour:
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
-  aggroRange: 9
-  attackRange: 7
+  aggroRange: 10
+  attackRange: 8
   damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
     type: 3}
   hpBar: {fileID: 211944764092399873}
@@ -787,7 +787,7 @@ MonoBehaviour:
   homingprojectileDamage: 4
   projSpeed: 8
   fleeRange: 4
-  homingRate: 1
+  homingRate: 3
   projectilePrefab: {fileID: 1727527796212000, guid: 6f0ae92905f874344aa3f344840e486b,
     type: 3}
   homingPrefab: {fileID: 1860041320204997608, guid: 5e0d6d459fde815408a731c02a4b9518,

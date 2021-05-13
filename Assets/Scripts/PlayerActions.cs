@@ -120,8 +120,7 @@ public class PlayerActions : MonoBehaviour
     public void playerTakeDamage(float damage)
     {
         if (isInvulnerable) return;
-        
-        Debug.Log("Damage Taken: " + damage);
+
         currentHealth -= damage;
 
 

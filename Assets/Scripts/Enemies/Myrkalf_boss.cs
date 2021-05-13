@@ -79,12 +79,31 @@ public class Myrkalf_boss : Enemy
         //if cooldown has passed, shoot two homing arrows
         if (homingCounter >= homingRate*3)
         {
-            
-            homingProjectile = Instantiate(homingPrefab, firePoint.position, firePoint.rotation);
-            homingProjectile.GetComponent<Myrkalf_homingProj>().startingYOffset = 5f;
+            float dotRight = Vector3.Dot(Vector3.right, direction.normalized);
+            float x;
+            float y;
+
+            if (dotRight > 0.5f || dotRight < -0.5)
+            {
+                print("The player is on the sides");
+                x = 0;
+                y = 5f;
+            }
+            else
+            {
+                Debug.Log("The player is on Y");
+                x = 5f;
+                y = 0;
+            }
 
             homingProjectile = Instantiate(homingPrefab, firePoint.position, firePoint.rotation);
-            homingProjectile.GetComponent<Myrkalf_homingProj>().startingYOffset = -5f;
+            homingProjectile.GetComponent<Myrkalf_homingProj>().startingXOffset = x;
+            homingProjectile.GetComponent<Myrkalf_homingProj>().startingYOffset = y;
+
+            homingProjectile = Instantiate(homingPrefab, firePoint.position, firePoint.rotation);
+            homingProjectile.GetComponent<Myrkalf_homingProj>().startingXOffset = -x;
+            homingProjectile.GetComponent<Myrkalf_homingProj>().startingYOffset = -y;
+
             homingCounter = 0;
         }
 
