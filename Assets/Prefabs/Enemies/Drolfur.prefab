@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 6524174085812747245}
   - component: {fileID: 1054025103328618316}
   m_Layer: 9
-  m_Name: Myrkalf_boss
+  m_Name: Nagalfar
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -658,7 +658,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2092c47254549cf45996bc97471541b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -769,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a13e1d65add98747b3518101a75dd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Alfaro
+  enemyName: Drolfur
   moveSpeed: 2
   maxHealth: 300
   expValue: 50
