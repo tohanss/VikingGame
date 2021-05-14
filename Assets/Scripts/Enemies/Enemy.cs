@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float moveSpeed;
     public float maxHealth;
     public int expValue;
-    private float health;
+    protected float health;
 
     // Cooldown related
     protected float lastTime = 0;
@@ -27,9 +27,9 @@ public class Enemy : MonoBehaviour
     public float aggroRange;
     [Tooltip("This parameter doesn't change attack range for the troll")]
     public float attackRange;
-    private bool aggravated = false; //true if taken damage
+    protected bool aggravated = false; //true if taken damage
     protected bool isAttacking = false;
-
+    public float approachRange; //how close the enemy will move when attack is on cooldown
     // Material related
     protected Material matWhite;
     protected Material matDeath;
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         animator.SetBool("running", false);
-        if (Vector2.Distance(transform.position, target.position) > attackRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && isAlive)
+        if (Vector2.Distance(transform.position, target.position) > approachRange && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack") && isAlive)
         {
             move();
         }
@@ -174,7 +174,7 @@ public class Enemy : MonoBehaviour
         spriteRenderer.material = matDefault;
     }
 
-    private IEnumerator die()
+    protected virtual IEnumerator die()
     {
         //transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
