@@ -589,7 +589,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
-  m_Color: {r: 0, g: 0.10610962, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.593554, b: 0, a: 1}
   m_Intensity: 0.8
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
@@ -674,7 +674,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b145defcb22d2941bdf3608f5981a74, type: 2}
+  - {fileID: 2100000, guid: d25190ca092c4d142a4c56badada5252, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -705,7 +705,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!50 &5799067471899011659
 Rigidbody2D:
   serializedVersion: 4
@@ -725,7 +725,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &5799067471899011671
 BoxCollider2D:
@@ -763,7 +763,7 @@ Animator:
   m_GameObject: {fileID: 5799067471899011658}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fe578cc7d85bb01498ab1c13d5fa97b4, type: 2}
+  m_Controller: {fileID: 9100000, guid: e5bbd62858556534283fe0e28bfe9149, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -802,7 +802,8 @@ MonoBehaviour:
   chargeSpeed: 10
   chargeDuration: 1.5
   chargeDamage: 12
-  orbPrefab: {fileID: 0}
+  orbPrefab: {fileID: 4887711118577605508, guid: 23f922f0882762f499ace063441a13af,
+    type: 3}
   orbDamage: 4
 --- !u!1 &7202441730137933805
 GameObject:
@@ -876,12 +877,12 @@ PrefabInstance:
     - target: {fileID: 1843944513571999187, guid: 23f922f0882762f499ace063441a13af,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1843944513571999187, guid: 23f922f0882762f499ace063441a13af,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1843944513571999187, guid: 23f922f0882762f499ace063441a13af,
         type: 3}
