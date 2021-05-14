@@ -22,7 +22,6 @@ public class Boar : Enemy
         boarMoveSpeed = Random.Range(moveSpeed - 1f, moveSpeed + 0.8f);
         moveSpeed = boarMoveSpeed;
         attackCooldown = 3.0f;
-        print(moveSpeed);
     }
     protected override void attack()
     {
