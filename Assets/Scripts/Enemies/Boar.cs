@@ -8,6 +8,7 @@ public class Boar : Enemy
     public float chargeSpeed;
     public float chargeDuration; //how long to keep charging
     public float chargeDamage;
+    private float boarMoveSpeed;
 
     // Misc
     private Vector3 targetLastPos;
@@ -18,6 +19,8 @@ public class Boar : Enemy
     protected override void Start()
     {
         base.Start();
+        boarMoveSpeed = Random.Range(moveSpeed - 1f, moveSpeed + 0.8f);
+        moveSpeed = boarMoveSpeed;
         attackCooldown = 3.0f;
     }
     protected override void attack()
