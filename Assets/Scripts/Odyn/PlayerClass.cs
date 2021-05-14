@@ -95,7 +95,7 @@ public class PlayerClass : MonoBehaviour
     public void increaseUtilityCharges(int amoount)
     {
         utilityAbility.maxCharges += 1;
-        utilityAbility.chargesLeft += 1;
+        StartCoroutine(utilityAbility.increaseCharge());
     }
 
     public void increaseUtilityRange(float amount)
