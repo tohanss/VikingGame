@@ -589,7 +589,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
-  m_Color: {r: 0, g: 0.10610962, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.593554, b: 0, a: 1}
   m_Intensity: 0.8
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
@@ -877,12 +877,12 @@ PrefabInstance:
     - target: {fileID: 1843944513571999187, guid: 23f922f0882762f499ace063441a13af,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1843944513571999187, guid: 23f922f0882762f499ace063441a13af,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1843944513571999187, guid: 23f922f0882762f499ace063441a13af,
         type: 3}
