@@ -763,7 +763,7 @@ Animator:
   m_GameObject: {fileID: 5799067471899011658}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fe578cc7d85bb01498ab1c13d5fa97b4, type: 2}
+  m_Controller: {fileID: 9100000, guid: e5bbd62858556534283fe0e28bfe9149, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -802,7 +802,8 @@ MonoBehaviour:
   chargeSpeed: 10
   chargeDuration: 1.5
   chargeDamage: 12
-  orbPrefab: {fileID: 0}
+  orbPrefab: {fileID: 4887711118577605508, guid: 23f922f0882762f499ace063441a13af,
+    type: 3}
   orbDamage: 4
 --- !u!1 &7202441730137933805
 GameObject:
