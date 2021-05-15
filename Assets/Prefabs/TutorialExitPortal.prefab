@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53fe7519ca9b4341a6323b8b43ac73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  percentageMaxHpRestore: 25
   currentRoom: {fileID: 0}
   nextRoom: {fileID: 0}
   vcamFade: {fileID: 0}
