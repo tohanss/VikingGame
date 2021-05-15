@@ -776,9 +776,10 @@ MonoBehaviour:
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
-  aggroRange: 6
+  aggroRange: 7
   attackRange: 5
-  approachRange: 7.5
+  aggravated: 0
+  approachRange: 6.5
   damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
     type: 3}
   hpBar: {fileID: 211944764092399873}

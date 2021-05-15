@@ -84,6 +84,13 @@ public class BossRoomManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         bossCam.gameObject.SetActive(false);
 
+        //All bosses starts to attack after 4 sec
+        yield return new WaitForSeconds(4.0f);
+        foreach(Transform boss in bossList.transform)
+        {
+            boss.GetComponent<Enemy>().aggravated = true;
+        }
+
     }
 
     // This function is called from bosses-scripts when an boss dies
