@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 6524174085812747245}
   - component: {fileID: 1054025103328618316}
   m_Layer: 9
-  m_Name: Nagalfar
+  m_Name: Drolfur
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -776,9 +776,10 @@ MonoBehaviour:
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
-  aggroRange: 10
-  attackRange: 8
-  approachRange: 7.5
+  aggroRange: 7
+  attackRange: 5
+  aggravated: 0
+  approachRange: 6.5
   damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
     type: 3}
   hpBar: {fileID: 211944764092399873}
@@ -788,6 +789,7 @@ MonoBehaviour:
   homingprojectileDamage: 4
   projSpeed: 8
   fleeRange: 4
+  aggravatedAttackRange: 8
   homingRate: 3
   projectilePrefab: {fileID: 1727527796212000, guid: 6f0ae92905f874344aa3f344840e486b,
     type: 3}

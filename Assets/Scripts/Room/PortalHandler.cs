@@ -9,6 +9,7 @@ public class PortalHandler : MonoBehaviour
     [SerializeField] private GameObject portalExit;
     [SerializeField] private GameObject portalEntry;
     [SerializeField] private RoomManager roomManager;
+    [SerializeField] private BossRoomManager bossRoomManager;
 
     // Material related
     private Material matActive;
@@ -18,12 +19,29 @@ public class PortalHandler : MonoBehaviour
     void Start()
     {
         //roomManager.OnBattleStarted += RoomManager_OnBattleStarted;
-        roomManager.OnBattleOver += RoomManager_OnBattleOver;
-        if(portalExit != null)
+        if (roomManager != null)
+        {
+            roomManager.OnBattleOver += RoomManager_OnBattleOver;
+        }
+        if(bossRoomManager != null)
+        {
+            bossRoomManager.OnBattleOver += BossRoomManager_OnBattleOver;
+        }
+        if (portalExit != null)
         {
             spriteRenderer = portalExit.GetComponent<SpriteRenderer>();
         }
         matActive = Resources.Load("Materials/exit-portal", typeof(Material)) as Material;
+    }
+
+   
+    private void BossRoomManager_OnBattleOver(object sender, System.EventArgs e)
+    {
+        //Floor Cleared, do something
+
+        print("Victorious!");
+        print("Floor Cleared");
+        bossRoomManager.OnBattleOver -= BossRoomManager_OnBattleOver;
     }
 
     /*private void RoomManager_OnBattleStarted(object sender, System.EventArgs e)

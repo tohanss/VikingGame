@@ -27,7 +27,8 @@ public class Enemy : MonoBehaviour
     public float aggroRange;
     [Tooltip("This parameter doesn't change attack range for the troll")]
     public float attackRange;
-    protected bool aggravated = false; //true if taken damage
+    [HideInInspector]
+    public bool aggravated = false; //true if taken damage
     protected bool isAttacking = false;
     public float approachRange; //how close the enemy will move when attack is on cooldown
     // Material related
