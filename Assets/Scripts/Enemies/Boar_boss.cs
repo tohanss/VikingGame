@@ -95,4 +95,18 @@ public class Boar_boss : Enemy
         orbPrefab.GetComponent<Orbit>().setDamage(orbDamange);
 
     }
+
+    protected override IEnumerator die()
+    {
+        transform.parent.transform.parent.GetComponent<BossRoomManager>().decrementNumberOfEnemies();
+        playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
+        spriteRenderer.material = matDeath;
+        float ticks = 10f;
+        for (int i = 1; i < ticks + 1; i++)
+        {
+            spriteRenderer.material.SetFloat("_Fade", 1 - i / ticks);
+            yield return new WaitForSeconds(0.08f);
+        }
+        Destroy(gameObject);
+    }
 }

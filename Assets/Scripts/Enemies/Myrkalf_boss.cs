@@ -13,6 +13,7 @@ public class Myrkalf_boss : Enemy
     private bool hitCollidable = false;
     private float defaultMoveSpeed;
     private int homingCounter;
+    [SerializeField]private float aggravatedAttackRange;
     [SerializeField]private int homingRate;
     // Projectile spawn and direction related
     public GameObject projectilePrefab;
@@ -112,6 +113,7 @@ public class Myrkalf_boss : Enemy
     {
         if (aggravated || (Vector2.Distance(transform.position, target.position) <= aggroRange))
         {
+            attackRange = aggravatedAttackRange;
             aggravated = true; //always aggravated if you have entered the myrkalf aggro range
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             animator.SetBool("running", true);
@@ -151,5 +153,19 @@ public class Myrkalf_boss : Enemy
             hitCollidable = false;
 
         }
+    }
+
+    protected override IEnumerator die()
+    {
+        transform.parent.transform.parent.GetComponent<BossRoomManager>().decrementNumberOfEnemies();
+        playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
+        spriteRenderer.material = matDeath;
+        float ticks = 10f;
+        for (int i = 1; i < ticks + 1; i++)
+        {
+            spriteRenderer.material.SetFloat("_Fade", 1 - i / ticks);
+            yield return new WaitForSeconds(0.08f);
+        }
+        Destroy(gameObject);
     }
 }
