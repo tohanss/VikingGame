@@ -865,6 +865,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playText: {fileID: 3879968596141277987}
+  logo: {fileID: 2663734762986279742}
+  bg: {fileID: 8338333381123463008}
+  player: {fileID: 0}
 --- !u!1 &3516461745197156083
 GameObject:
   m_ObjectHideFlags: 0
