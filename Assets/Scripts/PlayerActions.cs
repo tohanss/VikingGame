@@ -17,7 +17,8 @@ public class PlayerActions : MonoBehaviour
 
     // Player stats
     private int level = 1;
-    private float maxHealth;
+    [HideInInspector]
+    public float maxHealth;
     private float currentHealth;
     public float movespeed;
 
@@ -58,6 +59,7 @@ public class PlayerActions : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
+        //health setup
         maxHealth = playerClass.maxHealth;
         currentHealth = maxHealth;
         // Set up Material

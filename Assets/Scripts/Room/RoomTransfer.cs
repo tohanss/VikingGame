@@ -6,6 +6,8 @@ public class RoomTransfer : MonoBehaviour
 {
     private GameObject toolTip;
     private Transform nextRoomPortalPos;
+    private bool activated;
+    public float percentageMaxHpRestore;
 
     public GameObject currentRoom;
     public GameObject nextRoom;
@@ -14,6 +16,7 @@ public class RoomTransfer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        activated = false;
         toolTip = gameObject.transform.GetChild(0).gameObject;
         nextRoomPortalPos = nextRoom.gameObject.transform.GetChild(1).gameObject.transform;
     }
@@ -22,9 +25,9 @@ public class RoomTransfer : MonoBehaviour
     {
         if (other.CompareTag("Player")) 
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.E) && !activated)
             {
-                vcamFade.SetActive(true);
+                activated = true;
                 StartCoroutine(enableNextRoomCamera(other.transform));
             }
         }
@@ -47,12 +50,19 @@ public class RoomTransfer : MonoBehaviour
 
     private IEnumerator enableNextRoomCamera(Transform player)
     {
+        var playerGO = player.GetComponent<PlayerActions>();
+        playerGO.playerRestoreHealth(playerGO.maxHealth * percentageMaxHpRestore / 100f); // restore x% of player MaxHP when using exit portal
+       
+        yield return new WaitForSeconds(0.5f);
+        vcamFade.SetActive(true);
         yield return new WaitForSeconds(1.1f);
-
         currentRoom.SetActive(false);
         vcamFade.SetActive(false);
         nextRoom.SetActive(true);
         player.position = nextRoomPortalPos.position; //Teleport the player to next room
+
+        
+
 
     }
 }
