@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class TitleScreen : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class TitleScreen : MonoBehaviour
     private bool bounceable = true;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject tutorialHelp;
+    private AudioSource theme;
 
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class TitleScreen : MonoBehaviour
     {
         player.GetComponent<PlayerActions>().moveable = false;
         player.GetComponent<PlayerActions>().isActive = true;
+        theme = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class TitleScreen : MonoBehaviour
             playText.rectTransform.localScale = new Vector3(1.6f, 1.6f, 1);
             playText.rectTransform.localPosition = new Vector3(39, -220, 1);
             StartCoroutine(fade());
+            StartCoroutine(fadeMusic(0.5f));
             Invoke("startGame", 0.5f);
         }
         else if(bounceable)
@@ -84,4 +88,16 @@ public class TitleScreen : MonoBehaviour
         }
         yield break;
     }
+
+    IEnumerator fadeMusic (float fadeTime) {
+        float startVolume = theme.volume;
+ 
+        while (theme.volume > 0) {
+            theme.volume -= startVolume * Time.deltaTime / fadeTime;
+ 
+            yield return null;
+        }
+    }
+
+
 }
