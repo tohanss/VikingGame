@@ -17,6 +17,8 @@ public class TitleScreen : MonoBehaviour
     private int turn = 1;
     private bool bounceable = true;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject tutorialHelp;
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,7 @@ public class TitleScreen : MonoBehaviour
     {
         player.GetComponent<PlayerActions>().moveable = true;
         player.GetComponent<PlayerActions>().isActive = false;
+        tutorialHelp.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 
