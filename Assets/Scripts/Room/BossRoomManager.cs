@@ -19,6 +19,8 @@ public class BossRoomManager : MonoBehaviour
     //[SerializeField] private CinemachineVirtualCamera playerCam;
     [SerializeField] private CinemachineVirtualCamera bossCam;
 
+    [SerializeField] private GameObject nameplate;
+
 
     private enum State
     {
@@ -66,7 +68,6 @@ public class BossRoomManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (state == State.BossBattle && isBattleOver())
         {
             state = State.BattleOver;
@@ -80,6 +81,7 @@ public class BossRoomManager : MonoBehaviour
 
     private IEnumerator panCameraToBoss()
     {
+        nameplate.SetActive(true);
         bossCam.Priority = 12;
         yield return new WaitForSeconds(3.0f);
         bossCam.gameObject.SetActive(false);
