@@ -8,8 +8,11 @@ public class PortalHandler : MonoBehaviour
 {
     [SerializeField] private GameObject portalExit;
     [SerializeField] private GameObject portalEntry;
+    [SerializeField] private GameObject victoryMessage;
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private BossRoomManager bossRoomManager;
+
+
 
     // Material related
     private Material matActive;
@@ -38,9 +41,10 @@ public class PortalHandler : MonoBehaviour
     private void BossRoomManager_OnBattleOver(object sender, System.EventArgs e)
     {
         //Floor Cleared, do something
-
-        print("Victorious!");
-        print("Floor Cleared");
+        if(victoryMessage != null)
+        {
+            victoryMessage.SetActive(true);
+        }
         bossRoomManager.OnBattleOver -= BossRoomManager_OnBattleOver;
     }
 

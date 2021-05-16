@@ -86,13 +86,11 @@ public class Myrkalf_boss : Enemy
 
             if (dotRight > 0.5f || dotRight < -0.5)
             {
-                print("The player is on the sides");
                 x = 0;
                 y = 5f;
             }
             else
             {
-                Debug.Log("The player is on Y");
                 x = 5f;
                 y = 0;
             }

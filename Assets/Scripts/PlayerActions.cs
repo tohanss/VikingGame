@@ -140,6 +140,7 @@ public class PlayerActions : MonoBehaviour
             isActive = true; //stops player from attacking when death effect is playing
             playerRB.velocity = Vector2.zero;
             GetComponent<BoxCollider2D>().enabled = false;
+            shadow.gameObject.SetActive(false);
             StartCoroutine(die());
         }
         else 
@@ -175,8 +176,8 @@ public class PlayerActions : MonoBehaviour
             spriteRenderer.material.SetFloat("_Fade", 1 - i / ticks);
             yield return new WaitForSeconds(0.2f);
         }
-        Debug.Log("You Died");
-        yield return new WaitForSeconds(3.0f);
+        canvas.transform.GetChild(6).gameObject.SetActive(true);
+        yield return new WaitForSeconds(7.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); //restart to current scene
 
     }
