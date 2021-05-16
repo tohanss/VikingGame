@@ -154,6 +154,8 @@ MonoBehaviour:
   target: {fileID: 0}
   aggroRange: 0
   attackRange: 0
+  aggravated: 0
+  approachRange: 0
   damageNumbers: {fileID: 384432906329573846, guid: c479fa6054201974a92fd3ecbde5401b,
     type: 3}
   hpBar: {fileID: 6896307081140482690}
@@ -270,7 +272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.5}
+  m_AnchoredPosition: {x: 0, y: 1.726}
   m_SizeDelta: {x: 380.544, y: 71.6098}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &50209511347567535
