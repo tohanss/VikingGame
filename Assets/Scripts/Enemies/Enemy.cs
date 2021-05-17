@@ -181,10 +181,10 @@ public class Enemy : MonoBehaviour
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
         spriteRenderer.material = matDeath;
 
-        GameObject light;
-        if (light = gameObject.transform.Find("Point Light 2D").gameObject){
+        Transform light;
+        if (light = gameObject.transform.Find("Point Light 2D")){
 
-            light.SetActive(false);
+            light.gameObject.SetActive(false);
         }
 
         float ticks = 10f;
