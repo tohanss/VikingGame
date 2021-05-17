@@ -117,6 +117,9 @@ public class PlayerActions : MonoBehaviour
         // Update UI for new level
         levelText.text = "Lv. " + level.ToString();
         XPbar.fillAmount = currentExp / requiredExp;
+        var levelUpMessage = canvas.transform.GetChild(9).gameObject;
+        levelUpMessage.GetComponent<bossNameUI>().text.text = "LEVEL " + level;
+        levelUpMessage.SetActive(true);
     }
 
     public void playerTakeDamage(float damage)

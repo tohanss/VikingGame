@@ -6,10 +6,11 @@ using TMPro;
 
 public class bossNameUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text text;
+    public TMP_Text text;
     [SerializeField] private Image frame;
     [SerializeField] private Image frame2;
     [SerializeField] private Image bg;
+    [HideInInspector]
     private int timeToGo = 0;
 
     // Start is called before the first frame update
@@ -21,18 +22,24 @@ public class bossNameUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeToGo == 1)
+        if(timeToGo == 0)
+        {
+            StartCoroutine(fade(1));
+        }
+        if (timeToGo == 2)
         {
             timeToGo++;
             StartCoroutine( fade(-1));
         }
-        else if(timeToGo > 2)
+        else if(timeToGo > 4)
         {
+            timeToGo = 0;
             gameObject.SetActive(false);
         }
     }
     IEnumerator fade(int turn)
     {
+        timeToGo++;
         Color frameColor = frame.color;
         Color bgColor = bg.color;
         Color textColor = text.color;
