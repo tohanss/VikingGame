@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using Random = UnityEngine.Random;
 
 public class PlayerActions : MonoBehaviour
 {
@@ -51,6 +52,9 @@ public class PlayerActions : MonoBehaviour
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
 
+    //Sound related
+    public AudioSource stepSound;
+    private bool stepping = false;
 
     // Unity functions
     private void Start() 
@@ -79,6 +83,9 @@ public class PlayerActions : MonoBehaviour
         levelText = canvas.transform.GetChild(2).GetChild(3).GetComponent<TMP_Text>();
         XPbar.fillAmount = 0f;
         levelText.text = "Lv. " + level;
+
+        stepSound = GetComponent<AudioSource>();
+        stepSound.loop = false;
     }
 
     private void Update()
@@ -205,8 +212,20 @@ public class PlayerActions : MonoBehaviour
         if (moveable && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
         {
             playerRB.MovePosition(playerRB.position + movement.normalized * movespeed * Time.fixedDeltaTime);
+            stepSound.pitch = Random.Range(0.9f, 1.1f);
+            if (!stepping && movement != new Vector2(0,0)){
+                StartCoroutine(playStepSound(0.25f));
+            }
         }
         animator.SetFloat("Speed", (movement.normalized * movespeed * Time.fixedDeltaTime).magnitude * Convert.ToInt32(moveable));
+    }
+
+    private IEnumerator playStepSound(float delay)
+    {
+        stepping = true;
+        stepSound.Play();
+        yield return new WaitForSeconds(delay);
+        stepping = false;
     }
 
     //handles the player flashing when taking damage
