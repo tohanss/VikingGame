@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dissolve
-  m_Shader: {fileID: -6465566751694194690, guid: 563b1d9fba28acf4a8c73e6559afff88, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 563b1d9fba28acf4a8c73e6559afff88,
+    type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -37,7 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Fade: 1
-    - _Scale: 75.4
+    - _Scale: 40
     m_Colors:
     - Color_c196076f5d97407792eabb3184e7ce02: {r: 23.968628, g: 1.1294118, b: 0, a: 0}
   m_BuildTextureStacks: []
