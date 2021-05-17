@@ -180,6 +180,13 @@ public class Enemy : MonoBehaviour
         //transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
         spriteRenderer.material = matDeath;
+
+        Transform light;
+        if (light = gameObject.transform.Find("Point Light 2D")){
+
+            light.gameObject.SetActive(false);
+        }
+
         float ticks = 10f;
         for (int i = 1; i < ticks+1; i++)
         {
