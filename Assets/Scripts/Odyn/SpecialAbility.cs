@@ -215,6 +215,14 @@ public class SpecialAbility : MonoBehaviour
         aoeRadius += 0.5f;
         areaOfEffect = true;
     }
+    // should not go lower than 1
+    public void decreaseCooldown()
+    {
+        if(cooldown > 1)
+        {
+            cooldown--;
+        }
+    }
 
     private Vector2 getPlayerPos(){
         return new Vector2(transform.position.x, transform.position.y);
