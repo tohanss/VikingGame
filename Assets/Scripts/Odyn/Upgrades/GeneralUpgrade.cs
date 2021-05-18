@@ -45,7 +45,7 @@ public class GeneralUpgrade : MonoBehaviour
                         break;
                     case 1:
                         player.increaseProjectiles(1);
-                        if (player.basicProjectileUpgrades == 5)
+                        if (player.basicProjectileUpgrades > 4)
                             upgradeDropper.remove(thisUpgrade);
                         break;
                     case 2:
@@ -86,6 +86,11 @@ public class GeneralUpgrade : MonoBehaviour
                     case 12:
                         player.setUtilityAttackToSides();
                         upgradeDropper.remove(thisUpgrade);
+                        break;
+                    case 13:
+                        player.decreaseCooldownShadowstep();
+                        if (player.shadowStepUpgrades > 2)
+                            upgradeDropper.remove(thisUpgrade);
                         break;
                     default:
                         break;

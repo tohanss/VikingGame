@@ -19,6 +19,7 @@ public class PlayerClass : MonoBehaviour
 
     // Keep track of how many upgrades have been given
     public int basicProjectileUpgrades = 0;
+    public int shadowStepUpgrades = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,11 @@ public class PlayerClass : MonoBehaviour
     public void increaseSpecialAoE()
     {
         specialAbility.upgradeAoeEffect();
+    }
+
+    public void decreaseCooldownShadowstep()
+    {
+        specialAbility.decreaseCooldown();
     }
 
     public void setUtilityDot()
