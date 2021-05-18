@@ -48,6 +48,12 @@ public class UtilityAbility : MonoBehaviour
     public GameObject projectilePrefab;
     private float movementSinceAttack = 0f;
 
+    private AudioSource audioSource;
+    public AudioClip dashSound;
+    private AudioClip oldSound;
+    private float oldVolume;
+    private float oldPitch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +68,8 @@ public class UtilityAbility : MonoBehaviour
         chargesText.text = maxCharges.ToString();
         flash = playerAction.canvas.transform.GetChild(3).GetChild(2).GetChild(2).GetComponent<Image>();
         flash.color = new Color(1, 1, 1, 0);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -70,8 +78,9 @@ public class UtilityAbility : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing && !playerAction.isActive)
         {
             if (chargesLeft > 0)
-            {
-                
+            {   
+                audioSource.PlayOneShot(dashSound, 12f);
+
                 chargesLeft--; //use one charge per dash
                 chargesText.text = chargesLeft.ToString();
                 if(chargesLeft < 1)
@@ -164,6 +173,7 @@ public class UtilityAbility : MonoBehaviour
         {
             resetDash();
         }
+
     }
 
     public void setDamage(int damage)

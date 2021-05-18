@@ -13,5 +13,4 @@ public class Training_dummy : Enemy
     {
         //don't change facing direction
     }
-
 }
