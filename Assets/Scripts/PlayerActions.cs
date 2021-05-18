@@ -53,7 +53,7 @@ public class PlayerActions : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     //Sound related
-    public AudioSource stepSound;
+    private AudioSource stepSound;
     private bool stepping = false;
 
     // Unity functions
@@ -222,6 +222,7 @@ public class PlayerActions : MonoBehaviour
 
     private IEnumerator playStepSound(float delay)
     {
+        // Delay is used to space the sound between steps
         stepping = true;
         stepSound.Play();
         yield return new WaitForSeconds(delay);
