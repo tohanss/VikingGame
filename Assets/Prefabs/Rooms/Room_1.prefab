@@ -521,7 +521,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalExit: {fileID: 1366014592210257335}
   portalEntry: {fileID: 0}
+  victoryMessage: {fileID: 0}
   roomManager: {fileID: 6032528710676683343}
+  bossRoomManager: {fileID: 0}
 --- !u!1 &6032528711914666829
 GameObject:
   m_ObjectHideFlags: 0
