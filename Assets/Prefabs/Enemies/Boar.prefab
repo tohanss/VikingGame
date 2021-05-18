@@ -839,6 +839,7 @@ MonoBehaviour:
   isAlive: 0
   isFleeing: 0
   takeDamageSound: {fileID: 8300000, guid: 46a6dbb3bcadac94d8f167310b7f459a, type: 3}
+  deathSound: {fileID: 8300000, guid: 8c2168825d2e457408d5fbd6404d2d16, type: 3}
   chargeSpeed: 7
   chargeDuration: 1.5
   chargeDamage: 8

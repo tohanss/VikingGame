@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
 
     // Sound
     public AudioClip takeDamageSound;
+    public AudioClip deathSound;
     private AudioSource audioSource;
 
     protected virtual void Start()
@@ -149,6 +150,7 @@ public class Enemy : MonoBehaviour
             // hpBar.SetHealth(health, maxHealth);
             if (health <= 0)
             {
+                audioSource.PlayOneShot(deathSound, 1f);
                 isAlive = false;
                 GetComponent<BoxCollider2D>().enabled = false;
                 enemyRigidbody.velocity = Vector2.zero;
