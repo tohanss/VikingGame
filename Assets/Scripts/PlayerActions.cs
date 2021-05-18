@@ -92,6 +92,12 @@ public class PlayerActions : MonoBehaviour
     {
         if (moveable)
             playerFaceDirection();
+
+        //For demo purpose, to try out upgrades
+        if (Input.GetKeyDown("k"))
+        {
+            LevelUp();
+        }
     }
 
     private void FixedUpdate()
@@ -114,7 +120,7 @@ public class PlayerActions : MonoBehaviour
     {
         //Modify stats
         level += 1;
-        playerClass.increaseDamage(2);
+        playerClass.increaseDamage(0);
         playerClass.dropUpgrade(level);
 
         //Modify Exp values
