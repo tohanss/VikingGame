@@ -747,18 +747,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 671e38b92bb5c4743b7f954de4945d9c, type: 3}
---- !u!114 &460918986 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7029687515516362785, guid: cac0e74188fd1f540af8f19f229527dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 7029687515697180907}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &467084098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,6 +1571,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 850237613055497653, guid: 6d64b27d7fcee374aba8d757c707ef1d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d64b27d7fcee374aba8d757c707ef1d, type: 3}
 --- !u!1001 &1285825177
@@ -1857,11 +1850,11 @@ PrefabInstance:
     - target: {fileID: 853745823, guid: 5a0643e3bc3ec9b488b52505cfcc01d8, type: 3}
       propertyPath: favorText
       value: 
-      objectReference: {fileID: 1665913001}
+      objectReference: {fileID: 0}
     - target: {fileID: 853745823, guid: 5a0643e3bc3ec9b488b52505cfcc01d8, type: 3}
       propertyPath: levelText
       value: 
-      objectReference: {fileID: 460918986}
+      objectReference: {fileID: 0}
     - target: {fileID: 2991887067098795626, guid: 5a0643e3bc3ec9b488b52505cfcc01d8,
         type: 3}
       propertyPath: upgradeDropperPrefab
@@ -2098,18 +2091,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1938324075}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1665913001 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7029687514041098306, guid: cac0e74188fd1f540af8f19f229527dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 7029687515697180907}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1690725304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7571023224850178584, guid: 671e38b92bb5c4743b7f954de4945d9c,
@@ -2309,9 +2290,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53fe7519ca9b4341a6323b8b43ac73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraChangeMax: {x: 73, y: 11}
-  cameraChangeMin: {x: 41, y: -8}
-  playerChange: {x: 41, y: 0, z: 0}
+  percentageMaxHpRestore: 0
+  currentRoom: {fileID: 0}
+  nextRoom: {fileID: 0}
+  vcamFade: {fileID: 0}
 --- !u!61 &1848862532
 BoxCollider2D:
   m_ObjectHideFlags: 0

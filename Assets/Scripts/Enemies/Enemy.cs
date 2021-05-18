@@ -47,6 +47,11 @@ public class Enemy : MonoBehaviour
     public bool isAlive;
     [HideInInspector]
     public bool isFleeing;
+
+    // Sound
+    public AudioClip takeDamageSound;
+    private AudioSource audioSource;
+
     protected virtual void Start()
     {
         health = maxHealth;
@@ -63,6 +68,8 @@ public class Enemy : MonoBehaviour
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
         target = playerCharacter.GetComponent<Transform>();
         hpBar.SetMaxHealth(health); //, maxHealth);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -128,6 +135,10 @@ public class Enemy : MonoBehaviour
     {
         if (isAlive)
         {
+            // play damage sound
+            audioSource.pitch = Random.Range(0.90f, 1.1f);
+            audioSource.PlayOneShot(takeDamageSound, 0.5f);
+                
             GameObject damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity);
             damageNumber.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
 
