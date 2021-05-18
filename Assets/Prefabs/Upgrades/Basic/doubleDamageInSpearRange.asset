@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
   m_Name: doubleDamageInSpearRange
   m_EditorClassIdentifier: 
-  name: Double Damage in Spear Range
+  abilityName: Crowbolt
   description: Deal double damage to enemies in melee range
   upgradeID: 4
   animator: {fileID: 9100000, guid: ae2148539bf410f48b336d7deeb04345, type: 2}

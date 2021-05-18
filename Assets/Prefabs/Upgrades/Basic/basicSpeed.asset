@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
   m_Name: basicSpeed
   m_EditorClassIdentifier: 
-  name: Attack Speed
-  description: Increase basic ability attackspeed by 20%
+  abilityName: Crowbolt
+  description: Increase attackspeed by 20%
   upgradeID: 6
   animator: {fileID: 9100000, guid: ae2148539bf410f48b336d7deeb04345, type: 2}

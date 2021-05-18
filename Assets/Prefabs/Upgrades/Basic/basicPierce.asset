@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
   m_Name: basicPierce
   m_EditorClassIdentifier: 
-  name: Pierce
+  abilityName: Crowbolt
   description: Crows pierce enemies
   upgradeID: 0
   animator: {fileID: 9100000, guid: ae2148539bf410f48b336d7deeb04345, type: 2}
