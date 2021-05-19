@@ -748,7 +748,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 2
+      value: 2.5
       mode: 0
       spread: 0
       speed:
@@ -4892,4 +4892,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.00006365776, y: -0.010145664}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 2.5

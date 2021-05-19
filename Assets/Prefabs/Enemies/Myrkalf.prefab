@@ -210,12 +210,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Myrkalf
   moveSpeed: 1.5
-  maxHealth: 60
-  expValue: 6
+  maxHealth: 100
+  expValue: 3
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
-  aggroRange: 9
+  aggroRange: 8
   attackRange: 7
   aggravated: 0
   approachRange: 6.5
@@ -225,7 +225,8 @@ MonoBehaviour:
   isAlive: 0
   isFleeing: 0
   takeDamageSound: {fileID: 8300000, guid: 46a6dbb3bcadac94d8f167310b7f459a, type: 3}
-  projectileDamage: 12
+  deathSound: {fileID: 0}
+  projectileDamage: 10
   projSpeed: 8
   projectilePrefab: {fileID: 2189402935353740258, guid: dc6833f6c14022a49b8d87f438c4bbb5,
     type: 3}

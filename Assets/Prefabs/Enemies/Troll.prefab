@@ -182,12 +182,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Troll
   moveSpeed: 2
-  maxHealth: 100
-  expValue: 10
+  maxHealth: 200
+  expValue: 4
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
-  aggroRange: 7
+  aggroRange: 6
   attackRange: 2
   aggravated: 0
   approachRange: 1
@@ -197,6 +197,7 @@ MonoBehaviour:
   isAlive: 0
   isFleeing: 0
   takeDamageSound: {fileID: 8300000, guid: 46a6dbb3bcadac94d8f167310b7f459a, type: 3}
+  deathSound: {fileID: 0}
   slamDamage: 30
   slamPrefab: {fileID: 6214492714146616344, guid: dbbafe0cfe4c82840af9a2e4b28f2b4c,
     type: 3}

@@ -824,12 +824,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Boar
   moveSpeed: 3
-  maxHealth: 40
-  expValue: 5
+  maxHealth: 50
+  expValue: 2
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
-  aggroRange: 7
+  aggroRange: 6
   attackRange: 4
   aggravated: 0
   approachRange: 1
@@ -842,7 +842,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 8c2168825d2e457408d5fbd6404d2d16, type: 3}
   chargeSpeed: 7
   chargeDuration: 1.5
-  chargeDamage: 8
+  chargeDamage: 7
 --- !u!95 &6223159537571279658
 Animator:
   serializedVersion: 3

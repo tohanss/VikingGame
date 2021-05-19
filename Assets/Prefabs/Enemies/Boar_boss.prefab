@@ -787,8 +787,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: "S\xE4r & Imner"
   moveSpeed: 3
-  maxHealth: 150
-  expValue: 20
+  maxHealth: 300
+  expValue: 8
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}

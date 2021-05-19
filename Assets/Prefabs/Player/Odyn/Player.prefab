@@ -435,8 +435,9 @@ MonoBehaviour:
   upgradeDropperPrefab: {fileID: 8533044298107271860, guid: b5f224df8301789438856a2a4cdde192,
     type: 3}
   upgradeDropper: {fileID: 0}
-  maxHealth: 100
+  maxHealth: 200
   basicProjectileUpgrades: 0
+  shadowStepUpgrades: 0
 --- !u!114 &1856058376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +526,7 @@ MonoBehaviour:
   attackToSides: 0
   projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
     type: 3}
+  dashSound: {fileID: 0}
 --- !u!81 &7705793323471271786
 AudioListener:
   m_ObjectHideFlags: 0
