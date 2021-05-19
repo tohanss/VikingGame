@@ -12,6 +12,7 @@ public class bossNameUI : MonoBehaviour
     [SerializeField] private Image bg;
     [HideInInspector]
     private int timeToGo = 0;
+    [HideInInspector] public bool wait = true;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class bossNameUI : MonoBehaviour
         Color frameColor = frame.color;
         Color bgColor = bg.color;
         Color textColor = text.color;
-        if(timeToGo == 0) yield return new WaitForSeconds(0.8f);
+        if(timeToGo == 1 && wait) yield return new WaitForSeconds(0.8f);
         for (float i = 1; i < 31; i++)
         {
             text.color = textColor + new Color(0, 0, 0, i / 30f) * turn;
