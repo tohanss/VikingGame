@@ -22,6 +22,7 @@ public class GeneralUpgrade : MonoBehaviour
         
         toolTip = gameObject.transform.GetChild(0).gameObject;
         toolTip.transform.GetChild(1).GetComponent<TextMeshPro>().SetText(thisUpgrade.description, true);
+        toolTip.transform.GetChild(2).GetComponent<TextMeshPro>().SetText(thisUpgrade.abilityName, true);
         
         GetComponent<Animator>().runtimeAnimatorController = thisUpgrade.animator;
         StartCoroutine(decreaseLight());

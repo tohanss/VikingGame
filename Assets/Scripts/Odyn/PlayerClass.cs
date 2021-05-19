@@ -120,6 +120,6 @@ public class PlayerClass : MonoBehaviour
 
     public void dropUpgrade(int level)
     {
-        upgradeDropper.dropUpgrade(new Vector2(0, 1));
+        upgradeDropper.dropUpgrade(new Vector2(0, 1.5f));
     }
 }

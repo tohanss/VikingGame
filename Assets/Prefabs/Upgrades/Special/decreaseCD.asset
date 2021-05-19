@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
   m_Name: decreaseCD
   m_EditorClassIdentifier: 
-  name: Lower Cooldown
-  description: Decrease the cooldown of shadowstep by 1 second
+  abilityName: Shadowstep
+  description: Decrease cooldown by 1 second
   upgradeID: 13
   animator: {fileID: 9100000, guid: fd88fd29e56edb942a416bf35303cc51, type: 2}

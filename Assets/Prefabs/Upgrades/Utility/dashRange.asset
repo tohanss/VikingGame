@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
   m_Name: dashRange
   m_EditorClassIdentifier: 
-  name: Dash Range
-  description: Increase range of dash ability
+  abilityName: Shadowflight
+  description: Increase flight range
   upgradeID: 11
   animator: {fileID: 9100000, guid: 0ce68d07d3b9d5c4b8b661b950e2e687, type: 2}

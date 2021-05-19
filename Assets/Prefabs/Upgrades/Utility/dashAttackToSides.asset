@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
   m_Name: dashAttackToSides
   m_EditorClassIdentifier: 
-  name: Attack to sides
+  abilityName: Shadowflight
   description: Fire crows along dash path
   upgradeID: 12
   animator: {fileID: 9100000, guid: 0ce68d07d3b9d5c4b8b661b950e2e687, type: 2}

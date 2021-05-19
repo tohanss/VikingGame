@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Upgrade : ScriptableObject
 {
-    public new string name;
+    public string abilityName;
     public string description;
     //public Sprite sprite;
 

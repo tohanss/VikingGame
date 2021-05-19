@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15681278948c9194eb1d48a50de5b8d2, type: 3}
   m_Name: specialAoE
   m_EditorClassIdentifier: 
-  name: Area of Effect
-  description: Deal area damage around hit enemies
+  abilityName: Shadowstep
+  description: Deal area damage around enemies and increases area size
   upgradeID: 8
   animator: {fileID: 9100000, guid: fd88fd29e56edb942a416bf35303cc51, type: 2}
