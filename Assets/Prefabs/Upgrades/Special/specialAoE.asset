@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: specialAoE
   m_EditorClassIdentifier: 
   abilityName: Shadowstep
-  description: Deal area damage around enemies
+  description: Deal area damage around enemies and increases area size
   upgradeID: 8
   animator: {fileID: 9100000, guid: fd88fd29e56edb942a416bf35303cc51, type: 2}
