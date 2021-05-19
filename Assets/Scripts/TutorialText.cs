@@ -31,7 +31,7 @@ public class TutorialText : MonoBehaviour
         yield return new WaitForSeconds(4.0f);
         tutorialText.text = "";
         yield return new WaitForSeconds(1.0f);
-        tutorialText.text = "Press left mouse button to shoot";
+        tutorialText.text = "Press left mouse button to shoot a Crowbolt";
         yield return new WaitForSeconds(4.0f);
         tutorialText.text = "Try it out on the training dummies!";
         yield return new WaitForSeconds(3.0f);
@@ -41,7 +41,7 @@ public class TutorialText : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
         tutorialText.text = "";
         yield return new WaitForSeconds(1.0f);
-        tutorialText.text = "Press space button to dash";
+        tutorialText.text = "Press space button to do Shadowflight";
         yield return new WaitForSeconds(5.0f);
         tutorialText.text = "Beware, abilities have cooldowns";
         yield return new WaitForSeconds(3.0f);
