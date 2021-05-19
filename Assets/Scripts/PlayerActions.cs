@@ -132,6 +132,7 @@ public class PlayerActions : MonoBehaviour
         XPbar.fillAmount = currentExp / requiredExp;
         var levelUpMessage = canvas.transform.GetChild(9).gameObject;
         levelUpMessage.GetComponent<bossNameUI>().text.text = "LEVEL " + level;
+        levelUpMessage.GetComponent<bossNameUI>().wait = false;
         levelUpMessage.SetActive(true);
     }
 
