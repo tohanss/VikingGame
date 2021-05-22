@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356373987f4f735468515ac5ff2479bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgMultiplier: 0.5
-  numberOfHits: 3
+  dmgMultiplier: 1.8
+  numberOfHits: 4
   delay: 0.2
   range: 5
   chainRange: 4
@@ -512,9 +512,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d91c910042903244b63c43b256682d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgMultiplier: 0.5
   maxCharges: 2
   chargesLeft: 0
-  dashCooldown: 5
+  dashCooldown: 3
   dashDistance: 3
   isDashing: 0
   hitCollidable: 0
