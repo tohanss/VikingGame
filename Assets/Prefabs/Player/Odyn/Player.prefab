@@ -435,8 +435,9 @@ MonoBehaviour:
   upgradeDropperPrefab: {fileID: 8533044298107271860, guid: b5f224df8301789438856a2a4cdde192,
     type: 3}
   upgradeDropper: {fileID: 0}
-  maxHealth: 100
+  maxHealth: 200
   basicProjectileUpgrades: 0
+  shadowStepUpgrades: 0
 --- !u!114 &1856058376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,13 +470,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356373987f4f735468515ac5ff2479bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgMultiplier: 0.5
-  numberOfHits: 3
+  dmgMultiplier: 1.8
+  numberOfHits: 4
   delay: 0.2
   range: 5
   chainRange: 4
   slash: {fileID: 6681774670869387640, guid: f2795b34e7143be47bd8eedfef86ba62, type: 3}
-  dotPrefab: {fileID: 2947126341861528205, guid: 5a0bc3282d927a5469c66a2a736d92b5,
+  dotPrefab: {fileID: 4613876251619576743, guid: 5c88bc10ab59f894a933baebead40ce7,
     type: 3}
   placeDot: 0
   areaOfEffect: 0
@@ -511,20 +512,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d91c910042903244b63c43b256682d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgMultiplier: 0.5
   maxCharges: 2
   chargesLeft: 0
-  dashCooldown: 5
+  dashCooldown: 3
   dashDistance: 3
   isDashing: 0
   hitCollidable: 0
   trail: {fileID: 2618153830540783188, guid: 442f9f2c1fdb0fa45ba8f5fdd39610e0, type: 3}
   placeDot: 0
-  dotPrefab: {fileID: 2947126341861528205, guid: 5a0bc3282d927a5469c66a2a736d92b5,
+  dotPrefab: {fileID: 4613876251619576743, guid: 5c88bc10ab59f894a933baebead40ce7,
     type: 3}
   lifeLeech: 0
   attackToSides: 0
   projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
     type: 3}
+  dashSound: {fileID: 0}
 --- !u!81 &7705793323471271786
 AudioListener:
   m_ObjectHideFlags: 0

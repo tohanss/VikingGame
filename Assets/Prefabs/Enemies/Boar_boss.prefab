@@ -787,8 +787,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: "S\xE4r & Imner"
   moveSpeed: 3
-  maxHealth: 150
-  expValue: 20
+  maxHealth: 500
+  expValue: 0
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
@@ -808,7 +808,7 @@ MonoBehaviour:
   chargeDamage: 12
   orbPrefab: {fileID: 4887711118577605508, guid: 23f922f0882762f499ace063441a13af,
     type: 3}
-  orbDamage: 4
+  orbDamage: 5
 --- !u!82 &2012351399775072240
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1043,6 +1043,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542064890841655532, guid: 23f922f0882762f499ace063441a13af,
+        type: 3}
+      propertyPath: orbDamage
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8542064890841655532, guid: 23f922f0882762f499ace063441a13af,
         type: 3}

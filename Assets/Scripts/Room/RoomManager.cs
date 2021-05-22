@@ -141,19 +141,20 @@ public class RoomManager : MonoBehaviour
         for (int i = 0; i < _wave.numberOfBoars; i++)
         {
             spawnEnemy(boar, waveGO);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
 
         for (int i = 0; i < _wave.numberOfTrolls; i++)
         {
             spawnEnemy(troll, waveGO);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
 
-        /*for (int i = 0; i < _wave.numberOfElves; i++)
+        for (int i = 0; i < _wave.numberOfElves; i++)
         {
-            spawnEnemy(elf);
-        }*/
+            spawnEnemy(elf, waveGO);
+            yield return new WaitForSeconds(0.2f);
+        }
 
         yield break;
     }

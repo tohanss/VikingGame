@@ -16,7 +16,9 @@ public class PortalHandler : MonoBehaviour
 
     // Material related
     private Material matActive;
+    private Material matInactive;
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spEnemyPortal;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class PortalHandler : MonoBehaviour
             spriteRenderer = portalExit.GetComponent<SpriteRenderer>();
         }
         matActive = Resources.Load("Materials/exit-portal", typeof(Material)) as Material;
+        matInactive = Resources.Load("Materials/inactive-portal", typeof(Material)) as Material;
     }
 
    
@@ -62,6 +65,13 @@ public class PortalHandler : MonoBehaviour
         Debug.Log("Exit Portal Open");
         if (portalExit != null)
         {
+            foreach (var enemyPortal in roomManager.enemyPortals)
+            {
+                spEnemyPortal = enemyPortal.GetComponent<SpriteRenderer>();
+                spEnemyPortal.material = matInactive;
+                spEnemyPortal.color = new Color32(37,37,63,105);
+            }
+
             spriteRenderer.color = Color.white;
             spriteRenderer.material = matActive;
             portalExit.transform.GetChild(0).gameObject.SetActive(true);

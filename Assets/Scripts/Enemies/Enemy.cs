@@ -190,7 +190,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual IEnumerator die()
     {
-        //transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
+        transform.parent.transform.parent.GetComponent<RoomManager>().decrementNumberOfEnemies();
         playerCharacter.GetComponent<PlayerActions>().GainExp(expValue);
         spriteRenderer.material = matDeath;
 

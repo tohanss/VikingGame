@@ -13,7 +13,7 @@ public class SpearProjectile : MonoBehaviour
     private bool hit = false;
 
     // Life related
-    private float maxLife = 2.0f; //temporary solution, max life duration for projectile 
+    private float maxLife = 1.0f; //temporary solution, max life duration for projectile 
     private float lifeTimer;
 
     // Upgrade related
