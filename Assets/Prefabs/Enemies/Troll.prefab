@@ -183,7 +183,7 @@ MonoBehaviour:
   enemyName: Troll
   moveSpeed: 2
   maxHealth: 160
-  expValue: 4
+  expValue: 8
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}

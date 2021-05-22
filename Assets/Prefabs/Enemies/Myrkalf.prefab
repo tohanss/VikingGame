@@ -211,7 +211,7 @@ MonoBehaviour:
   enemyName: Myrkalf
   moveSpeed: 1.5
   maxHealth: 80
-  expValue: 3
+  expValue: 6
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}

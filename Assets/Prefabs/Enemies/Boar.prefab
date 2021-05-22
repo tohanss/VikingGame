@@ -825,7 +825,7 @@ MonoBehaviour:
   enemyName: Boar
   moveSpeed: 3
   maxHealth: 40
-  expValue: 2
+  expValue: 1
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
   target: {fileID: 0}
