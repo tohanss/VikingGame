@@ -181,7 +181,7 @@ public class PlayerActions : MonoBehaviour
         HPcurrent.text = currentHealth.ToString();
         HPbar.fillAmount = currentHealth / maxHealth;
         TextMesh damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity).transform.GetChild(0).GetComponent<TextMesh>();
-        damageNumber.color = Color.green;
+        damageNumber.color = new Color32(0,214,44,255);
         damageNumber.text = amount.ToString();
     }
 

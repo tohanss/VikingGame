@@ -842,7 +842,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 8c2168825d2e457408d5fbd6404d2d16, type: 3}
   chargeSpeed: 7
   chargeDuration: 1.5
-  chargeDamage: 7
+  chargeDamage: 5
 --- !u!95 &6223159537571279658
 Animator:
   serializedVersion: 3
