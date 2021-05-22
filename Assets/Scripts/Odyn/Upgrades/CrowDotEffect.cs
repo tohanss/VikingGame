@@ -16,6 +16,7 @@ public class CrowDotEffect : MonoBehaviour
     void Start()
     {
         parent = gameObject.transform.parent.gameObject.GetComponent<Enemy>();
+        transform.localPosition = new Vector3(0, 0.5f, 0);
     }
 
     // Update is called once per frame

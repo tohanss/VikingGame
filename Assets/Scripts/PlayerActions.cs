@@ -119,6 +119,7 @@ public class PlayerActions : MonoBehaviour
 
     private void LevelUp()
     {
+        playerRestoreHealth(maxHealth*0.1f);
         //Modify stats
         level += 1;
         playerClass.increaseDamage(0);

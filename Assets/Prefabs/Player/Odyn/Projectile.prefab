@@ -209,12 +209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa727efeaced5246a0317675dd58887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 14
+  damage: 10
   rb: {fileID: 6446873694434449909}
   doubleDamageInSpearRange: 0
-  pierce: 1
+  pierce: 0
   attachCrow: 0
-  crowDotPrefab: {fileID: 2947126341861528205, guid: 5a0bc3282d927a5469c66a2a736d92b5,
+  crowDotPrefab: {fileID: 4613876251619576743, guid: 5c88bc10ab59f894a933baebead40ce7,
     type: 3}
 --- !u!95 &8830785786408730010
 Animator:

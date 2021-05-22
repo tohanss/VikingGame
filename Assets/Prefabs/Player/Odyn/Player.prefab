@@ -476,7 +476,7 @@ MonoBehaviour:
   range: 5
   chainRange: 4
   slash: {fileID: 6681774670869387640, guid: f2795b34e7143be47bd8eedfef86ba62, type: 3}
-  dotPrefab: {fileID: 2947126341861528205, guid: 5a0bc3282d927a5469c66a2a736d92b5,
+  dotPrefab: {fileID: 4613876251619576743, guid: 5c88bc10ab59f894a933baebead40ce7,
     type: 3}
   placeDot: 0
   areaOfEffect: 0
@@ -521,7 +521,7 @@ MonoBehaviour:
   hitCollidable: 0
   trail: {fileID: 2618153830540783188, guid: 442f9f2c1fdb0fa45ba8f5fdd39610e0, type: 3}
   placeDot: 0
-  dotPrefab: {fileID: 2947126341861528205, guid: 5a0bc3282d927a5469c66a2a736d92b5,
+  dotPrefab: {fileID: 4613876251619576743, guid: 5c88bc10ab59f894a933baebead40ce7,
     type: 3}
   lifeLeech: 0
   attackToSides: 0
