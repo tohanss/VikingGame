@@ -8,7 +8,7 @@ public class UtilityAbility : MonoBehaviour
 {
     // Damage related
     private float damage;
-    private float dmgMultiplier = 0.5f;
+    public float dmgMultiplier;
     private Collider2D hitEnemy;
 
     // Cooldown related
@@ -190,7 +190,7 @@ public class UtilityAbility : MonoBehaviour
 
             if (lifeLeech)
             {
-                gameObject.GetComponent<PlayerActions>().playerRestoreHealth(damage * 0.5f);
+                gameObject.GetComponent<PlayerActions>().playerRestoreHealth(Mathf.Ceil(damage * 0.5f));
             }
 
             if (placeDot)

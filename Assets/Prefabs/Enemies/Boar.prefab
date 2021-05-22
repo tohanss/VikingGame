@@ -824,7 +824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Boar
   moveSpeed: 3
-  maxHealth: 50
+  maxHealth: 40
   expValue: 2
   canBeKnockedBack: 0
   playerCharacter: {fileID: 0}
