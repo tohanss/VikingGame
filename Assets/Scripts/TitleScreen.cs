@@ -41,7 +41,11 @@ public class TitleScreen : MonoBehaviour
             StartCoroutine(fadeMusic(0.5f));
             Invoke("startGame", 0.5f);
         }
-        else if(bounceable)
+    }
+
+    private void FixedUpdate()
+    {
+        if (bounceable)
         {
             bounce();
         }
@@ -49,7 +53,7 @@ public class TitleScreen : MonoBehaviour
 
     private void bounce()
     {
-        t = t + (0.004f * turn) * factor;
+        t = t + (0.04f * turn) * factor;
         factor = 1 - Mathf.Abs( 0.5f - t);
 
         if (t > 1)

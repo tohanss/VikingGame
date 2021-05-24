@@ -216,6 +216,7 @@ MonoBehaviour:
   attachCrow: 0
   crowDotPrefab: {fileID: 4613876251619576743, guid: 5c88bc10ab59f894a933baebead40ce7,
     type: 3}
+  poof: {fileID: 8165214846580902320, guid: 8d6b7a7c453a29a4e98d411d9c6bb79b, type: 3}
 --- !u!95 &8830785786408730010
 Animator:
   serializedVersion: 3
