@@ -22,10 +22,11 @@ public class SpearProjectile : MonoBehaviour
 
     public bool attachCrow;
     public GameObject crowDotPrefab;
+    [SerializeField] private GameObject poof;
 
     private void Start()
     {
-        Destroy(gameObject, maxLife);
+        StartCoroutine(destructOnTime( maxLife ));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -60,7 +61,7 @@ public class SpearProjectile : MonoBehaviour
 
             if (!pierce)
             {
-                Destroy(gameObject);
+                destruct();
             }
             else
             {
@@ -69,7 +70,7 @@ public class SpearProjectile : MonoBehaviour
         }
         else if(other.gameObject.CompareTag("HighCollidables"))
         {
-            Destroy(gameObject);
+            destruct();
         }
     }
 
@@ -77,5 +78,17 @@ public class SpearProjectile : MonoBehaviour
     {
         damage = value;
         crowDotPrefab.GetComponent<CrowDotEffect>().tickDamage = value * 0.1f;
+    }
+
+    private void destruct()
+    {
+        Instantiate(poof, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
+    IEnumerator destructOnTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        destruct();
     }
 }
