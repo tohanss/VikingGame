@@ -79,7 +79,7 @@ public class UtilityAbility : MonoBehaviour
         {
             if (chargesLeft > 0)
             {   
-                audioSource.PlayOneShot(dashSound, 12f);
+                audioSource.PlayOneShot(dashSound, 8f);
 
                 chargesLeft--; //use one charge per dash
                 chargesText.text = chargesLeft.ToString();

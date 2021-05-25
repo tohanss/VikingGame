@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
     // Sound
     public AudioClip takeDamageSound;
     public AudioClip deathSound;
+    [HideInInspector]
     public AudioSource audioSource;
 
     protected virtual void Start()
