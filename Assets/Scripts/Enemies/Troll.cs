@@ -15,22 +15,19 @@ public class Troll : Enemy
     private CircleCollider2D slamCollider;
     public Transform shadow;
 
-    // Sound
-    private AudioSource audioSource;
-
     protected override void Start()
     {
         base.Start();
         ps = slamPrefab.GetComponent<ParticleSystem>();
         trollSlamAttack = slamPrefab.GetComponent<TrollSlamAttack>();
         slamCollider = slamPrefab.GetComponent<CircleCollider2D>();
-        audioSource = gameObject.GetComponent<AudioSource>();
         
         var shape = ps.shape;
         attackRange = shape.radius;
         slamCollider.radius = attackRange;
         attackCooldown = 3.0f;
         setDamage(slamDamage); //set damage for slamPrefab
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected override void facePlayer()
