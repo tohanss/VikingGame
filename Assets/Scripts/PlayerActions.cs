@@ -94,7 +94,7 @@ public class PlayerActions : MonoBehaviour
             playerFaceDirection();
 
         //For demo purpose, to try out upgrades
-        if (Input.GetKeyDown("k"))
+        if (Input.GetKeyDown("l"))
         {
             currentExp = requiredExp;
             LevelUp();

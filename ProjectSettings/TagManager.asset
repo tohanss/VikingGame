@@ -8,6 +8,7 @@ TagManager:
   - Collidables
   - Fence
   - HighCollidables
+  - ExitPortal
   layers:
   - Default
   - TransparentFX
