@@ -35,6 +35,8 @@ public class GeneralUpgrade : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
+                upgradeDropper.playPickupSound();
+
                 PlayerClass player = collidedWith.GetComponent<PlayerClass>();
 
                 switch (thisUpgrade.upgradeID)

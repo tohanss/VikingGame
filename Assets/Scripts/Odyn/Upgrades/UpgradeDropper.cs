@@ -9,13 +9,21 @@ public class UpgradeDropper : MonoBehaviour
     private List<GeneralUpgrade[]> currentDrops;
     private int numDroppedUpgrades;
 
+    private AudioSource audioSource;
+    public AudioClip pickupSound;
+    public AudioClip dropSound;
+
     private void Start() {
         numDroppedUpgrades = 0;
         currentDrops = new List<GeneralUpgrade[]>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void dropUpgrade(Vector2 offset)
     {   
+        audioSource.PlayOneShot(dropSound);
+
         numDroppedUpgrades += 1;
 
         currentDrops.Add(new GeneralUpgrade[3]);
@@ -46,5 +54,10 @@ public class UpgradeDropper : MonoBehaviour
     public void remove(Upgrade upgrade)
     {
         upgrades.Remove(upgrade);
+    }
+
+    public void playPickupSound(){
+        // Had to be here because upgrades are destroyed before they can play the sound
+        audioSource.PlayOneShot(pickupSound);
     }
 }
