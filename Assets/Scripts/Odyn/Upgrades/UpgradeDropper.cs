@@ -22,7 +22,7 @@ public class UpgradeDropper : MonoBehaviour
 
     public void dropUpgrade(Vector2 offset)
     {   
-        audioSource.PlayOneShot(dropSound);
+        audioSource.PlayOneShot(dropSound, 0.70f);
 
         numDroppedUpgrades += 1;
 
@@ -58,6 +58,6 @@ public class UpgradeDropper : MonoBehaviour
 
     public void playPickupSound(){
         // Had to be here because upgrades are destroyed before they can play the sound
-        audioSource.PlayOneShot(pickupSound);
+        audioSource.PlayOneShot(pickupSound, 0.70f);
     }
 }

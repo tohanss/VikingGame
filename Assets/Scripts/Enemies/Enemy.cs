@@ -150,7 +150,7 @@ public class Enemy : MonoBehaviour
             // hpBar.SetHealth(health, maxHealth);
             if (health <= 0)
             {
-                audioSource.PlayOneShot(deathSound, 1f);
+                audioSource.PlayOneShot(deathSound, 0.6f);
                 isAlive = false;
                 GetComponent<BoxCollider2D>().enabled = false;
                 enemyRigidbody.velocity = Vector2.zero;
