@@ -100,7 +100,7 @@ public class RoomManager : MonoBehaviour
         }
 
         // FOR DEMO PURPOSE TURN ON ROOM TRANSFER in newExitPortal
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("p") && transform.GetChild(2).CompareTag("ExitPortal"))
         {
             transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
         }
