@@ -7,7 +7,8 @@ using UnityEngine.Experimental.Rendering.LWRP;
 public class GeneralUpgrade : MonoBehaviour
 {
     private GameObject toolTip;
-    private Upgrade thisUpgrade;
+    [HideInInspector]
+    public Upgrade thisUpgrade;
     private UpgradeDropper upgradeDropper;
 
     public int dropIndex;
@@ -15,15 +16,11 @@ public class GeneralUpgrade : MonoBehaviour
     private void Start()
     {
         upgradeDropper = GameObject.Find("UpgradeDropper(Clone)").GetComponent<UpgradeDropper>(); 
-
-        // min is incluseive, max is exclusive
-        // picks a random upgrade for this instance from the list upgrades
-        thisUpgrade = upgradeDropper.upgrades[Random.Range(0, upgradeDropper.upgrades.Count)];
         
         toolTip = gameObject.transform.GetChild(0).gameObject;
         toolTip.transform.GetChild(1).GetComponent<TextMeshPro>().SetText(thisUpgrade.description, true);
         toolTip.transform.GetChild(2).GetComponent<TextMeshPro>().SetText(thisUpgrade.abilityName, true);
-        
+
         GetComponent<Animator>().runtimeAnimatorController = thisUpgrade.animator;
         StartCoroutine(decreaseLight());
     }

@@ -25,7 +25,22 @@ public class UpgradeDropper : MonoBehaviour
         currentDrops[numDroppedUpgrades-1][0] = Instantiate(upgradePrefab, spawnPosition + offset, Quaternion.identity);
         currentDrops[numDroppedUpgrades-1][1] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(3f,0), Quaternion.identity);
         currentDrops[numDroppedUpgrades-1][2] = Instantiate(upgradePrefab, spawnPosition + offset + new Vector2(-3f,0), Quaternion.identity);
-    
+
+        // Generates the upgrades in a way that all three are unique
+        HashSet<int> upgradeNumbers = new HashSet<int>();
+
+        while (upgradeNumbers.Count < 3)
+        {
+            upgradeNumbers.Add(Random.Range(0, upgrades.Count));
+        }
+
+        int pos = 0;
+        foreach (int number in upgradeNumbers)
+        {
+            currentDrops[numDroppedUpgrades-1][pos].thisUpgrade = upgrades[number];
+            pos++;
+        }
+
         // Tells all upgrades what order they were dropped in, so that we can remove the associated
         // upgrades when picking one up
         for (int i = 0; i < 3; i++)
