@@ -82,7 +82,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425564961800572412}
-  m_Text: Press E exit
+  m_Text: Press E to exit
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
