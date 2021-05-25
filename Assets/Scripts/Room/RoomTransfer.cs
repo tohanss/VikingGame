@@ -7,6 +7,7 @@ public class RoomTransfer : MonoBehaviour
     private GameObject toolTip;
     private Transform nextRoomPortalPos;
     private bool activated;
+    private Transform player;
     public float percentageMaxHpRestore;
 
     public GameObject currentRoom;
@@ -19,6 +20,16 @@ public class RoomTransfer : MonoBehaviour
         activated = false;
         toolTip = gameObject.transform.GetChild(0).gameObject;
         nextRoomPortalPos = nextRoom.gameObject.transform.GetChild(1).gameObject.transform;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        //FOR DEMO PURPOSE ONLY, TELEPORT PLAYER TO NEXT ROOM
+        if (Input.GetKeyDown("p"))
+        {
+            StartCoroutine(enableNextRoomCamera());
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other) 
@@ -28,7 +39,7 @@ public class RoomTransfer : MonoBehaviour
             if (Input.GetKey(KeyCode.E) && !activated)
             {
                 activated = true;
-                StartCoroutine(enableNextRoomCamera(other.transform));
+                StartCoroutine(enableNextRoomCamera());
             }
         }
     }
@@ -48,11 +59,10 @@ public class RoomTransfer : MonoBehaviour
         }
     }
 
-    private IEnumerator enableNextRoomCamera(Transform player)
+    private IEnumerator enableNextRoomCamera()
     {
         var playerGO = player.GetComponent<PlayerActions>();
         playerGO.playerRestoreHealth(playerGO.maxHealth * percentageMaxHpRestore / 100f); // restore x% of player MaxHP when using exit portal
-       
         yield return new WaitForSeconds(0.5f);
         vcamFade.SetActive(true);
         yield return new WaitForSeconds(1.1f);

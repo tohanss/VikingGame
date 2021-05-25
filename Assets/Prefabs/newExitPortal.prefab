@@ -82,7 +82,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425564961800572412}
-  m_Text: Press E exit
+  m_Text: Press E to exit
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 5947232376356844095}
   m_Layer: 0
   m_Name: newExitPortal
-  m_TagString: Untagged
+  m_TagString: ExitPortal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

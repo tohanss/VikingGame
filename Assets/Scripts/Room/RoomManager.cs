@@ -98,6 +98,12 @@ public class RoomManager : MonoBehaviour
         {
             OnBattleOver?.Invoke(this, EventArgs.Empty); 
         }
+
+        // FOR DEMO PURPOSE TURN ON ROOM TRANSFER in newExitPortal
+        if (Input.GetKeyDown("p"))
+        {
+            transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
    
     //handles check if battle is over
