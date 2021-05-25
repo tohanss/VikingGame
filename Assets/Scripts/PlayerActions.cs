@@ -53,7 +53,8 @@ public class PlayerActions : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     //Sound related
-    private AudioSource stepSound;
+    public AudioClip takeDamageSound;
+    private AudioSource audioSource;
     private bool stepping = false;
 
     // Unity functions
@@ -84,8 +85,8 @@ public class PlayerActions : MonoBehaviour
         XPbar.fillAmount = 0f;
         levelText.text = "Lv. " + level;
 
-        stepSound = GetComponent<AudioSource>();
-        stepSound.loop = false;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = false;
     }
 
     private void Update()
@@ -141,9 +142,11 @@ public class PlayerActions : MonoBehaviour
     public void playerTakeDamage(float damage)
     {
         if (isInvulnerable) return;
+        
+        // Janky way of doing volume, but it works. TO FIX
+        audioSource.PlayOneShot(takeDamageSound, 0.5f/audioSource.volume);
 
         currentHealth -= damage;
-
 
         if (currentHealth < 0) 
         {
@@ -224,7 +227,7 @@ public class PlayerActions : MonoBehaviour
         if (moveable && !animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
         {
             playerRB.MovePosition(playerRB.position + movement.normalized * movespeed * Time.fixedDeltaTime);
-            stepSound.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
             if (!stepping && movement != new Vector2(0,0)){
                 StartCoroutine(playStepSound(0.25f));
             }
@@ -236,7 +239,7 @@ public class PlayerActions : MonoBehaviour
     {
         // Delay is used to space the sound between steps
         stepping = true;
-        stepSound.Play();
+        audioSource.Play();
         yield return new WaitForSeconds(delay);
         stepping = false;
     }
