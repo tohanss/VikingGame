@@ -47,7 +47,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.6886792, g: 0.65941066, b: 0.4450427, a: 1}
-  m_Intensity: 0.7
+  m_Intensity: 0.6
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000114717868b1edffc37d7b64c
   m_LightCookieSprite: {fileID: 0}
@@ -58,8 +58,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 9.14
+  m_PointLightInnerRadius: 6.34
+  m_PointLightOuterRadius: 7.74
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -458,6 +458,7 @@ MonoBehaviour:
   doubleDamageInSpearRange: 0
   attachCrow: 0
   numberProjectiles: 1
+  attackSound: {fileID: 8300000, guid: 237a2fb3f3518844a86689b667fad532, type: 3}
 --- !u!114 &1856058370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +528,7 @@ MonoBehaviour:
   attackToSides: 0
   projectilePrefab: {fileID: 5911989106203811900, guid: 19ff6476e4a4bc549a13c5d8d04acc92,
     type: 3}
-  dashSound: {fileID: 0}
+  dashSound: {fileID: 8300000, guid: 061ceba165e5ca142a6c7b10a399eca7, type: 3}
 --- !u!81 &7705793323471271786
 AudioListener:
   m_ObjectHideFlags: 0
@@ -546,9 +547,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 85ed78eeebb4cfe4dbcf0ae4b056d11a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -15,6 +15,8 @@ public class Troll : Enemy
     private CircleCollider2D slamCollider;
     public Transform shadow;
 
+    // Sound
+    private AudioSource audioSource;
 
     protected override void Start()
     {
@@ -22,6 +24,7 @@ public class Troll : Enemy
         ps = slamPrefab.GetComponent<ParticleSystem>();
         trollSlamAttack = slamPrefab.GetComponent<TrollSlamAttack>();
         slamCollider = slamPrefab.GetComponent<CircleCollider2D>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         
         var shape = ps.shape;
         attackRange = shape.radius;
@@ -58,6 +61,7 @@ public class Troll : Enemy
         if (Time.time - lastTime > attackCooldown)
         {
             Instantiate(slamPrefab, attackPoint.position, attackPoint.rotation);
+            audioSource.Play();
             lastTime = Time.time;
             animator.ResetTrigger("attack");
         }

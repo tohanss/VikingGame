@@ -32,8 +32,14 @@ public class BasicAbility : MonoBehaviour
     private float scatterMaxAngle = 30;
     private float projectileSpeed = 10f;
 
+    //Sound
+    public AudioClip attackSound;
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
+
         projectileScript = projectilePrefab.GetComponent<SpearProjectile>();
         animator = GetComponent<Animator>();
         playerAction = GetComponent<PlayerActions>();
@@ -50,6 +56,10 @@ public class BasicAbility : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && !attacking && !playerAction.isActive)
         {
             animator.SetTrigger("Basic");
+
+            audioSource.pitch = Random.Range(1f, 1.2f);
+            audioSource.PlayOneShot(attackSound, 8f);
+
             icon.color = new Color(1, 1, 1, 0.3f);
             Invoke("resetIcon", 0.15f);
             playerAction.isActive = true;
