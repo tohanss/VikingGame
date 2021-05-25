@@ -138,7 +138,7 @@ public class Enemy : MonoBehaviour
         {
             // play damage sound
             audioSource.pitch = Random.Range(0.90f, 1.1f);
-            audioSource.PlayOneShot(takeDamageSound, 0.5f);
+            audioSource.PlayOneShot(takeDamageSound, 0.35f);
                 
             GameObject damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity);
             damageNumber.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
