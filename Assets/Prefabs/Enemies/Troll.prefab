@@ -198,11 +198,13 @@ MonoBehaviour:
   isFleeing: 0
   takeDamageSound: {fileID: 8300000, guid: 46a6dbb3bcadac94d8f167310b7f459a, type: 3}
   deathSound: {fileID: 0}
+  audioSource: {fileID: 0}
   slamDamage: 25
   slamPrefab: {fileID: 6214492714146616344, guid: dbbafe0cfe4c82840af9a2e4b28f2b4c,
     type: 3}
   attackPoint: {fileID: 1330742968}
   shadow: {fileID: 7030726678966753271}
+  attackSound: {fileID: 8300000, guid: 2917fabf0cc63f84c8dfe5b40c6cdea2, type: 3}
 --- !u!95 &-7241989316536180554
 Animator:
   serializedVersion: 3
@@ -232,7 +234,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2917fabf0cc63f84c8dfe5b40c6cdea2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

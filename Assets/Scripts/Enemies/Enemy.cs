@@ -51,7 +51,8 @@ public class Enemy : MonoBehaviour
     // Sound
     public AudioClip takeDamageSound;
     public AudioClip deathSound;
-    private AudioSource audioSource;
+    [HideInInspector]
+    public AudioSource audioSource;
 
     protected virtual void Start()
     {
@@ -138,7 +139,7 @@ public class Enemy : MonoBehaviour
         {
             // play damage sound
             audioSource.pitch = Random.Range(0.90f, 1.1f);
-            audioSource.PlayOneShot(takeDamageSound, 0.5f);
+            audioSource.PlayOneShot(takeDamageSound, 0.25f);
                 
             GameObject damageNumber = Instantiate(damageNumbers, transform.position, Quaternion.identity);
             damageNumber.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
@@ -150,7 +151,7 @@ public class Enemy : MonoBehaviour
             // hpBar.SetHealth(health, maxHealth);
             if (health <= 0)
             {
-                audioSource.PlayOneShot(deathSound, 1f);
+                audioSource.PlayOneShot(deathSound, 0.6f);
                 isAlive = false;
                 GetComponent<BoxCollider2D>().enabled = false;
                 enemyRigidbody.velocity = Vector2.zero;
